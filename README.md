@@ -9,3 +9,8 @@
 [출처 : https://www.creative-tim.com/product/argon-dashboard] <br><br>
 - 템플릿활용 UI 1차 수정<br>
 ![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143511660/0746a6d3-0e46-499f-8d65-98793a176920)<br><br>
+
+#2023.09.02 <br>
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143511660/4946bedd-1cd6-4f28-8f21-d00fe7f92823) <br><br>
+- 로그인페이지 제작
+
