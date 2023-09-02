@@ -54,7 +54,7 @@
                                             </div>
                                         </div>
                                         <a href="" class="btn btn-primary btn-user btn-block"> <!--로그인 버튼-->
-                                            Login
+                                            로그인
                                         </a>
                                         <hr>
                                         <a href="" class="btn btn-google btn-user btn-block"> <!--구글 로그인-->
@@ -68,10 +68,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">비밀번호 찾기</a>
+                                        <a class="small" href="">비밀번호 찾기</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">회원가입</a>
+                                        <a class="small" href="goSingIn">회원가입</a>
                                     </div>
                                 </div>
                             </div>
