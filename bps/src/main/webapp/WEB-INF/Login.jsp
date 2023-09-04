@@ -53,7 +53,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="" class="btn btn-primary btn-user btn-block"> <!--로그인 버튼-->
+                                        <a href="goMain" class="btn btn-primary btn-user btn-block"> <!--로그인 버튼-->
                                             로그인
                                         </a>
                                         <hr>
