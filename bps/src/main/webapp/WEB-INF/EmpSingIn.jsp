@@ -42,11 +42,11 @@
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="text" class="form-control" id="exampleFirstName"
-                                                    placeholder="ID" name="">
+                                                    placeholder="ID" name="inputEmail1" value="">
                                             </div>
                                             <div class="col-sm-3">
                                                 <input type="text" class="form-control" id="textEmail"
-                                                    placeholder="이메일을 선택하세요." name="">
+                                                    placeholder="이메일을 선택하세요." name="inputEmail2" value="">
                                             </div>
                                             <div class="col-sm-3">
                                                 <select id="select" class="form-control">
@@ -70,20 +70,20 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="이름" name="">
+                                            <input type="text" class="form-control" placeholder="이름" name="inputName" value="">
                                         </div>
                                         
                                         <div class="form-group row">
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" placeholder="연락처" name="">
+                                                <input type="text" class="form-control" placeholder="연락처" name="inputPhone1" value="">
                                             </div>
 
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="">
+                                                <input type="text" class="form-control" name="inputPhone2" value="">
                                             </div>
 
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="">
+                                                <input type="text" class="form-control" name="inputPhone3" value="">
                                             </div>
                                         </div>
                                         
@@ -164,7 +164,7 @@
             })
         });
     </script>
-
+		<script type="text/javascript" src="js/getkakao.js"></script>
 </body>
 
 </html>
