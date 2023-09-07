@@ -164,7 +164,7 @@
             })
         });
     </script>
-		<script type="text/javascript" src="js/getkakao.js"></script>
+		<script type="text/javascript" src="js/logininfo.js"></script>
 </body>
 
 </html>
