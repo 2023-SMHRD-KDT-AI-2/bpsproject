@@ -40,7 +40,7 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <img src="img/제목 없음.png" style="width: 150px;">
-                                        <h1 class="h4 text-gray-900 mb-4">Moon-Wokrs</h1>                                   
+                                        <h1 class="h4 text-gray-900 mb-4">Moon-Works</h1>                                   
                                     </div>
                                 
                                         <div class="form-group">
