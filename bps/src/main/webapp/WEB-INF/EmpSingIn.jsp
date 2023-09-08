@@ -3,14 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>사원 계정 가입</title>
+    <title>Moon-Works 사원 회원가입</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -27,102 +26,97 @@
 
     <div class="container">
 
-        <div class="row justify-content-center">
-            <div class="col-xl-10 col-lg-12 col-md-9">
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">사원 계정 생성</h1>
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <form action="" method="post">
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">사원 계정 생성</h1>
+                            </div>
+                            <form class="user">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="아이디">
                                     </div>
-                                    <form class="user" action="" method="post">
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control" id="exampleFirstName"
-                                                    placeholder="ID" name="inputEmail1" value="">
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <input type="text" class="form-control" id="textEmail"
-                                                    placeholder="이메일을 선택하세요." name="inputEmail2" value="">
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <select id="select" class="form-control">
-                                                    <option value="" disabled selected>이메일 선택</option>
-                                                    <option value="naver.com" id="naver.com">naver.com</option>
-                                                    <option value="hanmail.net" id="hanmail.net">hanmail.net</option>
-                                                    <option value="gmail.com" id="gmail.com">gmail.com</option>
-                                                    <option value="nate.com" id="nate.com">nate.com</option>
-                                                    <option value="directly" id="exampleLastName">직접 입력하기</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="password" class="form-control" id="exampleInputPassword"
-                                                    placeholder="비밀번호" name="">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input type="password" class="form-control" id="exampleRepeatPassword"
-                                                    placeholder="비밀번호 확인" name="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="이름" name="inputName" value="">
-                                        </div>
-                                        
-                                        <div class="form-group row">
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control" placeholder="연락처" name="inputPhone1" value="">
-                                            </div>
-
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="inputPhone2" value="">
-                                            </div>
-
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="inputPhone3" value="">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group row">
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="address_kakao"
-                                                    placeholder="주소입력" name="address">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="exampleRepeatPassword"
-                                                    placeholder="상세주소" name="address_detail">
-                                            </div>
-                                        </div>
-                                        
-                                        <hr>
-                                        회사 정보 등록
-                                        <div class="form-group">
-
-                                            <input type="text" class="form-control" id="exampleFirstName"
-                                                placeholder="회사명" name="">
-                                        </div>
-
-                                        <a href="" class="btn btn-primary btn-user btn-block">
-                                            회원가입
-                                        </a>
-                                        <hr>
-
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="goLogin">돌아가기</a>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="textEmail" placeholder="이메일을 선택하세요."
+                                            name="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select id="select" class="form-control">
+                                            <option value="" disabled selected>이메일 선택</option>
+                                            <option value="naver.com" id="naver.com">naver.com</option>
+                                            <option value="hanmail.net" id="hanmail.net">hanmail.net</option>
+                                            <option value="gmail.com" id="gmail.com">gmail.com</option>
+                                            <option value="nate.com" id="nate.com">nate.com</option>
+                                            <option value="directly" id="exampleLastName">직접
+                                                입력하기</option>
+                                        </select>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" class="form-control" id="exampleInputPassword"
+                                            placeholder="비밀번호" name="">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" id="exampleRepeatPassword"
+                                            placeholder="비밀번호 확인" name="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="이름" name="">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" placeholder="연락처" name="">
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="">
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="address_kakao" placeholder="주소입력"
+                                            name="address">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="exampleRepeatPassword"
+                                            placeholder="상세주소" name="address_detail">
+                                    </div>
+                                </div>
+                                <hr>
+                                <strong>회사 정보 입력</strong>
+                                <div class="form-group">
+
+                                    <input type="text" class="form-control" id="exampleFirstName" placeholder="회사명"
+                                        name="">
+                                </div>
+
+                                <a href="" class="btn btn-primary btn-user btn-block">
+                                    회원가입 </a>
+                                <hr>
+
+                                <div class="text-center">
+                                    <a class="small" href="goLogin">
+                                        <strong>로그인 페이지 이동</strong></a>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
+
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -137,34 +131,10 @@
 
     <!-- 주소 검색 스크립트-->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-        window.onload = function () {
-            document.getElementById("address_kakao").addEventListener("click", function () { //주소입력칸을 클릭하면
-                //카카오 지도 발생
-                new daum.Postcode({
-                    oncomplete: function (data) { //선택시 입력값 세팅
-                        document.getElementById("address_kakao").value = data.address; // 주소 넣기
-                        document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
-                    }
-                }).open();
-            });
-        }
-    </script>
+    <script src="js/addressFind.js"></script>
+        
 
-    <script>
-        $(function () {
-            $('#select').change(function () {
-                if ($('#select').val() == 'directly') {
-                    $('#textEmail').attr("disabled", false);
-                    $('#textEmail').val("");
-                    $('#textEmail').focus();
-                } else {
-                    $('#textEmail').val($('#select').val());
-                }
-            })
-        });
-    </script>
-		<script type="text/javascript" src="js/logininfo.js"></script>
+
 </body>
 
 </html>
