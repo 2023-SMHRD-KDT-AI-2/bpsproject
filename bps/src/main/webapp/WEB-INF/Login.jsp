@@ -65,15 +65,17 @@
                                             <strong>로그인</strong>
                                         </a>
                                         <hr>
-                                        <a href="index.html" class="btn btn-kakao btn-user btn-block" 
+                                        <a href="javascript:loginWithKakao()" class="btn btn-kakao btn-user btn-block" 
                                            style="display: flex; align-items: center; flex-direction: row;
                                                   justify-content: center;">
                                             <div style="margin-right: 15px;">
                                                 <i class="fa fa-comment"></i>
+												<path
+													d="M512 240c0 114.9-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6C73.6 471.1 44.7 480 16 480c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4l0 0 0 0 0 0 0 0 .3-.3c.3-.3 .7-.7 1.3-1.4c1.1-1.2 2.8-3.1 4.9-5.7c4.1-5 9.6-12.4 15.2-21.6c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208z" />
                                             </div>
                                             <div><strong>카카오 로그인</strong></div>
                                         </a>
-                                        <a href="index.html" class="btn btn-naver btn-user btn-block"
+                                        <a id="naverIdLogin_loginButton" href="javascript:void(0)" class="btn btn-naver btn-user btn-block"
                                             style="display: flex; align-items: center; flex-direction: row;
                                                   justify-content: center;
                                                   height: 37.8px;">
@@ -101,6 +103,17 @@
 
     </div>
 
+
+	<!-- 간편 로그인 스크립트 -->
+	<!-- 카카오 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script type="text/javascript" src="js/kakao.js"></script>
+	<!-- 네이버 -->
+	<script	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
+			charset="utf-8"></script>
+	<script type="text/javascript" src="js/naver.js"></script>
+	
+	
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -110,6 +123,47 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+	
+		<script type="text/javascript">
+		var testPopUp;
+		if (sessionStorage.length > 0) {
+			sessionStorage.clear();
+
+			if (localStorage.key(0).startsWith('kakao')) {
+				localStorage.clear();
+				function openPopUpkaka() {
+							location.href = "https://kauth.kakao.com/oauth/logout?client_id=0f72e7dcd0a213b06a4393aa80485c9e&logout_redirect_uri=http://localhost:8090/bps/goLogin",
+							"_blank";
+
+				}
+				openPopUpkaka();
+
+			} else {
+
+				localStorage.clear();
+
+				function openPopUp() {
+					testPopUp = window
+							.open("https://nid.naver.com/nidlogin.logout",
+									"_blank",
+									"toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+				}
+				function closePopUp() {
+					testPopUp.close();
+				}
+
+				function naverLogout() {
+					openPopUp();
+					setTimeout(function() {
+						closePopUp();
+					}, 500);
+
+				}
+
+				naverLogout();
+			}
+		}
+	</script>
 
 </body>
 

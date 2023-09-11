@@ -125,6 +125,11 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+	
+	<!-- 간편로그인 데이터 가져오기 -->
+	<script type="text/javascript" src="js/loginfo.js"></script>
+	<script	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"	charset="utf-8"></script>
+	<script type="text/javascript" src="js/navercall.js"></script>
 
     <!-- 주소 검색 스크립트-->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
