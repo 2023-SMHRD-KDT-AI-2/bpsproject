@@ -5,65 +5,60 @@
 
 	<insert id="join" parameterType="com.moon.model.userInfo">
 
-		insert into
-		userinfo(id,pw,name,email,address,phone,company) values(
+		insert
+		into userinfo( id
+		,pw
+		,name
+		,email
+		,address
+		,phone
+		,company
+		)
+		values (#{id},
+		#{pw},
+		#{name},
+		#{email},
+		#{address},
+		#{phone}
+		(select company_id from comp_info where comp_name = #{company}));
 
+
+	</insert>
+	<insert id="adminJoin" parameterType="com.moon.model.userInfo">
+
+		insert all
+		into comp_info( company_id,
+		comp_name
+		,logo)
+		values (
+		#{comNum},
+		#{company},
+		#{comImg} )
+		into userinfo( id
+		,pw
+		,name
+		,email
+		,address
+		,phone
+		,company
+		,sign_date
+		,admin
+		)
+		values (
 		#{id},
 		#{pw},
 		#{name},
 		#{email},
 		#{address},
 		#{phone},
-		#{company}
+		#{comNum},
+		sysdate,
+		#{admin}
 		)
-	</insert>
-
-
-	<insert id="adminJoin" parameterType="com.moon.model.userInfo">
-
-		insert all
-		into comp_info(
-						 company_id
-						 ,comp_name
-						 ,logo
-					   )
-		values (
-				#{comNum},
-				#{company},
-				#{comImg})
-		into userinfo( 
-						id
-						,pw
-						,name
-						,email
-						,address
-						,phone
-						,company
-						,sign_date
-						,admin
-					 )
-		values (
-				#{id},
-				#{pw},
-				#{name},
-				#{email},
-				#{address},
-				#{phone},
-				#{company},
-				sysdate,
-				'Y'
-				)
 		select * from dual
-		
 
 	</insert>
-
-
-
-
-
-
-
+	
 
 </mapper>
 

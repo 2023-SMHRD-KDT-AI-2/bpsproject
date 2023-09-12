@@ -18,6 +18,7 @@ public class userInfo {
 	    private String company;
 	    private String comNum;
 	    private String comImg;
+	    private String admin;
 	
 
 }

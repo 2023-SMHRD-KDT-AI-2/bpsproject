@@ -29,7 +29,7 @@
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
-                <form class="user" action="empJoin" method="post">
+                <form action="empJoin" method="post">
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
@@ -39,11 +39,11 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="아이디" name = "inputEmail1" value="">
+                                            placeholder="아이디" name="inputEmail1">
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="textEmail" placeholder="이메일을 선택하세요."
-                                            name="inputEmail2" value="">
+                                            name="inputEmail2">
                                     </div>
                                     <div class="col-sm-3">
                                         <select id="select" class="form-control">
@@ -97,8 +97,8 @@
                                 <strong>회사 정보 입력</strong>
                                 <div class="form-group">
 
-                                    <input type="text" class="form-control" id="exampleFirstName" placeholder="회사명"
-                                        name="companyName" value="">
+                                    <input onclick="openChild()" type="text" class="form-control" placeholder="사업자번호"
+                                        id="pInput" name="comNum">
                                 </div>                           
                                <button class="btn btn-primary btn-user btn-block" type="submit">회원가입</button>
                                 <hr>
@@ -115,6 +115,12 @@
         </div>
 
     </div>
+
+	<script type="text/javascript">
+	function openChild() {
+	    window.open("goCompSearch", "comp_search", "width=700px, height=500, resizable = no, scrollbars = no");    
+	};
+	</script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

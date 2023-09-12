@@ -29,15 +29,20 @@ public class empJoin extends HttpServlet {
 		String inputPhone3 = request.getParameter("inputPhone3");
 		String address = request.getParameter("address");
 		String address_detail = request.getParameter("address_detail");
-		String companyName = request.getParameter("compName");
 		String compNum = request.getParameter("comNum");
-		String compLogo = request.getParameter("comLogo");
+
 		
 		UserInfoDAO dao = new UserInfoDAO();
-		userInfo user = 
-				new userInfo(inputEmail1,pw,inputName,inputEmail1+"@"+inputEmail2,
-						address+" "+address_detail,inputPhone1+inputPhone2+inputPhone3,companyName,compNum,compLogo);
-		
+	
+		userInfo user = new userInfo();
+		user.setAddress(address+" "+address_detail);
+		user.setComNum(compNum);
+		user.setEmail(inputEmail1+"@"+inputEmail2);
+		user.setId(inputEmail1);
+		user.setName(inputName);
+		user.setPhone(inputPhone1+inputPhone2+inputPhone3);
+		user.setPw(pw);
+
 		int cnt = dao.join(user);
 		
 		String url ="";

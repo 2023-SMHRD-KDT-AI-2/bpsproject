@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    
 
 </head>
 
@@ -29,7 +30,7 @@
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
-                <form action="adminJoin" method="post">
+                <form action="adminJoin" method="post" enctype="multipart/form-data">
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
@@ -39,11 +40,11 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="아이디" name="inputEmail1" value="">
+                                            placeholder="아이디" name="inputEmail1">
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="textEmail" placeholder="이메일을 선택하세요."
-                                            name="inputEmail2" value="">
+                                            name="inputEmail2">
                                     </div>
                                     <div class="col-sm-3">
                                         <select id="select" class="form-control">
@@ -60,55 +61,55 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control" id="exampleInputPassword"
-                                            placeholder="비밀번호" name="pw" value="">
+                                            placeholder="비밀번호" name="pw">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control" id="exampleRepeatPassword"
-                                            placeholder="비밀번호 확인" name="pwCheck" value="">
+                                            placeholder="비밀번호 확인" name="pwCheck">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="이름" name="inputName" value="">
+                                    <input type="text" class="form-control" placeholder="이름" name="inputName">
                                 </div>
                                 <hr>
                                 <strong>회사 정보 입력</strong>
                                 <div class="form-group row">
 									<div class="col-sm-6">
                                     <input type="text" class="form-control" id="exampleFirstName" placeholder="회사명"
-                                        name="compName" value="">
+                                        name="compName">
                                     </div>
                                     <div class="col-sm-6">
                                     <input type="text" class="form-control" id="exampleFirstName" placeholder="사업자번호"
-                                        name="compNum" value="">
+                                        name="compNum">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" id="address_kakao" placeholder="주소입력"
-                                            name="address" value="">
+                                            name="address">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" id="exampleRepeatPassword"
-                                            placeholder="상세주소" name="address_detail" value="">
+                                            placeholder="상세주소" name="address_detail">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="연락처" name="inputPhone1" value="">
+                                        <input type="text" class="form-control" placeholder="연락처" name="inputPhone1">
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="inputPhone2" value="">
+                                        <input type="text" class="form-control" name="inputPhone2">
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="inputPhone3" value="">
+                                        <input type="text" class="form-control" name="inputPhone3">
                                     </div>
                                 </div>
                                 <strong>로고 등록 [JPG/PNG]</strong>
                                 <div class="form-group">
-                                    <input type="file" accept=".jpg, .png" class="form-control" name="comLogo" value="">
+                                    <input type="file" accept=".jpg, .png" class="form-control" name="comLogo">
                                 </div>
                                 <button class="btn btn-primary btn-user btn-block" type="submit">회원가입</button>
                                 <hr>
