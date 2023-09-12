@@ -20,5 +20,20 @@ public class UserInfoDAO {
 		
 		return cnt;
 	}
+	
+	public int adminJoin(userInfo user) {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		int cnt = sqlSession.insert("adminJoin", user);
+		
+		sqlSession.close();
+		
+		return cnt;
+		
+	}
+	
+	
+	
 
 }

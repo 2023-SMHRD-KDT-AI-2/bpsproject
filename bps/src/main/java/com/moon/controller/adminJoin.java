@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.moon.model.UserInfoDAO;
 import com.moon.model.userInfo;
 
-@WebServlet("/empJoin")
-public class empJoin extends HttpServlet {
+@WebServlet("/adminJoin")
+public class adminJoin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
@@ -30,7 +31,7 @@ public class empJoin extends HttpServlet {
 		String address = request.getParameter("address");
 		String address_detail = request.getParameter("address_detail");
 		String companyName = request.getParameter("compName");
-		String compNum = request.getParameter("comNum");
+		String compNum = request.getParameter("compNum");
 		String compLogo = request.getParameter("comLogo");
 		
 		UserInfoDAO dao = new UserInfoDAO();
@@ -38,7 +39,7 @@ public class empJoin extends HttpServlet {
 				new userInfo(inputEmail1,pw,inputName,inputEmail1+"@"+inputEmail2,
 						address+" "+address_detail,inputPhone1+inputPhone2+inputPhone3,companyName,compNum,compLogo);
 		
-		int cnt = dao.join(user);
+		int cnt = dao.adminJoin(user);
 		
 		String url ="";
 		
@@ -57,12 +58,5 @@ public class empJoin extends HttpServlet {
 	}
 		
 		
-		
-		
-		
-		
-		
-		
-	}
-
-
+	
+}

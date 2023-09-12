@@ -4,19 +4,59 @@
 
 
 	<insert id="join" parameterType="com.moon.model.userInfo">
-	
-		insert into userinfo(id,pw,name,email,address,tel,company) values(
-		
-			#{id},
-			#{pw},
-			#{name},
-			#{email},
-			#{address},
-			#{tel}, 
-			#{company}
-		)	
+
+		insert into
+		userinfo(id,pw,name,email,address,phone,company) values(
+
+		#{id},
+		#{pw},
+		#{name},
+		#{email},
+		#{address},
+		#{phone},
+		#{company}
+		)
 	</insert>
 
+
+	<insert id="adminJoin" parameterType="com.moon.model.userInfo">
+
+		insert all
+		into comp_info(
+						 company_id
+						 ,comp_name
+						 ,logo
+					   )
+		values (
+				#{comNum},
+				#{company},
+				#{comImg})
+		into userinfo( 
+						id
+						,pw
+						,name
+						,email
+						,address
+						,phone
+						,company
+						,sign_date
+						,admin
+					 )
+		values (
+				#{id},
+				#{pw},
+				#{name},
+				#{email},
+				#{address},
+				#{phone},
+				#{company},
+				sysdate,
+				'Y'
+				)
+		select * from dual
+		
+
+	</insert>
 
 
 

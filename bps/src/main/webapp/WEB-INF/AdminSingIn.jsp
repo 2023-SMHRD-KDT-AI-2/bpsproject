@@ -29,21 +29,21 @@
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
-                <form action="" method="post">
+                <form action="adminJoin" method="post">
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">관리자 계정 생성</h1>
                             </div>
-                            <form class="user">
+                          
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="아이디">
+                                            placeholder="아이디" name="inputEmail1" value="">
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="textEmail" placeholder="이메일을 선택하세요."
-                                            name="">
+                                            name="inputEmail2" value="">
                                     </div>
                                     <div class="col-sm-3">
                                         <select id="select" class="form-control">
@@ -60,60 +60,64 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control" id="exampleInputPassword"
-                                            placeholder="비밀번호" name="">
+                                            placeholder="비밀번호" name="pw" value="">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control" id="exampleRepeatPassword"
-                                            placeholder="비밀번호 확인" name="">
+                                            placeholder="비밀번호 확인" name="pwCheck" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="이름" name="">
+                                    <input type="text" class="form-control" placeholder="이름" name="inputName" value="">
                                 </div>
                                 <hr>
                                 <strong>회사 정보 입력</strong>
-                                <div class="form-group">
-
+                                <div class="form-group row">
+									<div class="col-sm-6">
                                     <input type="text" class="form-control" id="exampleFirstName" placeholder="회사명"
-                                        name="">
+                                        name="compName" value="">
+                                    </div>
+                                    <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="exampleFirstName" placeholder="사업자번호"
+                                        name="compNum" value="">
+                                    </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" id="address_kakao" placeholder="주소입력"
-                                            name="address">
+                                            name="address" value="">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" id="exampleRepeatPassword"
-                                            placeholder="상세주소" name="address_detail">
+                                            placeholder="상세주소" name="address_detail" value="">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="연락처" name="">
+                                        <input type="text" class="form-control" placeholder="연락처" name="inputPhone1" value="">
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="">
+                                        <input type="text" class="form-control" name="inputPhone2" value="">
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="">
+                                        <input type="text" class="form-control" name="inputPhone3" value="">
                                     </div>
                                 </div>
                                 <strong>로고 등록 [JPG/PNG]</strong>
                                 <div class="form-group">
-                                    <input type="file" accept=".jpg, .png" class="form-control">
+                                    <input type="file" accept=".jpg, .png" class="form-control" name="comLogo" value="">
                                 </div>
-                                <a href="" class="btn btn-primary btn-user btn-block">
-                                    회원가입 </a>
+                                <button class="btn btn-primary btn-user btn-block" type="submit">회원가입</button>
                                 <hr>
 
                                 <div class="text-center">
                                     <a class="small" href="goLogin">
                                         <strong>로그인 페이지 이동</strong></a>
                                 </div>
-                            </form>
+                            
 
                         </div>
                     </div>

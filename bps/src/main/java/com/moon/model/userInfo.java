@@ -14,9 +14,10 @@ public class userInfo {
 	    private String name;
 	    private String email;
 	    private String address;
-	    private String tel;
+	    private String phone;
 	    private String company;
-	
+	    private String comNum;
+	    private String comImg;
 	
 
 }
