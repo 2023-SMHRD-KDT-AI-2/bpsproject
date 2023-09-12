@@ -33,6 +33,7 @@
 		<version>3.1.0</version>
 		<scope>provided</scope>
 	</dependency>
+	
 	<dependency>
 	    <groupId>org.projectlombok</groupId>
 	    <artifactId>lombok</artifactId>
@@ -53,7 +54,7 @@
 	<dependency>
     	<groupId>org.mybatis</groupId>
     	<artifactId>mybatis</artifactId>
-    	<version>3.5.7</version>
+    	<version>3.5.13</version>
 	</dependency>
 	<!-- jstl라이브러리 추가 
 	조건문이나 반복문 대하여 <태그>를 사용하여 기능을 처리하는 라이브러리 

@@ -72,7 +72,7 @@ public class adminJoin extends HttpServlet {
 		String url ="";
 		
 		if(cnt>0) {
-			url="WEB-INF/Main.jsp";
+			url="WEB-INF/Login.jsp";
 			
 			
 		}else {

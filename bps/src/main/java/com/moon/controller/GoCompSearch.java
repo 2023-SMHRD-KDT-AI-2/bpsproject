@@ -15,7 +15,7 @@ public class GoCompSearch extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-String url = "WEB-INF/comp_search.jsp";
+		String url = "WEB-INF/comp_search.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);

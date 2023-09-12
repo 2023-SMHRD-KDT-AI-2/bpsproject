@@ -5,8 +5,8 @@
 
 	<insert id="join" parameterType="com.moon.model.userInfo">
 
-		insert
-		into userinfo( id
+		insert into userinfo(
+		id
 		,pw
 		,name
 		,email
@@ -14,13 +14,15 @@
 		,phone
 		,company
 		)
-		values (#{id},
+		values (
+		#{id},
 		#{pw},
 		#{name},
 		#{email},
 		#{address},
-		#{phone}
-		(select company_id from comp_info where comp_name = #{company}));
+		#{phone},
+		#{comNum}
+		)
 
 
 	</insert>
@@ -58,6 +60,16 @@
 		select * from dual
 
 	</insert>
+	
+	<select id="compList" parameterType="com.moon.model.compInfo"
+	resultType="com.moon.model.compInfo">
+		select * from comp_info
+	</select>
+	
+	<select id="compsearch" parameterType="string"
+	resultType="com.moon.model.compInfo">
+		select * from comp_info where COMP_NAME like '%'||#{comp_name}||'%' 
+	</select>
 	
 
 </mapper>

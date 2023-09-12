@@ -60,27 +60,27 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control" id="exampleInputPassword"
-                                            placeholder="비밀번호" name="pw" value="">
+                                            placeholder="비밀번호" name="pw">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control" id="exampleRepeatPassword"
-                                            placeholder="비밀번호 확인" name="pwCheck" value="">
+                                            placeholder="비밀번호 확인" name="pwCheck">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="이름" name="inputName" value="">
+                                    <input type="text" class="form-control" placeholder="이름" name="inputName">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="연락처" name="inputPhone1" value="">
+                                        <input type="text" class="form-control" placeholder="연락처" name="inputPhone1">
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="inputPhone2" value="">
+                                        <input type="text" class="form-control" name="inputPhone2">
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="inputPhone3" value="">
+                                        <input type="text" class="form-control" name="inputPhone3">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -118,7 +118,7 @@
 
 	<script type="text/javascript">
 	function openChild() {
-	    window.open("goCompSearch", "comp_search", "width=700px, height=500, resizable = no, scrollbars = no");    
+	    window.open('goCompSearch', 'comp_search', 'width=680px, height=500px, resizable = no, scrollbars = no');    
 	};
 	</script>
 

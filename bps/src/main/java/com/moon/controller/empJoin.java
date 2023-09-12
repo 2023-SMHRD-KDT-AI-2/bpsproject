@@ -34,6 +34,7 @@ public class empJoin extends HttpServlet {
 		
 		UserInfoDAO dao = new UserInfoDAO();
 	
+
 		userInfo user = new userInfo();
 		user.setAddress(address+" "+address_detail);
 		user.setComNum(compNum);
@@ -48,11 +49,11 @@ public class empJoin extends HttpServlet {
 		String url ="";
 		
 		if(cnt>0) {
-			url="WEB-INF/Main.jsp";
+			url="WEB-INF/Login.jsp";
 			
 			
 		}else {
-			url="WEB-INF/AdminSingIn.jsp";
+			url="WEB-INF/EmpSingIn.jsp";
 		}
 		
 				
