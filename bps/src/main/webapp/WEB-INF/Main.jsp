@@ -60,8 +60,12 @@
                             class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                         </div>
                     </div>
+                    
+                    <%
+					String name = (String) request.getAttribute("name");
+						%>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0"><%=name %></h6>
                         <span>Admin</span>
                     </div>
                 </div>

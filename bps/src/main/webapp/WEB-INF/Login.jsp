@@ -35,7 +35,7 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                        
-                           <form action="" method="post">
+                           <form action="Login" method="post">
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -43,16 +43,19 @@
                                         <h1 class="h4 text-gray-900 mb-4">Moon-Works</h1>                                   
                                     </div>
                                 
+                                
+                                
+                                
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                name=""
+                                                name="id"
                                                 placeholder="Email">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password"
-                                                name="">
+                                                name="pw">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -61,9 +64,12 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="goMain" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        
                                             <strong>로그인</strong>
-                                        </a>
+                                        </button>
+                                        
+                                        
                                         <hr>
                                         <a href="javascript:loginWithKakao()" class="btn btn-kakao btn-user btn-block" 
                                            style="display: flex; align-items: center; flex-direction: row;

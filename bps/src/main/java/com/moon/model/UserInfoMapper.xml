@@ -72,6 +72,12 @@
 	</select>
 	
 
+	 <select id ="login" parameterType = "com.moon.model.userInfo"
+	 	resultType="string">
+	 
+	 	select name from userinfo where email=#{email} and PW =#{pw}
+	 
+	 </select>
 </mapper>
 
 
