@@ -274,7 +274,7 @@ sup {
 }
 
 a {
-    color: #009CFF;
+    color:#213573;
     text-decoration: none
 }
 
@@ -2559,8 +2559,8 @@ textarea.form-control-lg {
 }
 
 .form-check-input:checked {
-    background-color: #009CFF;
-    border-color: #009CFF
+    background-color: #213573;
+    border-color: #213573
 }
 
 .form-check-input:checked[type="checkbox"] {
@@ -3125,8 +3125,8 @@ fieldset:disabled .btn {
 
 .btn-primary {
     color: #000;
-    background-color: #009CFF;
-    border-color: #009CFF
+    background-color: #213573;
+    border-color: #213573
 }
 
 .btn-primary:hover {
