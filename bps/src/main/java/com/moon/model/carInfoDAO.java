@@ -9,30 +9,41 @@ import com.moon.db.SqlSessionManager;
 
 public class carInfoDAO {
 
-	SqlSessionFactory sqlSessionFactory
-	=SqlSessionManager.getsqlSession();
+	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getsqlSession();
 	
 	
-	ArrayList<carInfo> list = new ArrayList<>();
 	public ArrayList<carInfo> showcar() {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
-		list = (ArrayList) sqlSession.selectList("carList");
+		ArrayList<carInfo> list = (ArrayList) sqlSession.selectList("carList");
 
 		sqlSession.close();
 
 		return list;
 	}
+	
 
 	public ArrayList<carInfo> searchcar(String carname) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
-		list = (ArrayList) sqlSession.selectList("carsearch", carname);
+		ArrayList<carInfo> list = (ArrayList) sqlSession.selectList("carsearch", carname);
 
 		sqlSession.close();
 
+		return list;
+	}
+	
+	
+	public ArrayList<carInfo> searchManufacturer(String manufac) {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		ArrayList<carInfo> list = (ArrayList) sqlSession.selectList("manusearch", manufac);
+		
+		sqlSession.close();
+		
 		return list;
 	}
 	

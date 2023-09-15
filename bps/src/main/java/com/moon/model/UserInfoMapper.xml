@@ -68,7 +68,12 @@
    
    <select id="carsearch" parameterType="string"
    resultType="com.moon.model.carInfo">
-      select * from carslist where carname like '%'||#{carname}||'%' 
+      select * from carslist where LOWER(carname) like '%'||LOWER(#{carname})||'%' 
+   </select>
+   
+   <select id="manusearch" parameterType="string"
+   resultType="com.moon.model.carInfo">
+      select * from carslist where LOWER(manufac) like '%'||LOWER(#{manufac})||'%' 
    </select>
 	
 	<select id="compList" parameterType="com.moon.model.compInfo"

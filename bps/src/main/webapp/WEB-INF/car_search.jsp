@@ -95,7 +95,7 @@ td {
 		<div>
 	<form action="goCarList" method="get">
 			<input class="textbox" type="text" name="car"
-				placeholder="차량입력">
+				placeholder="검색어 입력">
 			<button class="sub">
 				<i class="fa fa-search" aria-hidden="true"></i>
 			</button>
@@ -106,25 +106,19 @@ td {
 		<%
 		request.setCharacterEncoding("UTF-8");
 				
-				String carname = request.getParameter("car");
+			String searchParameter = request.getParameter("car");
 				
-				carInfoDAO dao = new carInfoDAO();
-				carInfo comp = new carInfo();
+			carInfoDAO cdao = new carInfoDAO();
 				
-				ArrayList<carInfo> list = new ArrayList<>();
-				if (carname == null){
-			list = dao.showcar();
-			
-				} else {
+			ArrayList<carInfo> list = new ArrayList<>();
+			if (searchParameter == null){
+				list = cdao.showcar();
+			} else {
+				list = cdao.searchcar(searchParameter);
+				list.addAll(cdao.searchManufacturer(searchParameter));
+			}
 				
-				
-			list = dao.searchcar(carname);
-				}
-				
-				
-
-
-				session.setAttribute("list", list);
+			session.setAttribute("list", list);
 		%>
 
 
@@ -139,9 +133,13 @@ td {
 			<tr>
 				<td>${list.carName}</td>
 				<td class="boad">${list.manufac}</td>
-				<td><button onclick="setParentText()"
-						id="cInput${status.index+1}" class="select sub high put"
-						value="${list.carName}">선택</button></td>
+				<td>
+					<button onclick="setParentText()"
+						id="cInput2${status.index+1}" class="select sub high put"
+						value="${list.manufac}§${list.carName}">
+						선택
+					</button>
+				</td>
 			</tr>
 		</c:forEach>
 
@@ -154,9 +152,10 @@ td {
 		const select = $(".select").length;
 		
 		for (let i = 1; i <= select; i++){
-			$("#cInput"+i).click(function() {
-				opener.document.getElementById("pInput").value = document
-						.getElementById("cInput"+i).value
+			$("#cInput2"+i).click(function() {
+				opener.document.getElementById("pInput1").value = document.getElementById("cInput2"+i).value.split("§")[0];
+				opener.document.getElementById("pInput2").value = document.getElementById("cInput2"+i).value.split("§")[1];
+			
 			window.close();
 			})
 		}
