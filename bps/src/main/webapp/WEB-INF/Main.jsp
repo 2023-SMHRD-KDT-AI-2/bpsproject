@@ -345,7 +345,10 @@
                         </div>
                     </div>
                     
-
+                    
+				<div>
+					<a href="GoCar_Registration">차량등록임시탭</a>
+				</div>
 
 
 

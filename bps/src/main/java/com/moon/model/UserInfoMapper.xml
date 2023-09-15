@@ -61,6 +61,16 @@
 
 	</insert>
 	
+	<select id="carList" parameterType="com.moon.model.carInfo"
+   resultType="com.moon.model.carInfo">
+      select * from carslist
+   </select>
+   
+   <select id="carsearch" parameterType="string"
+   resultType="com.moon.model.carInfo">
+      select * from carslist where carname like '%'||#{carname}||'%' 
+   </select>
+	
 	<select id="compList" parameterType="com.moon.model.compInfo"
 	resultType="com.moon.model.compInfo">
 		select * from comp_info
