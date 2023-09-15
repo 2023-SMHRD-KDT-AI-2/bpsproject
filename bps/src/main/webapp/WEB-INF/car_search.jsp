@@ -141,7 +141,7 @@ td {
 				<td class="boad">${list.manufac}</td>
 				<td><button onclick="setParentText()"
 						id="cInput${status.index+1}" class="select sub high put"
-						value=${list.carName}>선택</button></td>
+						value="${list.carName}">선택</button></td>
 			</tr>
 		</c:forEach>
 
