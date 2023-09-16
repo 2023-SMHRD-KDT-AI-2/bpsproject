@@ -94,6 +94,13 @@
 		and email=#{email} 
 	 
 	 </select>
+	 
+	 <select id ="user_id" parameterType = "com.moon.model.login"
+	 	resultType="com.moon.model.login">
+	 
+	 	select * from userinfo
+		 where id = #{id}
+	 </select>
 </mapper>
 
 

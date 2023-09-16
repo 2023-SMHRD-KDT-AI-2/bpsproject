@@ -57,6 +57,17 @@ public class UserInfoDAO {
 		return info;
 	}
 
+	
+	public login user_id (login info) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		info = sqlSession.selectOne("user_id", info);
+
+		sqlSession.close();
+
+		return info;
+	}
 //	public String login(userInfo user) {
 //
 //		SqlSession sqlSession = sqlSessionFactory.openSession(true);
