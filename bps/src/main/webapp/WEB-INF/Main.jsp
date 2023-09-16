@@ -51,6 +51,7 @@
                     String admin = (String) request.getAttribute("admin");
                     String logo = (String) request.getAttribute("logo");	
                     String compName = (String) request.getAttribute("compName");	
+                    String id = (String) request.getAttribute("id");
 		
 		%>
         <!--작은창-->
@@ -348,6 +349,8 @@
                     
 				<div>
 					<a href="GoCar_Registration">차량등록임시탭</a>
+					<br>
+					<a href="goAttendStatus">[임시]근태현황으로 넘어가기</a>
 				</div>
 
 
@@ -397,6 +400,9 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+        <script>
+        	sessionStorage.setItem("id", "<%=id %>");
+        </script>
 </body>
 
 </html>

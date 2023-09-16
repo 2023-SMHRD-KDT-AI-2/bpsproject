@@ -60,11 +60,14 @@ public class adminLogin extends HttpServlet {
 			String admin = userAll.getAdmin();
 			String logo = userAll.getLogo();
 			String compName = userAll.getComp_name();
+			String iid = userAll.getId();
 
 			request.setAttribute("name", name);
 			request.setAttribute("admin", admin);
 			request.setAttribute("logo", logo);
 			request.setAttribute("compName", compName);
+			request.setAttribute("id", iid);
+			
 			url = "WEB-INF/Main.jsp";
 
 		}

@@ -100,7 +100,30 @@
 	 
 	 	select * from userinfo
 		 where id = #{id}
+	 
 	 </select>
+	 
+	 <insert id="attend_in" parameterType = "com.moon.model.attend">
+		 insert into attend values(
+	    attend_id.NEXTVAL,
+	    (select id from userinfo where id = #{id}),
+	    #{attend_info},
+	    sysdate
+	    )
+	 
+	 </insert>
+	 
+	 <update id="attend_up" parameterType = "com.moon.model.attend">
+			 update attend set
+		    attend_info = #{attend_info},
+		    attend_time = sysdate,
+		where id = #{id};
+	</update>
+	 
+	 
+	 
+	 
+	 
 </mapper>
 
 
