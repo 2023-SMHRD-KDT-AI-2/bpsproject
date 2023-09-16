@@ -68,6 +68,15 @@ public class adminLogin extends HttpServlet {
 			url = "WEB-INF/Main.jsp";
 
 		}
+		
+		
+		if(userAll.getSign_date() == null) {
+			url = "goLogin";
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('승인되지 않은 아이디 입니다.'); location.href='" + url + "';</script>");
+			writer.close();
+		}
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 

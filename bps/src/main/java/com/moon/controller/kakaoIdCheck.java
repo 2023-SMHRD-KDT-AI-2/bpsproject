@@ -12,13 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.moon.model.UserInfoDAO;
 import com.moon.model.login;
 
-@WebServlet("/idCheck")
-
-public class idCheck extends HttpServlet {
+@WebServlet("/kakaoIdCheck")
+public class kakaoIdCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		UserInfoDAO dao = new UserInfoDAO();
 
@@ -35,6 +34,10 @@ public class idCheck extends HttpServlet {
 		
 
 		login check = dao.user_id(user);
+		
+		
+
+
 
 		int idCheck = 0;
 
@@ -42,15 +45,25 @@ public class idCheck extends HttpServlet {
 
 			idCheck = 1;
 
-		} else{
+		} else if(check.getAdmin() ==null){
+	
 			
 			idCheck = 0;
+			
+		}else if(check.getAdmin() != null) {
+			String name = check.getName();
+			request.setAttribute("name", name);
+			idCheck = 2;
 		}
 
 		out.print(idCheck); // json형식으로
 		
 		
-
+	
+	
+	
+	
+	
 	}
 
 }

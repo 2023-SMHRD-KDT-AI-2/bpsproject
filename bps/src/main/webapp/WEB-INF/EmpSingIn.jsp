@@ -148,7 +148,7 @@
 	<script type="text/javascript">
 		$('#exampleFirstName').keyup(function() {
 			let userId = $('#exampleFirstName').val(); // input_id에 입력되는 값
-			console.log("확인>>", userId);
+			
 			$.ajax({
 				url : "idCheck",
 				type : "post",

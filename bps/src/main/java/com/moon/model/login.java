@@ -24,5 +24,6 @@ public class login {
 	private String company_id;
 	private String comp_name;
 	private String logo;
+	private String sign_date;
 
 }

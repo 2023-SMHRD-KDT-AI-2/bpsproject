@@ -30,7 +30,7 @@
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
-                <form action="adminJoin" method="post" enctype="multipart/form-data">
+                <form name="join_form" action="adminJoin" method="post" enctype="multipart/form-data">
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
@@ -58,6 +58,8 @@
                                         </select>
                                     </div>
                                 </div>
+                                
+                                <div id="id_div"></div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control" id="exampleInputPassword"
@@ -69,17 +71,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="이름" name="inputName">
+                                    <input type="text" class="form-control" placeholder="이름" name="inputName" id ="name">
                                 </div>
                                 <hr>
                                 <strong>회사 정보 입력</strong>
                                 <div class="form-group row">
 									<div class="col-sm-6">
-                                    <input type="text" class="form-control" id="exampleFirstName" placeholder="회사명"
+                                    <input type="text" class="form-control" id="business1" placeholder="회사명"
                                         name="compName">
                                     </div>
                                     <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="exampleFirstName" placeholder="사업자번호"
+                                    <input type="text" class="form-control" id="business2" placeholder="사업자번호"
                                         name="compNum">
                                     </div>
                                 </div>
@@ -90,28 +92,28 @@
                                             name="address">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="exampleRepeatPassword"
+                                        <input type="text" class="form-control" id="address"
                                             placeholder="상세주소" name="address_detail">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="연락처" name="inputPhone1">
+                                        <input type="text" class="form-control" placeholder="연락처" name="inputPhone1" id ="phone1">
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="inputPhone2">
+                                        <input type="text" class="form-control" name="inputPhone2" id ="phone2">
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="inputPhone3">
+                                        <input type="text" class="form-control" name="inputPhone3" id ="phone3">
                                     </div>
                                 </div>
                                 <strong>로고 등록 [JPG/PNG]</strong>
                                 <div class="form-group">
-                                    <input type="file" accept=".jpg, .png" class="form-control" name="comLogo">
+                                    <input type="file" accept=".jpg, .png" class="form-control" name="comLogo" id="logo">
                                 </div>
-                                <button class="btn btn-primary btn-user btn-block" type="submit">회원가입</button>
+                                <button class="btn btn-primary btn-user btn-block" type="button" onclick="joinform_check()">회원가입</button>
                                 <hr>
 
                                 <div class="text-center">
@@ -127,6 +129,160 @@
         </div>
 
     </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		$('#exampleFirstName').keyup(function() {
+			let userId = $('#exampleFirstName').val(); // input_id에 입력되는 값
+			
+			$.ajax({
+				url : "idCheck",
+				type : "post",
+				data : {userId : userId},
+				//dataType --> success 했을 때 받아올 결과값의 자료형을 의미
+				success : function(result) {
+					console.log(result)
+					var id_check = /^[A-Za-z]{0}[A-Za-z0-9_-]{0,18}$/;
+					if (result == 0 || !id_check.test(userId)) {
+						$("#id_div").html('사용할 수 없는 아이디입니다.');
+						$("#id_div").css('color', 'red');
+						$("#id_div").css('display', '');
+						if (userId.length <= 1) {
+							$("#id_div").css('display', 'none');
+						}
+
+					} else if (result == 1) {
+						$("#id_div").html('사용할 수 있는 아이디입니다.');
+						$("#id_div").css('color', 'green');
+						$("#id_div").css('display', '');
+
+						if (userId.length == 0) {
+							$("#id_div").css('display', 'none');
+						}
+					}
+
+				},
+				error : function() {
+					alert("서버요청실패");
+				}
+			})
+
+		})
+
+
+		
+		
+		function joinform_check() {
+			//변수에 담아주기
+			var email1 = document.getElementById("exampleFirstName");
+			var email2 = document.getElementById("textEmail");
+			var pw = document.getElementById("exampleInputPassword");
+			var rpw = document.getElementById("exampleRepeatPassword");
+			var name = document.getElementById("name");
+			
+			
+			var buisness1 = document.getElementById("business1");
+			var business2 = document.getElementById("business2");
+			var address = document.getElementById("address_kakao");
+			
+			var address2 = document.getElementById("address");
+			
+			var phone1 = document.getElementById("phone1");
+			var phone2 = document.getElementById("phone2");
+			var phone3 = document.getElementById("phone3");
+			
+
+			var logo = document.getElementById("logo");
+			
+			
+			var id_check = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
+			
+			if (email1.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+				alert("아이디를 입력하세요.");
+				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				return false;
+			}
+			;
+			if(!id_check.test(email1.value)){
+				alert("영문자 숫자만 가능합니다.");
+				pw.focus();
+				return false;
+			}
+
+			if (email2.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+				alert("이메일을 확인하세요.");
+				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				return false;
+			}
+			;
+
+			if (pw.value == "") {
+				alert("비밀번호를 입력하세요.");
+				pwd.focus();
+				return false;
+			}
+			;
+
+			//비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
+			var pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+
+			if (!pwCheck.test(pw.value)) {
+				alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
+				pw.focus();
+				return false;
+			}
+			;
+
+			if (rpw.value !== pw.value) {
+				alert("비밀번호가 일치하지 않습니다..");
+				repwd.focus();
+				return false;
+			}
+			;
+
+			if (name.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+				alert("이름을 확인하세요.");
+				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				return false;
+			}
+			;
+
+			if (business1.value == "" ||business2.value=="" ) { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+				alert("회사명을 확인하세요.");
+				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				return false;
+			}
+			;
+			
+			if (address.value == "" ||address2.value=="" ) { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+				alert("주소를 확인하세요.");
+				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				return false;
+			}
+			;
+			
+			if (phone1.value == "" || phone2.value == "" ||phone3.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+				alert("핸드폰번호를 확인하세요.");
+				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				return false;
+			}
+			;
+			
+
+
+			if (logo.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+				alert("회사로고를 확인하세요.");
+				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				return false;
+			}
+			;
+
+			document.join_form.submit();
+		}
+	</script>
+
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
