@@ -54,11 +54,13 @@ function getInfo() {
 			const phoneNum1 = phone.split('-')[0].split(" ")[1];
 			const phoneNum2 = phone.split('-')[1];
 			const phoneNum3 = phone.split('-')[2];
-
+			
+			
+			
 
 			$.ajax({
 				url: "kakaoIdCheck",
-				type: "post",
+				type: "get",
 				data: { userId: emailadress1 },
 				dataType :"json",
 				//dataType --> success 했을 때 받아올 결과값의 자료형을 의미
@@ -74,7 +76,10 @@ function getInfo() {
 						alert('존재하지않는아이디입니다.');
 						window.location.href = 'http://localhost:8090/bps/goEmpSingIn'
 					} else {
-						createHiddenLoginForm(emailadress1);
+						
+						let Email = emailadress1+"@"+emailadress2
+						let pw = result.pw
+						createHiddenLoginForm(Email, pw);
 						
 						sessionStorage.setItem("이름", inputData);
 						sessionStorage.setItem("메일1", emailadress1);
@@ -103,16 +108,29 @@ function getInfo() {
 	});
 }
 
-function createHiddenLoginForm(emailadress1){
+function createHiddenLoginForm(Email, pw){
 	
+	
+	
+	console.log(Email, pw);
 	var frm = document.createElement('form');
+	frm.setAttribute("charset", "UTF-8");
 	frm.setAttribute('method', 'post');
-	frm.setAttribute('action', 'goMain');
+	frm.setAttribute('action', 'Login');
+	
 	var hiddenInput = document.createElement('input');
 	hiddenInput.setAttribute('type','hidden');
-	hiddenInput.setAttribute('name','userId');
-	hiddenInput.setAttribute('value',emailadress1);
+	hiddenInput.setAttribute('name','id');
+	hiddenInput.setAttribute('value',Email);
 	frm.appendChild(hiddenInput);
+	
+	hiddenInput = document.createElement('input');
+	hiddenInput.setAttribute('type','hidden');
+	hiddenInput.setAttribute('name','pw');
+	hiddenInput.setAttribute('value',pw);
+	
+	frm.appendChild(hiddenInput);
+	
 	document.body.appendChild(frm);
 	frm.submit();
 	

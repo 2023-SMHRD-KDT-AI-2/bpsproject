@@ -2,6 +2,7 @@ package com.moon.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
 import com.moon.model.UserInfoDAO;
 import com.moon.model.login;
+
 
 @WebServlet("/kakaoIdCheck")
 public class kakaoIdCheck extends HttpServlet {
@@ -33,30 +37,37 @@ public class kakaoIdCheck extends HttpServlet {
 		user.setId(id);
 		
 
-		login check = dao.user_id(user);
-		
-		
+		ArrayList<login> check = dao.user_id_pw(user);
 
-
+		JSONObject jobj = new JSONObject();
 
 		int idCheck = 0;
 
 		if (check == null) {
 
 			idCheck = 1;
+			out.print(idCheck);
 
-		} else if(check.getAdmin() ==null){
+		} else if(check.get(0).getSign_date() == null){
 	
 			
 			idCheck = 0;
-			
-		}else if(check.getAdmin() != null) {
-			String name = check.getName();
-			request.setAttribute("name", name);
-			idCheck = 2;
-		}
+			out.print(idCheck);
 
-		out.print(idCheck); // json형식으로
+			
+		}else if(check.get(0).getSign_date() != null) {
+			idCheck = 2;
+			String name = check.get(0).getName();
+			request.setAttribute("name", name);
+			
+			jobj.put("pw", check.get(0).getPw());
+			
+			out.print(jobj);
+		}
+		
+		
+
+		 // json형식으로
 		
 		
 	

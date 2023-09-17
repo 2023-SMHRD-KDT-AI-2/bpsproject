@@ -2,6 +2,7 @@ package com.moon.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.moon.model.UserInfoDAO;
 import com.moon.model.login;
+
+import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
 
 @WebServlet("/idCheck")
 
@@ -33,9 +37,8 @@ public class idCheck extends HttpServlet {
 
 		user.setId(id);
 		
-
 		login check = dao.user_id(user);
-
+		
 		int idCheck = 0;
 
 		if (check == null) {
@@ -47,7 +50,8 @@ public class idCheck extends HttpServlet {
 			idCheck = 0;
 		}
 
-		out.print(idCheck); // json형식으로
+		out.print(idCheck);
+		// json형식으로
 		
 		
 

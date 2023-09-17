@@ -68,6 +68,8 @@
     height: 40px;
 }
 
+
+
 .close-sub { 
     display: none;
 }
@@ -307,6 +309,19 @@ pre {
     overflow: auto;
     font-size: .875em
 }
+
+.dis-f {
+    display: flex;
+    flex-direction: row;
+}
+
+.dis-b {
+	display: block;
+}
+
+.f-r {
+	float: right !important;
+	}
 
 pre code {
     font-size: inherit;
@@ -2270,6 +2285,16 @@ progress {
     color: #6c757d
 }
 
+.width-70 {
+    width: 70px !important;
+    justify-content: center;
+}
+
+.back-color {
+    background-color: #213573 !important;
+    color: #fff !important;
+}
+
 .form-control {
     display: block;
     width: 100%;
@@ -2459,6 +2484,10 @@ textarea.form-control-lg {
 .form-control-color::-webkit-color-swatch {
     height: 1.5em;
     border-radius: 5px
+}
+
+.high-400 {
+    height: 400px;
 }
 
 .form-select {

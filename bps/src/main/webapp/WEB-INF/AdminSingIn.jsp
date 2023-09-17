@@ -40,7 +40,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="아이디" name="inputEmail1">
+                                            placeholder="아이디 (영문자 숫자만 가능)" name="inputEmail1">
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="textEmail" placeholder="이메일을 선택하세요."
@@ -66,10 +66,11 @@
                                             placeholder="비밀번호" name="pw">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control" id="exampleRepeatPassword"
+                                        <input type="password" class="form-control pwc" id="exampleRepeatPassword"
                                             placeholder="비밀번호 확인" name="pwCheck">
                                     </div>
                                 </div>
+                                <div id="pw_div"></div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="이름" name="inputName" id ="name">
                                 </div>
@@ -170,6 +171,41 @@
 
 		})
 
+		$('#exampleRepeatPassword').keyup(function() {
+				var pw = document.getElementById("exampleInputPassword");
+				var rpw = document.getElementById("exampleRepeatPassword");
+			if (pw.value == "") {
+				pwd.focus();
+				$("#pw_div").css('display', 'none');
+				return false;
+			}
+			;
+
+			//비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
+			var pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+
+			
+			
+			if (!pwCheck.test(pw.value)) {
+				alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
+				$('#exampleRepeatPassword').val("");
+				pw.focus();
+				return false;
+			}
+			;
+			if (rpw.value != pw.value) {
+				$("#pw_div").html('비밀번호가 일치하지 않습니다.');
+				$("#pw_div").css('color', 'red');
+				$("#pw_div").css('display', '');
+				repwd.focus();
+				return false;
+			} else {
+				$("#pw_div").html('비밀번호가 일치합니다.');
+				$("#pw_div").css('color', 'green');
+				$("#pw_div").css('display', '');
+			}
+			;
+			});
 
 		
 		
@@ -200,71 +236,51 @@
 			
 			if (email1.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
 				alert("아이디를 입력하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				email1.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
 				return false;
 			}
 			;
 			if(!id_check.test(email1.value)){
 				alert("영문자 숫자만 가능합니다.");
-				pw.focus();
+				email1.focus();
 				return false;
-			}
-
+			};
 			if (email2.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
 				alert("이메일을 확인하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				email2.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
 				return false;
 			}
 			;
-
 			if (pw.value == "") {
 				alert("비밀번호를 입력하세요.");
 				pwd.focus();
 				return false;
 			}
 			;
-
-			//비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
-			var pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-
-			if (!pwCheck.test(pw.value)) {
-				alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
-				pw.focus();
-				return false;
-			}
-			;
-
-			if (rpw.value !== pw.value) {
-				alert("비밀번호가 일치하지 않습니다..");
-				repwd.focus();
-				return false;
-			}
-			;
-
 			if (name.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
 				alert("이름을 확인하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				name.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
 				return false;
 			}
 			;
 
 			if (business1.value == "" ||business2.value=="" ) { //해당 입력값이 없을 경우 같은말: if(!uid.value)
 				alert("회사명을 확인하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				buisness1.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
 				return false;
 			}
 			;
 			
 			if (address.value == "" ||address2.value=="" ) { //해당 입력값이 없을 경우 같은말: if(!uid.value)
 				alert("주소를 확인하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				address.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
 				return false;
 			}
 			;
 			
 			if (phone1.value == "" || phone2.value == "" ||phone3.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
 				alert("핸드폰번호를 확인하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+				phone1.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
 				return false;
 			}
 			;

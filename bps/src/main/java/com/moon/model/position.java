@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class compInfo {
+public class position {
 
-	private String company_id;
-	private String comp_name;
-	private String logo;
-	
+	private String company;
+	private String position_name;
+	private String ex;
+	private String email;
 	
 }

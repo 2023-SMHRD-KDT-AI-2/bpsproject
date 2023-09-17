@@ -21,7 +21,7 @@
 		#{email},
 		#{address},
 		#{phone},
-		#{comNum}
+		#{company}
 		)
 
 
@@ -29,7 +29,8 @@
 	<insert id="adminJoin" parameterType="com.moon.model.userInfo">
 
 		insert all
-		into comp_info( company_id,
+		into comp_info(
+		company_id,
 		comp_name
 		,logo)
 		values (
@@ -60,6 +61,169 @@
 		select * from dual
 
 	</insert>
+
+	<select id="compList" parameterType="com.moon.model.compInfo"
+		resultType="com.moon.model.compInfo">
+		select * from comp_info
+	</select>
+
+	<select id="compsearch" parameterType="string"
+		resultType="com.moon.model.compInfo">
+		select * from comp_info where COMP_NAME like
+		'%'||#{comp_name}||'%'
+	</select>
+
+
+	<select id="login" parameterType="com.moon.model.login"
+		resultType="com.moon.model.login">
+
+		select * from userinfo a, comp_info b where a.company = b.company_id
+		and email=#{email} 
+
+	</select>
+	
+	<select id ="user_id" parameterType = "com.moon.model.login"
+	 	resultType="com.moon.model.login">
+	 
+	 	select * from userinfo
+		 where id = #{id}
+	 </select>
+	 
+	 <select id ="user_id_pw" parameterType = "com.moon.model.login"
+	 	resultType="com.moon.model.login">
+	 	select * from userinfo where id = #{id}
+	 </select>
+
+	<select id="date_null_list"
+		parameterType="com.moon.model.userInfo"
+		resultType="com.moon.model.userInfo">
+		select * from userinfo where sign_date is null and company
+		= #{comNum}
+	</select>
+
+	<select id="date_not_null_list"
+		parameterType="com.moon.model.userInfo"
+		resultType="com.moon.model.userInfo">
+		select * from userinfo where sign_date is not null and
+		company = #{comNum}
+	</select>
+
+	<select id="information" parameterType="com.moon.model.userInfo"
+		resultType="com.moon.model.userInfo">
+		select * from userinfo where sign_date is not null and
+		email = #{email}
+	</select>
+
+	<select id="positioninfo"
+		parameterType="com.moon.model.position"
+		resultType="com.moon.model.position">
+		select * from position_info where company_id = #{comNum}
+	</select>
+
+	<insert id="positioninsert"
+		parameterType="com.moon.model.position">
+
+		insert into position_info values (
+		position_idx.NEXTVAL,
+		(SELECT COMPANY FROM userinfo where email = #{email}),
+		#{position_name},
+		#{ex})
+
+	</insert>
+	
+	<select id="positionInformation" parameterType="com.moon.model.position"
+		resultType="com.moon.model.position">
+		select * from position_info where
+		company_id = (SELECT COMPANY FROM userinfo where email = #{email}) and position_name =  #{position_name}
+	</select>
+
+	<delete id="positionDel" parameterType="com.moon.model.position">
+	delete from position_info where company_id = (SELECT COMPANY FROM userinfo where
+		email = #{email}) and position_name = #{position_name} and ex = #{ex}
+	
+	</delete>
+
+	<update id="positionUp" parameterType="com.moon.model.position">
+	update position_info set position_name = #{position_name}, ex = #{ex}
+	where company_id = (SELECT COMPANY FROM userinfo where
+	email = #{email})
+	</update>
+	
+	<select id="positionCheck" parameterType="com.moon.model.position"
+		resultType="com.moon.model.position">
+		select * from position_info where
+		company_id = (SELECT COMPANY FROM userinfo where email = #{email}) and position_name =  #{position_name}
+	</select>
+	
+	<select id="position_info_list" parameterType="com.moon.model.position"
+		resultType="com.moon.model.position">
+		select * from position_info where
+		company_id = (SELECT COMPANY FROM userinfo where email = #{email})
+	</select>
+	
+	
+	<select id="departinfo"	parameterType="com.moon.model.Depart"
+		resultType="com.moon.model.Depart">
+		select * from depart_info where company = #{company}
+	</select>
+	
+	<insert id="departinsert" parameterType="com.moon.model.Depart">
+
+		insert into depart_info values (
+		(SELECT COMPANY FROM userinfo where email = #{email}),
+		#{depart},
+		#{depart_name},
+		#{depart_call},
+		#{ex})
+
+	</insert>
+	
+	<select id="departCheck" parameterType="com.moon.model.Depart"
+		resultType="com.moon.model.Depart">
+		select * from depart_info where
+		company = (SELECT COMPANY FROM userinfo where email = #{email}) and depart =  #{depart}
+	</select>
+	
+	<select id="departInformation" parameterType="com.moon.model.Depart"
+		resultType="com.moon.model.Depart">
+		select * from depart_info where
+		company = (SELECT COMPANY FROM userinfo where email = #{email}) and depart =  #{depart}
+	</select>
+	
+	<delete id="departDel" parameterType="com.moon.model.Depart">
+	delete from depart_info where company = (SELECT COMPANY FROM userinfo where
+		email = #{email}) and depart = #{depart} and ex = #{ex} and depart_call = #{depart_call} and depart_name = #{depart_name}
+	
+	</delete>
+	
+	<update id="departUp" parameterType="com.moon.model.Depart">
+	update depart_info set depart = #{depart_Up}, ex = #{ex}, depart_call = #{depart_call}, depart_name = #{depart_name}
+	where company = (SELECT COMPANY FROM userinfo where	email = #{email}) and depart = #{depart}
+	</update>
+	
+	<select id="depart_info_list" parameterType="com.moon.model.Depart"
+		resultType="com.moon.model.Depart">
+		select * from depart_info where
+		company = (SELECT COMPANY FROM userinfo where email = #{email})
+	</select>
+
+	<update id="app_info" parameterType="com.moon.model.userInfo">
+	update userinfo set sign_date = sysdate,
+	depart = #{depart}, POSITION = #{position} WHERE
+	company = #{comNum} and email = #{email}
+	</update>
+	
+	
+	<delete id="app_del" parameterType="com.moon.model.userInfo">
+	delete from userinfo where company = #{comNum} and email = #{email}
+	</delete>
+	
+	<update id="app_Up" parameterType="com.moon.model.userInfo">
+	update userinfo set 
+	depart = #{depart}, POSITION = #{position},
+	PHONE = #{phone} WHERE
+	company = #{comNum} and email = #{email}
+	</update>
 	
 	<select id="carList" parameterType="com.moon.model.carInfo"
    resultType="com.moon.model.carInfo">
@@ -76,33 +240,6 @@
       select * from carslist where LOWER(manufac) like '%'||LOWER(#{manufac})||'%' 
    </select>
 	
-	<select id="compList" parameterType="com.moon.model.compInfo"
-	resultType="com.moon.model.compInfo">
-		select * from comp_info
-	</select>
-	
-	<select id="compsearch" parameterType="string"
-	resultType="com.moon.model.compInfo">
-		select * from comp_info where COMP_NAME like '%'||#{comp_name}||'%' 
-	</select>
-	
-
-	 <select id ="login" parameterType = "com.moon.model.login"
-	 	resultType="com.moon.model.login">
-	 
-	 	select * from userinfo a, comp_info b where a.company = b.company_id
-		and email=#{email} 
-	 
-	 </select>
-	 
-	 <select id ="user_id" parameterType = "com.moon.model.login"
-	 	resultType="com.moon.model.login">
-	 
-	 	select * from userinfo
-		 where id = #{id}
-	 
-	 </select>
-	 
 	 <insert id="attend_in" parameterType = "com.moon.model.attend">
 		 insert into attend values(
 	    attend_id.NEXTVAL,
@@ -119,11 +256,8 @@
 		    attend_time = sysdate,
 		where id = #{id};
 	</update>
-	 
-	 
-	 
-	 
-	 
+
+	
 </mapper>
 
 

@@ -70,15 +70,17 @@
 							<div class="form-group row">
 								<div class="col-sm-6 mb-3 mb-sm-0">
 									<input type="password" class="form-control"
-										id="exampleInputPassword" placeholder="비밀번호 영문자,숫자,특수조합 8~25자리" name="pw">
+										id="exampleInputPassword" 
+										placeholder="비밀번호 영문자,숫자,특수조합 8~25자리" name="pw">
 								</div>
 
 								<div class="col-sm-6">
-									<input type="password" class="form-control"
+									<input type="password" class="form-control pwc"
 										id="exampleRepeatPassword" placeholder="비밀번호 확인"
 										name="pwCheck">
 								</div>
 							</div>
+							<div id="pw_div"></div>
 							<div class="form-group">
 								<input type="text" class="form-control" id="name"
 									placeholder="이름" name="inputName">
@@ -118,8 +120,7 @@
 								<input onclick="openChild()" type="text" class="form-control"
 									placeholder="사업자번호" id="pInput" name="comNum">
 							</div>
-							<button class="btn btn-primary btn-user btn-block"
-								onclick="joinform_check()" type="button">회원가입</button>
+							<button class="btn btn-primary btn-user btn-block" type="button" onclick="joinform_check()">회원가입</button>
 							<hr>
 
 
@@ -146,139 +147,165 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 	<script type="text/javascript">
-		$('#exampleFirstName').keyup(function() {
-			let userId = $('#exampleFirstName').val(); // input_id에 입력되는 값
-			
-			$.ajax({
-				url : "idCheck",
-				type : "post",
-				data : {userId : userId},
-				//dataType --> success 했을 때 받아올 결과값의 자료형을 의미
-				success : function(result) {
-					console.log(result)
-					var id_check = /^[A-Za-z]{0}[A-Za-z0-9_-]{0,18}$/;
-					if (result == 0 || !id_check.test(userId)) {
-						$("#id_div").html('사용할 수 없는 아이디입니다.');
-						$("#id_div").css('color', 'red');
-						$("#id_div").css('display', '');
-						if (userId.length <= 1) {
-							$("#id_div").css('display', 'none');
-						}
-
-					} else if (result == 1) {
-						$("#id_div").html('사용할 수 있는 아이디입니다.');
-						$("#id_div").css('color', 'green');
-						$("#id_div").css('display', '');
-
-						if (userId.length == 0) {
-							$("#id_div").css('display', 'none');
-						}
+	$('#exampleFirstName').keyup(function() {
+		let userId = $('#exampleFirstName').val(); // input_id에 입력되는 값
+		
+		$.ajax({
+			url : "idCheck",
+			type : "post",
+			data : {userId : userId},
+			//dataType --> success 했을 때 받아올 결과값의 자료형을 의미
+			success : function(result) {
+				console.log(result)
+				var id_check = /^[A-Za-z]{0}[A-Za-z0-9_-]{0,18}$/;
+				if (result == 0 || !id_check.test(userId)) {
+					$("#id_div").html('사용할 수 없는 아이디입니다.');
+					$("#id_div").css('color', 'red');
+					$("#id_div").css('display', '');
+					if (userId.length <= 1) {
+						$("#id_div").css('display', 'none');
 					}
 
-				},
-				error : function() {
-					alert("서버요청실패");
-				}
-			})
+				} else if (result == 1) {
+					$("#id_div").html('사용할 수 있는 아이디입니다.');
+					$("#id_div").css('color', 'green');
+					$("#id_div").css('display', '');
 
+					if (userId.length == 0) {
+						$("#id_div").css('display', 'none');
+					}
+				}
+
+			},
+			error : function() {
+				alert("서버요청실패");
+			}
 		})
 
-		function joinform_check() {
-			//변수에 담아주기
-			var email1 = document.getElementById("exampleFirstName");
-			var email2 = document.getElementById("textEmail");
+	})
+
+	$('#exampleRepeatPassword').keyup(function() {
 			var pw = document.getElementById("exampleInputPassword");
 			var rpw = document.getElementById("exampleRepeatPassword");
-			var name = document.getElementById("name");
-			
-			
-			var phone1 = document.getElementById("phone1");
-			var phone2 = document.getElementById("phone2");
-			var phone3 = document.getElementById("phone3");
-			var address = document.getElementById("address_kakao");
-			
-			var address2 = document.getElementById("address");
-
-			var buisness = document.getElementById("pInput");
-			
-			
-			var id_check = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
-			
-			if (email1.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
-				alert("아이디를 입력하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
-				return false;
-			}
-			;
-			if(!id_check.test(email1.value)){
-				alert("영문자 숫자만 가능합니다.");
-				pw.focus();
-				return false;
-			}
-
-			if (email2.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
-				alert("이메일을 확인하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
-				return false;
-			}
-			;
-
-			if (pw.value == "") {
-				alert("비밀번호를 입력하세요.");
-				pwd.focus();
-				return false;
-			}
-			;
-
-			//비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
-			var pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-
-			if (!pwCheck.test(pw.value)) {
-				alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
-				pw.focus();
-				return false;
-			}
-			;
-
-			if (rpw.value !== pw.value) {
-				alert("비밀번호가 일치하지 않습니다..");
-				repwd.focus();
-				return false;
-			}
-			;
-
-			if (name.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
-				alert("이름을 확인하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
-				return false;
-			}
-			;
-
-			
-			if (phone1.value == "" || phone2.value == "" ||phone3.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
-				alert("핸드폰번호를 확인하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
-				return false;
-			}
-			;
-			
-
-			if (address.value == "" ||address2.value=="" ) { //해당 입력값이 없을 경우 같은말: if(!uid.value)
-				alert("주소를 확인하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
-				return false;
-			}
-			;
-
-			if (buisness.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
-				alert("사업자명을 확인하세요.");
-				uid.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
-				return false;
-			}
-			;
-
-			document.join_form.submit();
+		if (pw.value == "") {
+			pwd.focus();
+			$("#pw_div").css('display', 'none');
+			return false;
 		}
+		;
+
+		//비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
+		var pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+
+		
+		
+		if (!pwCheck.test(pw.value)) {
+			alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
+			$('#exampleRepeatPassword').val("");
+			pw.focus();
+			return false;
+		}
+		;
+		if (rpw.value != pw.value) {
+			$("#pw_div").html('비밀번호가 일치하지 않습니다.');
+			$("#pw_div").css('color', 'red');
+			$("#pw_div").css('display', '');
+			repwd.focus();
+			return false;
+		} else {
+			$("#pw_div").html('비밀번호가 일치합니다.');
+			$("#pw_div").css('color', 'green');
+			$("#pw_div").css('display', '');
+		}
+		;
+		});
+
+	
+	
+	function joinform_check() {
+		//변수에 담아주기
+		var email1 = document.getElementById("exampleFirstName");
+		var email2 = document.getElementById("textEmail");
+		var pw = document.getElementById("exampleInputPassword");
+		var rpw = document.getElementById("exampleRepeatPassword");
+		var name = document.getElementById("name");	
+		var phone1 = document.getElementById("phone1");
+		var phone2 = document.getElementById("phone2");
+		var phone3 = document.getElementById("phone3");
+		var address = document.getElementById("address_kakao");
+		var address2 = document.getElementById("address");
+		var business1 = document.getElementById("pInput");
+		
+		
+
+	
+		
+		
+		var id_check = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
+		
+		if (email1.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+			alert("아이디를 입력하세요.");
+			email1.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+			return false;
+		}
+		;
+		if(!id_check.test(email1.value)){
+			alert("영문자 숫자만 가능합니다.");
+			email1.focus();
+			return false;
+		};
+		if (email2.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+			alert("이메일을 확인하세요.");
+			email2.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+			return false;
+		}
+		;
+		if (pw.value == "") {
+			alert("비밀번호를 입력하세요.");
+			pwd.focus();
+			return false;
+		}
+		;
+		
+
+
+		
+		
+		if (name.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+			alert("이름을 확인하세요.");
+			name.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+			return false;
+		}
+		;
+
+		
+		
+		if (address.value == "" ||address2.value=="" ) { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+			alert("주소를 확인하세요.");
+			address.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+			return false;
+		}
+		;
+		
+		if (phone1.value == "" || phone2.value == "" ||phone3.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+			alert("핸드폰번호를 확인하세요.");
+			phone1.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+			return false;
+		}
+		;
+		
+		if (business1.value == "") { //해당 입력값이 없을 경우 같은말: if(!uid.value)
+			alert("이름을 확인하세요.");
+			business1.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
+			return false;
+		}
+		;
+		
+
+
+
+		document.join_form.submit();
+	}
 	</script>
 
 

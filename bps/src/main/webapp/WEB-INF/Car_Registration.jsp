@@ -1,11 +1,14 @@
+<%@page import="com.moon.model.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<meta charset="utf-8">
-<title>DASHMIN - Bootstrap Admin Template</title>
+<meta charset="UTF-8">
+<title>Admin 차량관리</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -39,7 +42,8 @@
 
 <!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="css/차량관리.css">
+
+
 </head>
 
 <body>
@@ -56,58 +60,82 @@
 
 
 		<!-- Sidebar Start -->
-		<div class="sidebar pe-4 pb-3">
-			<nav class="navbar bg-light navbar-light">
-				<a href="index.html" class="navbar-brand mx-4 mb-3">
-					<h3 class="text-primary">
-						<i class="fa fa-hashtag me-2"></i>DASHMIN
-					</h3>
-				</a>
-				<div class="d-flex align-items-center ms-4 mb-4">
-					<div class="position-relative">
-						<img class="rounded-circle" src="img/user.jpg" alt=""
-							style="width: 40px; height: 40px;">
-						<div
-							class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-					</div>
-					<div class="ms-3">
-						<h6 class="mb-0">Jhon Doe</h6>
-						<span>Admin</span>
-					</div>
-				</div>
-				<div class="navbar-nav w-100">
-					<a href="index.html" class="nav-item nav-link"><i
-						class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-					<div class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle"
-							data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-						<div class="dropdown-menu bg-transparent border-0">
-							<a href="button.html" class="dropdown-item">Buttons</a> <a
-								href="typography.html" class="dropdown-item">Typography</a> <a
-								href="element.html" class="dropdown-item">Other Elements</a>
-						</div>
-					</div>
-					<a href="widget.html" class="nav-item nav-link"><i
-						class="fa fa-th me-2"></i>Widgets</a> <a href="form.html"
-						class="nav-item nav-link active"><i
-						class="fa fa-keyboard me-2"></i>Forms</a> <a href="table.html"
-						class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-					<a href="chart.html" class="nav-item nav-link"><i
-						class="fa fa-chart-bar me-2"></i>Charts</a>
-					<div class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle"
-							data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-						<div class="dropdown-menu bg-transparent border-0">
-							<a href="signin.html" class="dropdown-item">Sign In</a> <a
-								href="signup.html" class="dropdown-item">Sign Up</a> <a
-								href="404.html" class="dropdown-item">404 Error</a> <a
-								href="blank.html" class="dropdown-item">Blank Page</a>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<!-- Sidebar End -->
+
+		<!--작은창-->
+		<%	
+
+       
+		String name = (String) session.getAttribute("name");
+		String admin = (String) session.getAttribute("admin");
+		String logo = (String) session.getAttribute("logo");
+		String compName = (String) session.getAttribute("compName");
+		String email = (String) session.getAttribute("email");
+		String phone = (String) session.getAttribute("phone");
+		String date = (String) session.getAttribute("date");
+		String pass = (String) session.getAttribute("pass");
+		String compNum = (String) session.getAttribute("compNum");
+		String depart = (String) session.getAttribute("depart");
+		String position = (String) session.getAttribute("position");
+
+		
+		
+		
+		%>
+        <!--작은창-->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a href="goMain" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><%=compName %></h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    
+                    <%
+                    if (admin != null) {
+						%>
+						
+						
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="file/<%=logo %>" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0"><%=name %></h6>
+                        <span>admin</span>
+                    </div>
+                	<%} else { %>
+                	                    <div class="position-relative">
+                        <img class="rounded-circle" src="file/<%=logo %>" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                	<div class="ms-3">
+                        <h6 class="mb-0"><%=name %></h6>
+                        <span><%=depart %></span>
+                        <span><%=position %></span>
+                    </div>
+                	<%} %>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="goMain" class="nav-item nav-link "><i
+                            class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="goAttendStatus" class="nav-item nav-link "><i
+                            class="fa fa-tachometer-alt me-2"></i>근태 관리</a>       
+                            
+                    <%
+                    if (admin != null) {
+					%>
+                    <a href="goAdmin" class="nav-item nav-link active"><i
+                            class="fa fa-tachometer-alt me-2"></i>관리자 페이지</a>
+                    <%}%>
+                    
+                    
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
 
 
 		<!-- Content Start -->
@@ -215,6 +243,20 @@
 			<!-- Navbar End -->
 
 
+			<!-- Sale & Revenue Start -->
+			<div class="container-fluid pt-4 px-4">
+				<div id="menuarea" class="row g-4">
+
+					<div class="nav-item dropdown1">
+						<div class="dropdown2 open-sub">
+							<a class="dropdown-items" href="goAdmin">회원관리</a>
+							<a class="dropdown-items" href="goDepart">부서관리</a>
+							<a class="dropdown-items" href="goPosition">직급관리</a>
+							<a class="dropdown-items" href="GoCar_Registration">차량관리</a>
+						</div>
+					</div>
+
+
 			<!-- Form Start -->
 			<form action="" accept-charset="UTF-8" method="post">
 				<div class="container-fluid pt-4 px-4">
@@ -298,21 +340,7 @@
 			<!-- Form End -->
 
 
-			<!-- Footer Start -->
-			<div class="container-fluid pt-4 px-4">
-				<div class="bg-light rounded-top p-4">
-					<div class="row">
-						<div class="col-12 col-sm-6 text-center text-sm-start">
-							&copy; <a href="#">Your Site Name</a>, All Right Reserved.
-						</div>
-						<div class="col-12 col-sm-6 text-center text-sm-end">
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Footer End -->
+			
 		</div>
 		<!-- Content End -->
 

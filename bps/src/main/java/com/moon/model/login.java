@@ -19,11 +19,13 @@ public class login {
 	private String phone;
 	private String company;
 	private String comNum;
-	private String comImg;
 	private String admin;
 	private String company_id;
 	private String comp_name;
 	private String logo;
 	private String sign_date;
+	private String depart;
+	private String position;
+
 
 }

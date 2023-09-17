@@ -30,18 +30,18 @@ public class empJoin extends HttpServlet {
 		String address = request.getParameter("address");
 		String address_detail = request.getParameter("address_detail");
 		String compNum = request.getParameter("comNum");
-
 		
+	
 		UserInfoDAO dao = new UserInfoDAO();
 	
 
 		userInfo user = new userInfo();
 		user.setAddress(address+" "+address_detail);
-		user.setComNum(compNum);
+		user.setCompany(compNum);
 		user.setEmail(inputEmail1+"@"+inputEmail2);
 		user.setId(inputEmail1);
 		user.setName(inputName);
-		user.setPhone(inputPhone1+inputPhone2+inputPhone3);
+		user.setPhone(inputPhone1+"-"+inputPhone2+"-"+inputPhone3);
 		user.setPw(pw);
 
 		int cnt = dao.join(user);

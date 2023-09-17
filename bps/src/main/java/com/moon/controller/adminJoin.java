@@ -63,7 +63,7 @@ public class adminJoin extends HttpServlet {
 		user.setEmail(inputEmail1+"@"+inputEmail2);
 		user.setId(inputEmail1);
 		user.setName(inputName);
-		user.setPhone(inputPhone1+inputPhone2+inputPhone3);
+		user.setPhone(inputPhone1+"-"+inputPhone2+"-"+inputPhone3);
 		user.setPw(pw);
 		user.setAdmin("Yes");
 		

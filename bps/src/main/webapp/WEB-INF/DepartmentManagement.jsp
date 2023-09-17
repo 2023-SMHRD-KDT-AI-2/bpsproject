@@ -1,12 +1,15 @@
+<%@page import="com.moon.model.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="utf-8">
-    <title>Moon-Works</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="UTF-8">
+<title>Admin 부서관리</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -46,7 +49,9 @@
 
 
         <!-- Sidebar Start -->
-		<%	
+
+        <!--작은창-->
+        <%	
 
        
 		String name = (String) session.getAttribute("name");
@@ -103,15 +108,15 @@
                 	<%} %>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="goMain" class="nav-item nav-link active"><i
+                    <a href="goMain" class="nav-item nav-link "><i
                             class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="goAttendStatus" class="nav-item nav-link"><i
+                    <a href="goAttendStatus" class="nav-item nav-link "><i
                             class="fa fa-tachometer-alt me-2"></i>근태 관리</a>       
                             
                     <%
                     if (admin != null) {
 					%>
-                    <a href="goAdmin" class="nav-item nav-link"><i
+                    <a href="goAdmin" class="nav-item nav-link active"><i
                             class="fa fa-tachometer-alt me-2"></i>관리자 페이지</a>
                     <%}%>
                     
@@ -204,9 +209,9 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="file/<%=logo %>" alt=""
+                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
                                 style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><%=name %></span>
+                            <span class="d-none d-lg-inline-flex">John Doe</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
@@ -224,177 +229,208 @@
                 <div id="menuarea" class="row g-4">
 
                     <div class="nav-item dropdown1">
-                        <a href="#" class="submenu" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                        </a>
-                        <div class="dropdown2 close-sub">
-                            <a class="dropdown-items gong" href="#">공지사항</a>
-                            <a class="dropdown-items nal" href="#">날씨</a>
-                            <a class="dropdown-items upmu" href="#">업무리스트</a>
-                            <a class="dropdown-items dal" href="#">달력</a>
-                            <a class="dropdown-items mes" href="#">메세지</a>
+                        <div class="dropdown2 open-sub">
+                            <a class="dropdown-items" href="goAdmin">회원관리</a>
+							<a class="dropdown-items" href="goDepart">부서관리</a>
+							<a class="dropdown-items" href="goPosition">직급관리</a>
+							<a class="dropdown-items" href="GoCar_Registration">차량관리</a>
+                        </div>
+                    </div>
+				
+				
+				<%
+                            
+                            
+                            request.setCharacterEncoding("UTF-8");
+   
+							
+                    		departDAO dao = new departDAO();
+                    		Depart de = new Depart();
+                    		
+                    		ArrayList<Depart> departs = new ArrayList<>();
+                    		
+                    		
+                    		de.setCompany(compNum);
+                    	
+   
+                    		departs = dao.departinfoList(de);
+
+
+                    		session.setAttribute("departs", departs);
+             
+                     %>
+
+
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">부서 목록</h6>
+                            	
+                            <form action="departDetailed" method="post">
+							<select name="selectDe" onchange="formChange(this.form)" class="form-select high-400" multiple aria-label="multiple select example">
+                            <c:forEach var="departs" items="${departs}" varStatus="status">
+                                <option value="${departs.depart}">${departs.depart}</option>						
+							</c:forEach>
+                            </select>
+                            </form>
                         </div>
                     </div>
 
-                    <div id="menuarea2" class="top-left-radius container-view row1">
-                       
-                        <div class="row p-4 rowmove" id="cal">
-                            <div draggable="true"  class="calenderya">
-                                <div class="h-100 bg-light rounded p-4">
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <h6 class="mb-0">Calender</h6>
-                                        <a href="#" class="close-cal close-menu">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                    <div id="calender"></div>
-                                </div>
+
+					<%
+                            
+                            
+                            request.setCharacterEncoding("UTF-8");
+                    		
+                    		String select = request.getParameter("selectDe");
+                    		
+                    		departDAO dDAO = new departDAO();
+                    		Depart depa = new Depart();
+                    		
+                    		depa.setDepart(select);
+                    		depa.setEmail(email);
+                    		
+                    		ArrayList<Depart> departss = new ArrayList<>();
+                        	
+                    		
+                    		if (select == null){
+
+                    		} else {
+   
+                    			departss = dDAO.departDetailed(depa);
+                    		}
+                    		
+                    		
+
+
+                    		session.setAttribute("lists", departss);
+                            
+                            %>
+					
+					<div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded p-4">
+                        <div class="dis-f">
+                            <h6 class="mb-4">부서관리</h6>
+                            <a href="goDepart" style="margin-left: auto;">신규등록하기</a>
+                       </div>   
+					<form method="post" name="form" onsubmit="check_function">
+					<% if (select == null) {%>
+					<div class="input-group mb-3">
+                                <span class="width-70 input-group-text" id="basic-addon1">부서명</span>
+                                <input id="dep" name="depart" type="text" class="form-control" aria-describedby="basic-addon1" >
+
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="container-view row1">
-                        <div class="row p-4 rowmove">
-                        <div draggable="true" id="toDo" class="to_Do">
-                            <div class="h-100 bg-light rounded p-4">
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h6 class="mb-0">To Do List</h6>
-                                    <a href="#" class="close-toDo close-menu">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
-                                <div class="d-flex mb-2">
-                                    <input class="form-control bg-transparent" type="text" placeholder="Enter task">
-                                    <button type="button" class="btn btn-primary ms-2">Add</button>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox" checked>
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span><del>Short task goes here...</del></span>
-                                            <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center pt-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                        </div>
-
-
-
-                    </div>
-
-                    <div class="top-right-radius container-view row1">
-                        <div class="row p-4 rowmove">
-                            <div draggable="true" id="close-msg" class="msg">
-                                <div class="h-100 bg-light rounded p-4">
-                                    <div class="d-flex align-items-center justify-content-between mb-2">
-                                        <h6 class="mb-0">Messages</h6>
-                                        <a href="#" class="close-message close-menu">
-                                            <i class="closemessages fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                    <div class="d-flex align-items-center border-bottom py-3">
-                                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt=""
-                                            style="width: 40px; height: 40px;">
-                                        <div class="w-100 ms-3">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h6 class="mb-0">Jhon Doe</h6>
-                                                <small>15 minutes ago</small>
-                                            </div>
-                                            <span>Short message goes here...</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="input-group mb-3">
+                                <span class="width-70 input-group-text">담당자</span>
+                                <input id="dep_name" type="text" name="dep_name" class="form-control" aria-label="With textarea">
                             </div>
+                            <div class="input-group mb-3">
+                                <span class="width-70 input-group-text">연락처</span>
+                                <input id="tel" type="text" name="tel" class="form-control" aria-label="With textarea">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="width-70 input-group-text">설명</span>
+                                <input id="ex" type="text" name="ex" class="form-control" aria-label="With textarea">
+                            </div>
+                             <div class="dis-f">
+                      	 		<div class="me-xxl-3 mb-3">
+                                    <input type="submit" class="back-color width-70 input-group-text" id="input" value="등록"
+                                    onclick="javascript: form.action='departinsert?email=<%=email%>'">
+                                    </div>
+                                <div class="me-xxl-3 mb-3">
+                                    <input type="reset" class="back-color width-70 input-group-text" value="초기화">
+                                </div>
+                                </div>
+                               </div>
+					
+					<%} else { %>
+					
+
+					 <c:forEach var="lists" items="${lists}" varStatus="status">
+                            <div class="input-group mb-3">
+                            <span class="width-70 input-group-text" id="basic-addon1">부서명</span>
+                                <input id="dep" name="dep" type="text" class="form-control" aria-describedby="basic-addon1" value="${lists.depart}" >
+
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="width-70 input-group-text">담당자</span>
+                                <input id="dep_name" type="text" name="dep_name" class="form-control" aria-label="With textarea" value="${lists.depart_name }">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="width-70 input-group-text">연락처</span>
+                                <input id="tel" type="text" name="tel" class="form-control" aria-label="With textarea" value="${lists.depart_call }">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="width-70 input-group-text">설명</span>
+                                <input id="ex" type="text" name="ex" class="form-control" aria-label="With textarea" value="${lists.ex }">
+                            </div>
+                                
+                     </c:forEach>
+                                <div class="dis-f">
+                      	 		
+                                <div class="me-xxl-3 mb-3">
+                                    <input type="submit" class="back-color width-70 input-group-text" id="input" value="수정"
+                                    onclick="javascript: form.action='departUp?email=<%=email%>&depart=<%=select%>'">
+                                </div>
+                                <div class="me-xxl-3 mb-3">
+                                    <input type="submit" class="back-color width-70 input-group-text" id="input" value="삭제"
+                                    onclick="javascript: form.action='departDel?email=<%=email%>'">
+                                </div>
+                                <div class="me-xxl-3 mb-3">
+                                <input type="reset" class="back-color width-70 input-group-text" value="초기화">
+                         		</div>
+                         		</div>
+                         		
+                     <%} %>
+                            
+                            
+                    </form>
                         </div>
-                    </div>
                     
-
-
-
-
-                </div>
-                
-                
-            <!-- Widgets End -->
-
-
-            <!-- Footer Start -->
-            <!-- <div class="container-fluid pt-4 px-4">
-                <div class="bg-light rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            /*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        </br>
-                        Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
                     </div>
+					
+                   
+
+
+
                 </div>
+
+
+        
+              
+
+
+                <!-- Back to Top -->
+                <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
             </div>
-            Footer End
-        </div> -->
-            <!-- Content End -->
+
+			<script type="text/javascript">
+				function formChange(obj)
+				{
+					obj.submit(); 	
+				}
+				
+				
+				
+				
+			
+				
+			</script>
 
 
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-        </div>
-
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/chart/chart.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/tempusdominus/js/moment.min.js"></script>
-        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+            <!-- JavaScript Libraries -->
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="lib/chart/chart.min.js"></script>
+            <script src="lib/easing/easing.min.js"></script>
+            <script src="lib/waypoints/waypoints.min.js"></script>
+            <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+            <script src="lib/tempusdominus/js/moment.min.js"></script>
+            <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+            <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+            <!-- Template Javascript -->
+            <script src="js/main.js"></script>
 </body>
 
 </html>

@@ -19,6 +19,11 @@ public class userInfo {
 	    private String comNum;
 	    private String comImg;
 	    private String admin;
+	    private String depart;
+	    private String position;
+	    private String sign_date;
 	
+	    
+
 
 }

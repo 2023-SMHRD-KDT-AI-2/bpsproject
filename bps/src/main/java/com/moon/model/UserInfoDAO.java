@@ -41,11 +41,7 @@ public class UserInfoDAO {
 
 	}
 	
-	
-	
-	
-	
-	
+
 	public login info_data (login info) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -56,7 +52,6 @@ public class UserInfoDAO {
 
 		return info;
 	}
-
 	
 	public login user_id (login info) {
 
@@ -67,6 +62,90 @@ public class UserInfoDAO {
 		sqlSession.close();
 
 		return info;
+	}
+	
+	ArrayList<login> lists = new ArrayList<>();
+	
+	public ArrayList<login> user_id_pw (login info) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		lists = (ArrayList) sqlSession.selectList("user_id_pw", info);
+
+		sqlSession.close();
+
+		return lists;
+	}
+	
+	
+	
+	
+	ArrayList<userInfo> list = new ArrayList<>();
+	public ArrayList<userInfo> dateList(String compNum) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		list = (ArrayList) sqlSession.selectList("date_null_list", compNum);
+
+		sqlSession.close();
+
+		return list;
+	}
+	
+	public ArrayList<userInfo> datenotList(String compNum) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		list = (ArrayList) sqlSession.selectList("date_not_null_list", compNum);
+
+		sqlSession.close();
+
+		return list;
+	}
+	
+	public ArrayList<userInfo> detailed(String email) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		list = (ArrayList) sqlSession.selectList("information", email);
+
+		sqlSession.close();
+
+		return list;
+	}
+
+	public int app_info_Up(userInfo info) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		int list = sqlSession.update("app_info", info);
+
+		sqlSession.close();
+
+		return list;
+	}
+	
+	public int app_del(userInfo info) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		int list = sqlSession.delete("app_del", info);
+
+		sqlSession.close();
+
+		return list;
+	}
+
+	
+	public int app_Up(userInfo info) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		int list = sqlSession.update("app_Up", info);
+
+		sqlSession.close();
+
+		return list;
 	}
 //	public String login(userInfo user) {
 //
