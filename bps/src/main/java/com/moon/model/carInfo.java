@@ -12,6 +12,9 @@ public class carInfo {
 	private String carNum; 
 	private String carName; 
 	private String manufac;
-	
+	private String compNum;
+	private String name; 
+	private String company;
+	private String depart;
 	
 }

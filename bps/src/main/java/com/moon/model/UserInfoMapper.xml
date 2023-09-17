@@ -256,6 +256,26 @@
 		    attend_time = sysdate,
 		where id = #{id};
 	</update>
+	
+	<insert id ="carSign" parameterType = "com.moon.model.carInfo">
+	 	
+	 	insert into comp_car(company_id, comp_name,carNum,manufac,carsname,admin_name, admin_depart)
+		values (
+			#{compNum},
+			#{company},
+			#{carNum},
+			#{manufac},
+			#{carName},
+			#{name},
+			#{depart}
+			
+			
+		)
+	 
+	 
+	 </insert>
+	
+	
 
 	
 </mapper>

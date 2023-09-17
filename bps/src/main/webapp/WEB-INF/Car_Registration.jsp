@@ -76,7 +76,6 @@
 		String compNum = (String) session.getAttribute("compNum");
 		String depart = (String) session.getAttribute("depart");
 		String position = (String) session.getAttribute("position");
-
 		
 		
 		
@@ -258,7 +257,7 @@
 
 
 			<!-- Form Start -->
-			<form action="" accept-charset="UTF-8" method="post">
+			<form action="carsign" accept-charset="UTF-8" method="post">
 				<div class="container-fluid pt-4 px-4">
 					<div class="row g-4">
 
@@ -269,38 +268,46 @@
 								<hr>
 								<div class="form-check">
 									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1"> <label
+										name="compCar" id="flexRadioDefault1"> <label
 										class="form-check-label" for="flexRadioDefault1"> 개인차량
 									</label>
 								</div>
 
 								<div class="form-check">
 									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault2" checked>
+										name="compCar" id="flexRadioDefault2" checked>
 									<label class="form-check-label" for="flexRadioDefault2">
 										법인차량 </label>
 								</div>
 								<div class="form-check mb-4">
 									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault2" checked>
+										name="compCar" id="flexRadioDefault2" checked>
 									<label class="form-check-label" for="flexRadioDefault2">
 										그 외 </label>
 								</div>
 								<div class="form-floating mb-3">
 									<input type="text" class="form-control"
-										placeholder="회사명" id="pInput1" name="comNum">
+										placeholder="회사명" id="pInput1" name="manufac">
 										<label for="floatingInput">제조사</label>
 								</div>
 								<div class="form-floating mb-3">
 									<input onclick="openChild()" type="text" class="form-control"
-										placeholder="회사명" id="pInput2" name="comNum"> <label
+										placeholder="회사명" id="pInput2" name="carName"> <label
 										for="floatingInput">차량 검색</label>
 								</div>
 								<div class="form-floating mb-3">
-									<input type="email" class="form-control" id="floatingInput"
-										placeholder="123호 1234"> <label for="floatingInput">차량
+									<input type="text" class="form-control" id="floatingInput"
+										placeholder="123호 1234" name="carNum"> <label for="floatingInput">차량
 										번호 (123문 1234)</label>
 								</div>
+								
+								<div>
+								 <input type="hidden" name="compNum" value="<%= compNum %>">
+								 <input type="hidden" name="compName" value="<%= compName %>">
+								 <input type="hidden" name="name" value="<%= name %>">
+								 <input type="hidden" name="depart" value="<%= depart %>">
+								</div>
+								
 
 
 
