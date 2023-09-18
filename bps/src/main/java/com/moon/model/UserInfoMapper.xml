@@ -257,7 +257,27 @@
 		where id = #{id};
 	</update>
 
+	<select id="fileList" parameterType = "string" resultType="com.moon.model.fileDrive">
+      select * from filedrive where company =  #{company}
+      order by file_date asc
+   </select>
+   
+   <insert id="fileInsert" parameterType="com.moon.model.fileDrive">
+
+		insert into filedrive values (
+		#{company},
+		filedrive_idx.NEXTVAL,
+		#{file_name},
+		#{file_add},
+		sysdate )
+
+	</insert>
 	
+	<delete id="fileDel" parameterType="com.moon.model.fileDrive">
+	delete from filedrive where company = #{company} 
+	and file_name =#{file_name} 
+	and file_add = #{file_add}
+	</delete>
 </mapper>
 
 

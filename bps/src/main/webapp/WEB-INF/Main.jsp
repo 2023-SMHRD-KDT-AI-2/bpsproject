@@ -45,8 +45,7 @@
         <!-- Spinner End -->
 
 
-        <!-- Sidebar Start -->
-		<%	
+       <%	
 
        
 		String name = (String) session.getAttribute("name");
@@ -106,7 +105,9 @@
                     <a href="goMain" class="nav-item nav-link active"><i
                             class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="goAttendStatus" class="nav-item nav-link"><i
-                            class="fa fa-tachometer-alt me-2"></i>근태 관리</a>       
+                            class="fa fa-tachometer-alt me-2"></i>근태 관리</a>
+                    <a href="goFileDrive" class="nav-item nav-link "><i
+                            class="fa fa-tachometer-alt me-2"></i>FILE-DRIVE</a>        
                             
                     <%
                     if (admin != null) {

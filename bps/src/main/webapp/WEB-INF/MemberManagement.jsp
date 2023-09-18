@@ -122,7 +122,9 @@
                     <a href="goMain" class="nav-item nav-link "><i
                             class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="goAttendStatus" class="nav-item nav-link "><i
-                            class="fa fa-tachometer-alt me-2"></i>근태 관리</a>       
+                            class="fa fa-tachometer-alt me-2"></i>근태 관리</a> 
+                    <a href="goFileDrive" class="nav-item nav-link "><i
+                            class="fa fa-tachometer-alt me-2"></i>FILE-DRIVE</a>      
                             
                     <%
                     if (admin != null) {
@@ -225,12 +227,11 @@
 						</div>
 					</div>
 					<div class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle"
-							data-bs-toggle="dropdown"> <img
-							class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
-							style="width: 40px; height: 40px;"> <span
-							class="d-none d-lg-inline-flex">John Doe</span>
-						</a>
+						<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="file/<%=logo %>" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex"><%=name %></span>
+                        </a>
 						<div
 							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
 							<a href="#" class="dropdown-item">My Profile</a> <a href="#"
