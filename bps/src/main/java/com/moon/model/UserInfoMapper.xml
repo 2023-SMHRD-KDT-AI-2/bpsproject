@@ -256,6 +256,61 @@
 		    attend_time = sysdate,
 		where id = #{id};
 	</update>
+	
+	<insert id ="carSign" parameterType = "com.moon.model.carInfo">
+	 	
+	 	insert into comp_car(company_id, comp_name,carNum,manufac,carsname,admin_name, admin_depart)
+		values (
+			#{compNum},
+			#{company},
+			#{carNum},
+			#{manufac},
+			#{carName},
+			#{name},
+			#{depart}
+			
+			
+		)
+	 
+	 
+	 </insert>
+	 
+	 <insert id="sendmsg" parameterType="com.moon.model.message">
+
+		insert into message(
+		chatnum,
+		sender,
+		receiver,
+		content,
+		sendtime
+		)
+		values (
+		chatnum_seq.nextval,
+		#{sender},
+		#{receiver},
+		#{content},
+		systimestamp
+		)
+
+
+	</insert>
+	
+		<select id ="msglist" resultType="com.moon.model.message">
+		select * from message 
+		
+		where sender = #{name} or receiver = #{name};
+		</select>
+	
+	
+	<!-- 메시지 하나만 읽어오는 sql 문장 -->
+	<select id="msgdetail" parameterType="string" resultType="com.moon.model.message">
+	SELECT * FROM message
+	WHERE NUM=#{NUM}
+	</select>
+
+	
+	
+	
 
 	<select id="fileList" parameterType = "string" resultType="com.moon.model.fileDrive">
       select * from filedrive where company =  #{company}

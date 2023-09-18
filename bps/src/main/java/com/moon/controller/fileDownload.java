@@ -24,7 +24,7 @@ public class fileDownload extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		String path = "C:\\Users\\SMHRD\\Desktop\\Core_Project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\copy_bps\\file\\";
+		String path = "C:\\Users\\SMHRD\\Desktop\\Core_Project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\bps\\file\\";
 		
 		String filename = (String) request.getParameter("filename");
 		

@@ -92,6 +92,7 @@ public class adminLogin extends HttpServlet {
 			session.setAttribute("compNum", compNum);
 			session.setAttribute("depart", depart);
 			session.setAttribute("position", position);
+			
 
 			url = "WEB-INF/Main.jsp";
 			

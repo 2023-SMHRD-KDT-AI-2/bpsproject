@@ -47,4 +47,19 @@ public class carInfoDAO {
 		return list;
 	}
 	
+	public int carSign(carInfo carInfo) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		int cnt = sqlSession.insert("carSign", carInfo);
+
+		sqlSession.close();
+
+		return cnt;
+
+	}
+	
+	
+	
+	
 }
