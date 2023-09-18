@@ -1,0 +1,66 @@
+.jongco-calender {
+    width: fit-content;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 0 0 15px #6666ff;
+}
+
+.jc-cal-t {
+    border-spacing: 6px;
+    border-collapse: separate;
+}
+
+.jc-cal-td {
+    border: 1px solid black;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgb(141, 141, 141);
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+.jc-cal-td-selected {
+    box-shadow: 0px 0px 15px rgb(21, 0, 121) !important;
+    border: 2px solid white;
+    transition: all 0.5s;
+}
+
+.jc-cal-controller {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.jc-cal-npbtn {
+    background-color: white;
+    height: 25px;
+    width: 25px;
+    font-weight: 900;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px #9eecff;
+}
+
+.jc-cal-mg-hor {
+    margin: 0px 10px 0px 10px;
+}
+
+.jc-cal-color-sat {
+    color: #0039b5;
+}
+
+.jc-cal-sat {
+    background-color: #d5edff;
+}
+
+.jc-cal-color-sun {
+    color: #e00000;
+}
+
+.jc-cal-sun {
+    background-color: #ffd8d3;
+}

@@ -1,0 +1,9 @@
+@charset "UTF-8";
+#plus_button_location{
+    display: block;
+    text-align: right;
+}
+
+.del_btn_location{
+     float: right;
+}

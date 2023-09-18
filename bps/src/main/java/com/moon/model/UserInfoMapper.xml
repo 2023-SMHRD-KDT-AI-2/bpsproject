@@ -333,6 +333,26 @@
 	and file_name =#{file_name} 
 	and file_add = #{file_add}
 	</delete>
+	
+	<select id="scheduleSelect" parameterType = "string" resultType="com.moon.model.schedule">
+      select * from schedule where add_date = #{addDate}
+      order by id asc
+   </select>
+   
+   <select id="scheduleSelectById" parameterType = "string" resultType="com.moon.model.schedule">
+      select * from schedule where id = #{id}
+   </select>
+	
+	<insert id="scheduleInsert" parameterType="com.moon.model.schedule">
+		insert into schedule values (
+		schedule_id.NEXTVAL,
+		#{department},
+		#{name},
+		#{employee_id},
+		#{title},
+		#{detail},
+		#{add_date})
+	</insert>
 </mapper>
 
 
