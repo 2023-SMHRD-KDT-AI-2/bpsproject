@@ -355,6 +355,10 @@
 		#{add_date})
 	</insert>
 	
+	<delete id="scheduleDelete" parameterType="string">
+		delete from schedule where id = #{id}
+	</delete>
+	
 	<select id="CompcarList" parameterType="com.moon.model.carInfo"
    resultType="com.moon.model.carInfo">
       select * from comp_car where company_id=#{compNum} and using is null
