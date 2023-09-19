@@ -259,7 +259,7 @@
 	
 	<insert id ="carSign" parameterType = "com.moon.model.carInfo">
 	 	
-	 	insert into comp_car(company_id, comp_name,carNum,manufac,carsname,admin_name, admin_depart)
+	 	insert into comp_car(company_id, comp_name,carNum,manufac,carname,admin_name, admin_depart)
 		values (
 			#{compNum},
 			#{company},
@@ -353,6 +353,29 @@
 		#{detail},
 		#{add_date})
 	</insert>
+	
+	<select id="CompcarList" parameterType="com.moon.model.carInfo"
+   resultType="com.moon.model.carInfo">
+      select * from comp_car where company_id=#{compNum} and using is null
+   </select>
+   
+    <select id="comp_carsearch" parameterType="com.moon.model.carInfo"
+   resultType="com.moon.model.carInfo">
+      select * from comp_car where LOWER(carName) like '%'||LOWER(#{carName})||'%'  and company_id=#{compNum}
+   </select>
+   
+	 <update id="compCarUpdate" parameterType="com.moon.model.carInfo">
+		    UPDATE comp_car
+			SET using = 'Y',
+		    user_use = #{name},
+		    start_date =#{startTime},
+		    end_date = #{returnTime},
+		    car_reason = #{usingreason},
+		    reason_detail =	#{reasonDetail}
+			WHERE company_id = #{compNum} and carnum = #{carNum}
+   </update>
+	
+	
 </mapper>
 
 

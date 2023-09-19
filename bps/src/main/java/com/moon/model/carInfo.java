@@ -16,5 +16,16 @@ public class carInfo {
 	private String name; 
 	private String company;
 	private String depart;
+	private String using;
+	private String startTime;
+	private String returnTime;
+	private String usingreason;
+	private String reasonDetail;
+	
+	
+	
+	
+	
+	
 	
 }

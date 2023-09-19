@@ -59,6 +59,45 @@ public class carInfoDAO {
 
 	}
 	
+	public ArrayList<carInfo> show_compcar(carInfo comp) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		ArrayList<carInfo> list = (ArrayList) sqlSession.selectList("CompcarList", comp);
+
+		sqlSession.close();
+
+		return list;
+	}
+	
+	public ArrayList<carInfo> search_comcar(carInfo carname) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		ArrayList<carInfo> list = (ArrayList) sqlSession.selectList("comp_carsearch", carname);
+			
+		sqlSession.close();
+
+		return list;
+	}
+	
+	public int compCarUpdate(carInfo carInfo) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		
+		int cnt = sqlSession.update("compCarUpdate", carInfo);
+		
+		sqlSession.close();
+
+		return cnt;
+
+	}
+	
+	
+	
+	
+	
 	
 	
 	
