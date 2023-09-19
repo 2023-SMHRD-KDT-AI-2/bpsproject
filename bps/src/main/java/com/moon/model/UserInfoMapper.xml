@@ -387,7 +387,8 @@
 		    start_date = null,
 		    end_date =  null,
 		    car_reason = null,
-		    reason_detail = null
+		    reason_detail = null,
+		    last_use = #{name}
 			WHERE company_id = #{compNum} and carnum = #{carNum}
    </update>
 	
