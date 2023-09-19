@@ -3,7 +3,7 @@
     padding: 20px;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    box-shadow: 0 0 15px #6666ff;
+    box-shadow: 0 0 15px rgb(228, 228, 228);
 }
 
 .jc-cal-t {
@@ -22,7 +22,7 @@
 }
 
 .jc-cal-td-selected {
-    box-shadow: 0px 0px 15px rgb(21, 0, 121) !important;
+    box-shadow: 0px 0px 15px rgb(255, 128, 192) !important;
     border: 2px solid white;
     transition: all 0.5s;
 }

@@ -32,10 +32,10 @@ fetch("/bps/api/schedule/read"+[
 	presentDate.month,
 	"-",
 	presentDate.day
-].join("")).then((res) => {
-	return res.json()
-}).then((json) => {
-	json.result.forEach((item) => {
+].join("")).then((res) => {  //이 then이라는건, 요청한 뒤 응답을 받았을 때 실행됨.
+	return res.json() //나는 json형태의 문자열로 보냈으니, json으로 변환할거임.
+}).then((json) => { //이것도 then인데, 이건 그냥 json으로 바꾸는게 성공하면 실행될거임. 이건... 익숙해지는 수 밖에..
+	json.result.forEach((item) => { //보면 알다시피, json 데이터 내부에는 result안에 배열을 집어넣고 줌. 이건 파악한거같다. ㅁㅈ? 
     	scheduleTableBody.append($(`
         	<tr class="detail_infomation">
             	<td>

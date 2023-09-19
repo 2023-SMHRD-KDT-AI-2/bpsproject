@@ -196,7 +196,6 @@
                         <div class="h-100 bg-light rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Calender</h6>
-                                <button type="button" class="btn btn-info rounded-pill m-2">조회</button>
                             </div>
                             <div id="jongco-calender" class="jongco-calender"></div>
                         </div>
