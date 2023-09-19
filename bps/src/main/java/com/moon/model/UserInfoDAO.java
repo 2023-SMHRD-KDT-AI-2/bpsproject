@@ -10,9 +10,7 @@ import org.apache.ibatis.session.ExecutorType;
 
 import org.apache.ibatis.session.TransactionIsolationLevel;
 
-
 import com.moon.db.SqlSessionManager;
-
 
 public class UserInfoDAO {
 
@@ -40,9 +38,8 @@ public class UserInfoDAO {
 		return cnt;
 
 	}
-	
 
-	public login info_data (login info) {
+	public login info_data(login info) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
@@ -52,8 +49,8 @@ public class UserInfoDAO {
 
 		return info;
 	}
-	
-	public login user_id (login info) {
+
+	public login user_id(login info) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
@@ -63,10 +60,10 @@ public class UserInfoDAO {
 
 		return info;
 	}
-	
+
 	ArrayList<login> lists = new ArrayList<>();
-	
-	public ArrayList<login> user_id_pw (login info) {
+
+	public ArrayList<login> user_id_pw(login info) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
@@ -76,11 +73,33 @@ public class UserInfoDAO {
 
 		return lists;
 	}
+
+	public ArrayList<login> user_id2(String id) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		lists = (ArrayList) sqlSession.selectList("myPage", id);
+
+		sqlSession.close();
+
+		return lists;
+	}
+
 	
-	
-	
-	
+
+	public ArrayList<login> find_id(login info) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		lists = (ArrayList) sqlSession.selectList("find_id", info);
+
+		sqlSession.close();
+
+		return lists;
+	}
+
 	ArrayList<userInfo> list = new ArrayList<>();
+
 	public ArrayList<userInfo> dateList(String compNum) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -91,7 +110,7 @@ public class UserInfoDAO {
 
 		return list;
 	}
-	
+
 	public ArrayList<userInfo> datenotList(String compNum) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -102,7 +121,7 @@ public class UserInfoDAO {
 
 		return list;
 	}
-	
+
 	public ArrayList<userInfo> detailed(String email) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -124,7 +143,7 @@ public class UserInfoDAO {
 
 		return list;
 	}
-	
+
 	public int app_del(userInfo info) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -136,7 +155,6 @@ public class UserInfoDAO {
 		return list;
 	}
 
-	
 	public int app_Up(userInfo info) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -147,6 +165,37 @@ public class UserInfoDAO {
 
 		return list;
 	}
+
+	public int profile(userInfo info) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		int list = sqlSession.update("profile", info);
+
+		sqlSession.close();
+
+		return list;
+	}
+
+	public int p_profile(userInfo info) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		int list = sqlSession.update("p_profile", info);
+
+		sqlSession.close();
+
+		return list;
+	}
+
+	public int pw_profile(userInfo info) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		int list = sqlSession.update("pw_profile", info);
+
+		sqlSession.close();
+
+		return list;
+	}
+
 //	public String login(userInfo user) {
 //
 //		SqlSession sqlSession = sqlSessionFactory.openSession(true);

@@ -1,4 +1,7 @@
+
+
 let naverLogin = new naver.LoginWithNaverId(
+
 
 	{
 
@@ -10,13 +13,14 @@ let naverLogin = new naver.LoginWithNaverId(
 	}
 );
 
-
 naverLogin.init();
 
-	
 
-	window.addEventListener('load', function() {
-	
+
+
+window.addEventListener('load', function() {
+
+
 	naverLogin.getLoginStatus(function(status) {
 
 		if (status) {
@@ -33,32 +37,73 @@ naverLogin.init();
 			const phoneNum2 = phone.split('-')[1];
 			const phoneNum3 = phone.split('-')[2];
 
+			console.log(emailadress1)
+			$.ajax({
+				url: "kakaoIdCheck",
+				type: "get",
+				data: { userId: emailadress1 },
+				dataType: "json",
+				//dataType --> success 했을 때 받아올 결과값의 자료형을 의미
+				success: function(result) {
+
+
+					if (result == 0) {
+						location.href = 'http://localhost:8090/bps/goLogin'
+						alert('승인되지 않은 아이디입니다.');
+
+						
+					} else if (result == 1) {
+						location.href = 'http://localhost:8090/bps/goLogin'
+						alert('존재하지않는아이디입니다.');
+						return false;
+					} else {
+
+						let Email = emailadress1 + "@" + emailadress2
+						let pw = result.pw
+						createHiddenLoginForm(Email, pw);
+
+						sessionStorage.setItem("이름", inputData);
+						sessionStorage.setItem("메일1", emailadress1);
+						sessionStorage.setItem("메일2", emailadress2);
+						sessionStorage.setItem("번호1", "0" + phoneNum1);
+						sessionStorage.setItem("번호2", phoneNum2);
+						sessionStorage.setItem("번호3", phoneNum3);
+
+
+					}
+
+				},
+				error: function() {
+					alert("서버요청실패");
+				}
+			})
+
+
+
+
 			sessionStorage.setItem("이름", inputData);
 			sessionStorage.setItem("메일1", emailadress1);
 			sessionStorage.setItem("메일2", emailadress2);
 			sessionStorage.setItem("번호1", "0" + phoneNum1);
 			sessionStorage.setItem("번호2", phoneNum2);
 			sessionStorage.setItem("번호3", phoneNum3);
-			
+
 			let name1 = sessionStorage.getItem("이름");
 			let email1 = sessionStorage.getItem("메일1");
 			let email2 = sessionStorage.getItem("메일2");
 			let phone1 = sessionStorage.getItem("번호1");
 			let phone2 = sessionStorage.getItem("번호2");
 			let phone3 = sessionStorage.getItem("번호3");
-			
-			
-			
-			
+
+
+
+
 			$('input[name=inputName]').attr('value', name1);
 			$('input[name=inputEmail1]').attr('value', email1);
 			$('input[name=inputEmail2]').attr('value', email2);
 			$('input[name=inputPhone1]').attr('value', phone1);
 			$('input[name=inputPhone2]').attr('value', phone2);
 			$('input[name=inputPhone3]').attr('value', phone3);
-				 	
-          
-
 
 
 
@@ -75,7 +120,33 @@ naverLogin.init();
 
 });
 
+function createHiddenLoginForm(Email, pw) {
 
+
+
+	console.log(Email, pw);
+	var frm = document.createElement('form');
+	frm.setAttribute("charset", "UTF-8");
+	frm.setAttribute('method', 'post');
+	frm.setAttribute('action', 'Login');
+
+	var hiddenInput = document.createElement('input');
+	hiddenInput.setAttribute('type', 'hidden');
+	hiddenInput.setAttribute('name', 'id');
+	hiddenInput.setAttribute('value', Email);
+	frm.appendChild(hiddenInput);
+
+	hiddenInput = document.createElement('input');
+	hiddenInput.setAttribute('type', 'hidden');
+	hiddenInput.setAttribute('name', 'pw');
+	hiddenInput.setAttribute('value', pw);
+
+	frm.appendChild(hiddenInput);
+
+	document.body.appendChild(frm);
+	frm.submit();
+
+}
 
 
 

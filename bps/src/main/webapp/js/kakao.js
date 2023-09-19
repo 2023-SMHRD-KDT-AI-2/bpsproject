@@ -39,12 +39,12 @@ function getInfo() {
 			console.log(res);
 			// 이메일, 성별, 닉네임, 프로필이미지
 			let email = res.kakao_account.email;
-			let gender = res.kakao_account.gender;
+	
 			let name = res.kakao_account.name;
 			let phone = res.kakao_account.phone_number;
 
 
-			console.log(email, gender, name, phone);
+			console.log(email, name, phone);
 
 
 
@@ -56,8 +56,13 @@ function getInfo() {
 			const phoneNum3 = phone.split('-')[2];
 			
 			
+			sessionStorage.setItem("이름", inputData);
+			sessionStorage.setItem("메일1", emailadress1);
+			sessionStorage.setItem("메일2", emailadress2);
+			sessionStorage.setItem("번호1", "0" + phoneNum1);
+			sessionStorage.setItem("번호2", phoneNum2);
+			sessionStorage.setItem("번호3", phoneNum3);
 			
-
 			$.ajax({
 				url: "kakaoIdCheck",
 				type: "get",
@@ -73,8 +78,10 @@ function getInfo() {
 
 
 					} else if (result == 1) {
+						console.log(inputData);
 						alert('존재하지않는아이디입니다.');
 						window.location.href = 'http://localhost:8090/bps/goEmpSingIn'
+						
 					} else {
 						
 						let Email = emailadress1+"@"+emailadress2
