@@ -12,9 +12,9 @@
 }
 
 .jc-cal-td {
-    border: 1px solid black;
+    border: 1px solid rgb(128, 128, 128);
     background-color: white;
-    box-shadow: 0px 0px 5px rgb(141, 141, 141);
+    box-shadow: 0px 0px 5px rgb(192, 192, 192);
     height: 30px;
     width: 30px;
     border-radius: 5px;
@@ -42,7 +42,7 @@
     font-weight: 900;
     border: 2px solid black;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px #9eecff;
+    box-shadow: 0px 0px 10px rgb(255, 255, 255);
 }
 
 .jc-cal-mg-hor {

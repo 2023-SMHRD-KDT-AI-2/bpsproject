@@ -7,3 +7,10 @@
 .del_btn_location{
      float: right;
 }
+
+#view_out{
+	display: none;
+}
+#View_out{
+	display: none;
+}
