@@ -294,6 +294,189 @@
 		where id = #{id};
 	</update>
 
+<<<<<<< HEAD
+=======
+		insert into message(
+		chatnum,
+		sender,
+		receiver,
+		content,
+		sendtime
+		)
+		values (
+		chatnum_seq.nextval,
+		#{sender},
+		#{receiver},
+		#{content},
+		systimestamp
+		)
+
+
+	</insert>
+	
+		<select id ="msglist" resultType="com.moon.model.message">
+		select * from message 
+		
+		where sender = #{name} or receiver = #{name};
+		</select>
+	
+	
+	<!-- 메시지 하나만 읽어오는 sql 문장 -->
+	<select id="msgdetail" parameterType="string" resultType="com.moon.model.message">
+	SELECT * FROM message
+	WHERE NUM=#{NUM}
+	</select>
+
+	
+	
+	
+
+	<select id="fileList" parameterType = "string" resultType="com.moon.model.fileDrive">
+      select * from filedrive where company =  #{company}
+      order by file_date asc
+   </select>
+   
+   <insert id="fileInsert" parameterType="com.moon.model.fileDrive">
+
+		insert into filedrive values (
+		#{company},
+		filedrive_idx.NEXTVAL,
+		#{file_name},
+		#{file_add},
+		sysdate )
+
+	</insert>
+	
+	<delete id="fileDel" parameterType="com.moon.model.fileDrive">
+	delete from filedrive where company = #{company} 
+	and file_name =#{file_name} 
+	and file_add = #{file_add}
+	</delete>
+	
+	<select id="scheduleSelect" parameterType = "string" resultType="com.moon.model.schedule">
+      select * from schedule where add_date = #{addDate}
+      order by id asc
+   </select>
+   
+   <select id="scheduleSelectById" parameterType = "string" resultType="com.moon.model.schedule">
+      select * from schedule where id = #{id}
+   </select>
+	
+	<insert id="scheduleInsert" parameterType="com.moon.model.schedule">
+		insert into schedule values (
+		schedule_id.NEXTVAL,
+		#{department},
+		#{name},
+		#{employee_id},
+		#{title},
+		#{detail},
+		#{add_date})
+	</insert>
+	
+	<select id="CompcarList" parameterType="com.moon.model.carInfo"
+   resultType="com.moon.model.carInfo">
+      select * from comp_car where company_id=#{compNum} and using is null
+   </select>
+   
+    <select id="comp_carsearch" parameterType="com.moon.model.carInfo"
+   resultType="com.moon.model.carInfo">
+      select * from comp_car where LOWER(carName) like '%'||LOWER(#{carName})||'%'  and company_id=#{compNum}
+   </select>
+   
+	 <update id="compCarUpdate" parameterType="com.moon.model.carInfo">
+		    UPDATE comp_car
+			SET using = 'Y',
+		    user_use = #{name},
+		    start_date =#{startTime},
+		    end_date = #{returnTime},
+		    car_reason = #{usingreason},
+		    reason_detail =	#{reasonDetail}
+			WHERE company_id = #{compNum} and carnum = #{carNum}
+   </update>
+	
+	 	<select id="UsingCarList" parameterType="com.moon.model.carInfo"
+   resultType="com.moon.model.carInfo">
+      select * from comp_car where company_id=#{compNum} and user_use =#{name}
+   </select>
+   
+    <update id="returnCompCar" parameterType="com.moon.model.carInfo">
+		    UPDATE comp_car
+			SET using = null,
+		    user_use = null,
+		    start_date = null,
+		    end_date =  null,
+		    car_reason = null,
+		    reason_detail = null,
+		    last_use = #{name}
+			WHERE company_id = #{compNum} and carnum = #{carNum}
+   </update>
+     <select id="show_Allcar" parameterType="com.moon.model.carInfo"
+   resultType="com.moon.model.carInfo">
+      select carnum, manufac, carname, last_use from comp_car where company_id=#{compNum}
+   </select>
+	
+		<!-- chatting 쿼리문 -->
+	<insert id="chat_room_in" parameterType="com.moon.model.ChattingDTO">
+		insert
+		into chat_room(
+		chat_id,
+		host_email,
+		guest_email
+		)
+		values (
+		caht_room_idx.NEXTVAL,
+		#{host_email},
+		#{guest_email} 
+		)
+		
+
+	</insert>
+	
+	<insert id="chat_mes_in" parameterType="com.moon.model.ChattingDTO">
+
+		insert into chat_mes
+		(
+        chat_mes_id
+		,company
+		,chat_id
+		,host_email
+		,host_name
+		,send_mes
+		,sendtime
+		)
+		values (
+        caht_mes_idx.NEXTVAL
+		,(select company_id from comp_info where company_id = #{company})
+		,(select chat_id from chat_room where host_email = #{host_email_sub} and guest_email = #{guest_email_sub})
+		,#{host_email}
+		,#{host_name}
+		,#{send_mes}
+		,sysdate
+		)
+		
+
+	</insert>
+	
+	<select id="show_mes" parameterType="com.moon.model.ChattingDTO"
+   resultType="com.moon.model.ChattingDTO">
+      select * from chat_mes 
+      where company = (select company_id from comp_info where company_id = #{company})
+      and chat_id = (select chat_id from chat_room where host_email = #{host_email_sub} and guest_email = #{guest_email_sub})
+      order by sendtime asc 
+   </select>
+   
+   
+   <select id="show_room" parameterType="com.moon.model.ChattingDTO"
+   resultType="com.moon.model.ChattingDTO">
+      select * from chat_room 
+      where chat_id = (select chat_id from chat_room where host_email = #{host_email_sub} and guest_email = #{guest_email_sub})
+      and host_email = #{host_email}
+      and guest_email = #{guest_email}
+   </select>
+  
+	
+	
+>>>>>>> branch 'master' of https://github.com/2023-SMHRD-KDT-AI-2/bpsproject.git
 	
 </mapper>
 
