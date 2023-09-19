@@ -49,11 +49,11 @@ public class carsign extends HttpServlet {
 		String url ="";
 		
 		if(cnt>0) {
-			url="WEB-INF/DepartmentManagement.jsp";
+			url="WEB-INF/Car_Registration.jsp";
 			
 			
 		}else {
-			url="WEB-INF/DepartmentManagement.jsp";
+			url="WEB-INF/Car_Registration.jsp";
 		}
 		
 				

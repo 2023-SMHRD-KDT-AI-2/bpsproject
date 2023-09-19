@@ -259,7 +259,7 @@
 	
 	<insert id ="carSign" parameterType = "com.moon.model.carInfo">
 	 	
-	 	insert into comp_car(company_id, comp_name,carNum,manufac,carname,admin_name, admin_depart)
+	 	insert into comp_car(company_id, comp_name,carNum,manufac,carname,admin_name, admin_depart,sign_date)
 		values (
 			#{compNum},
 			#{company},
@@ -267,7 +267,8 @@
 			#{manufac},
 			#{carName},
 			#{name},
-			#{depart}
+			#{depart},
+			sysdate
 			
 			
 		)
@@ -391,6 +392,10 @@
 		    last_use = #{name}
 			WHERE company_id = #{compNum} and carnum = #{carNum}
    </update>
+     <select id="show_Allcar" parameterType="com.moon.model.carInfo"
+   resultType="com.moon.model.carInfo">
+      select carnum, manufac, carname, last_use from comp_car where company_id=#{compNum}
+   </select>
 	
 	
 	

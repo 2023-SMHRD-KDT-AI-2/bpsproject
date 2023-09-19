@@ -46,6 +46,9 @@
    #CheckCancelButton{
       float: right;
    }
+   .text_space {
+   text-align: center;
+   }
 </style>
 
 
@@ -332,6 +335,48 @@
 
                      </div>
                   </div>
+                  
+                     <div class="col-sm-12 col-xl-12">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">보유차량</h6>
+                            <table class="table table-bordered">
+                            
+                            			<%
+											request.setCharacterEncoding("UTF-8");
+				
+											carInfoDAO cdao = new carInfoDAO();
+											carInfo info = new carInfo();
+											ArrayList<carInfo> list = new ArrayList<>();
+											info.setCompNum(compNum);
+											
+											list=cdao.show_Allcar(info);
+						
+											session.setAttribute("list", list);
+										%>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="text_space">차량 번호</th>
+                                        <th scope="col" class="text_space">제조사</th>
+                                        <th scope="col" class="text_space">차량</th>
+                                        <th scope="col" class="text_space">최근사용자</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                <c:forEach var="list" items="${list}" varStatus="status">
+                                
+                                    <tr>
+                                        <td class="text_space">${list.carNum}</td>
+                                        <td class="text_space">${list.manufac}</td>
+                                        <td class="text_space">${list.carName}</td>     
+                                        <td class="text_space">${list.last_use}</td>
+                                        
+                                    </tr>       
+                                 </c:forEach>            
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                </div>
 

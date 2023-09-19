@@ -117,6 +117,17 @@ public class carInfoDAO {
 		return cnt;
 
 	}
+	public ArrayList<carInfo> show_Allcar(carInfo comp) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		ArrayList<carInfo> list = (ArrayList) sqlSession.selectList("show_Allcar", comp);
+
+		sqlSession.close();
+
+		return list;
+	}
+	
 	
 	
 	

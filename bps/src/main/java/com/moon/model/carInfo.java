@@ -21,7 +21,7 @@ public class carInfo {
 	private String returnTime;
 	private String usingreason;
 	private String reasonDetail;
-	
+	private String last_use;
 	
 	
 	
