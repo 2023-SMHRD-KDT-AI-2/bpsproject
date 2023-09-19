@@ -93,6 +93,23 @@
 	 	resultType="com.moon.model.login">
 	 	select * from userinfo where id = #{id}
 	 </select>
+	 
+	 <select id ="find_id" parameterType = "com.moon.model.login"
+	 	resultType="com.moon.model.login">
+	 	select * from userinfo where name = #{name} and phone=#{phone}
+	 </select>
+	 
+	 <select id ="find_pw" parameterType = "com.moon.model.login"
+	 	resultType="com.moon.model.login">
+	 	select * from userinfo where name = #{name} and phone=#{phone} and id=#{id}
+	 </select>
+	 
+	 
+	 <select id ="myPage" parameterType = "com.moon.model.login"
+	 	resultType="com.moon.model.login">
+	 	select * from userinfo a, comp_info b where a.company = b.company_id
+		and id = #{id}
+	 </select>
 
 	<select id="date_null_list"
 		parameterType="com.moon.model.userInfo"
@@ -101,6 +118,8 @@
 		= #{comNum}
 	</select>
 
+	
+	
 	<select id="date_not_null_list"
 		parameterType="com.moon.model.userInfo"
 		resultType="com.moon.model.userInfo">
@@ -225,6 +244,24 @@
 	company = #{comNum} and email = #{email}
 	</update>
 	
+	<update id="profile" parameterType="com.moon.model.userInfo">
+		
+		update userinfo set name = #{name} where id =#{id}
+		
+	</update>
+	
+	<update id="p_profile" parameterType="com.moon.model.userInfo">
+		
+		update userinfo set phone = #{phone} where id =#{id}
+		
+	</update>
+	
+	<update id="pw_profile" parameterType="com.moon.model.userInfo">
+		
+		update userinfo set pw = #{pw} where id =#{id}
+		
+	</update>
+	
 	<select id="carList" parameterType="com.moon.model.carInfo"
    resultType="com.moon.model.carInfo">
       select * from carslist
@@ -256,28 +293,9 @@
 		    attend_time = sysdate,
 		where id = #{id};
 	</update>
-	
-	<insert id ="carSign" parameterType = "com.moon.model.carInfo">
-	 	
-	 	insert into comp_car(company_id, comp_name,carNum,manufac,carname,admin_name, admin_depart,sign_date)
-		values (
-			#{compNum},
-			#{company},
-			#{carNum},
-			#{manufac},
-			#{carName},
-			#{name},
-			#{depart},
-			sysdate
-			
-			
-		)
-	 
-	 
-	 </insert>
-	 
-	 <insert id="sendmsg" parameterType="com.moon.model.message">
 
+<<<<<<< HEAD
+=======
 		insert into message(
 		chatnum,
 		sender,
@@ -462,6 +480,7 @@
   
 	
 	
+>>>>>>> branch 'master' of https://github.com/2023-SMHRD-KDT-AI-2/bpsproject.git
 	
 </mapper>
 

@@ -5,8 +5,10 @@
 
 
 
-	
+
 let naverLogin = new naver.LoginWithNaverId(
+
+
 
 	{
 
@@ -20,4 +22,5 @@ let naverLogin = new naver.LoginWithNaverId(
 
 
 naverLogin.init();
+
 

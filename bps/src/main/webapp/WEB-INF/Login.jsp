@@ -92,7 +92,7 @@
                                     
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href=""> <strong>아이디/비밀번호 찾기</strong>
+                                        <a class="small" href="goFind"> <strong>아이디/비밀번호 찾기</strong>
                                     </div>
                                     <div class="text-center">
                                         <a class="small" href="goSingIn"><strong>회원가입</strong></a>
