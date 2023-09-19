@@ -375,6 +375,25 @@
 			WHERE company_id = #{compNum} and carnum = #{carNum}
    </update>
 	
+	 	<select id="UsingCarList" parameterType="com.moon.model.carInfo"
+   resultType="com.moon.model.carInfo">
+      select * from comp_car where company_id=#{compNum} and user_use =#{name}
+   </select>
+   
+    <update id="returnCompCar" parameterType="com.moon.model.carInfo">
+		    UPDATE comp_car
+			SET using = null,
+		    user_use = null,
+		    start_date = null,
+		    end_date =  null,
+		    car_reason = null,
+		    reason_detail = null
+			WHERE company_id = #{compNum} and carnum = #{carNum}
+   </update>
+	
+	
+	
+	
 	
 </mapper>
 

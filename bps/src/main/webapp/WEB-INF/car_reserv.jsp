@@ -255,11 +255,33 @@
                            
                         <h6 class="mb-2">세부내용</h6>
                      	<hr>
+                     	<div>
+                    	 <input type="hidden" name="compNum" value="<%=compNum%>">
+                    	<input type="hidden" name="name" value="<%=name%>">
+                    
+                    </div>
+       				 	
                                 
                         	<div class="form-floating">
-                            	<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="reason_detail" style="height: 400px;"></textarea>
+                            	<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="reason_detail" style="height: 200px;"></textarea>
                             	<label for="floatingTextarea">Comments</label>
                         	</div>
+                        </form>	
+                        	<h6 class="mb-2 mt-4">차량 반납</h6>
+                            <hr>
+                            
+                            <form action="returnCompCar" accept-charset="UTF-8" method="post">
+                                <div class="form-floating mb-2">
+                                    <input onclick="openCh()" type="text" class="form-control"
+                              placeholder="회사명" id="dInput" name="carNum"> <label
+                              for="floatingInput">차량 검색</label>
+                              <input type="hidden" name="compNum" value="<%=compNum%>">
+                    			<input type="hidden" name="name" value="<%=name%>">
+                                </div>
+                           
+                                <input type="submit" value="반납" id="car_return" class="btn btn-success rounded-pill m-2">
+                            </form>
+                        	
                                 
                         </div>
                         
@@ -268,17 +290,14 @@
                         <input type="submit" value="확인" class="btn btn-success rounded-pill m-2">
                         <input type="reset" value="취소" class="btn btn-danger rounded-pill m-2">
                     </div>
-                    <div>
-                    	 <input type="hidden" name="compNum" value="<%=compNum%>">
-                    	<input type="hidden" name="name" value="<%=name%>">
                     
-                    </div>
+
+                    
                     
                 </div>
                 
             </div>
             <!-- Form End -->
-        </form>
             
 
             <!-- Footer Start -->
@@ -325,7 +344,15 @@
       function openChild() {
          window.open('GoCompCarList?company=<%=compNum%>', 'CompCar_search','width=680px, height=500px');
       };
+      
+      
+      function openCh() {
+          window.open('GoUsingCarList?company=<%=compNum%>&name=<%=name%>', 'UsingCompCar_search','width=680px, height=500px');
+       };
+      
+      
    </script>
+   
 
 
 </body>

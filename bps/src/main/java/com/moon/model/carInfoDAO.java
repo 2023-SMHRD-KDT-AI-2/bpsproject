@@ -94,6 +94,29 @@ public class carInfoDAO {
 
 	}
 	
+	public ArrayList<carInfo> show_usingcar(carInfo comp) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		ArrayList<carInfo> list = (ArrayList) sqlSession.selectList("UsingCarList", comp);
+
+		sqlSession.close();
+
+		return list;
+	}
+	
+	public int returnCompCar(carInfo carInfo) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		
+		int cnt = sqlSession.update("returnCompCar", carInfo);
+		
+		sqlSession.close();
+
+		return cnt;
+
+	}
 	
 	
 	
