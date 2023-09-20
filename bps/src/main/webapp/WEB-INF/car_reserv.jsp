@@ -164,7 +164,7 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
 
-<div class="nav-item dropdown1">
+				<div class="nav-item dropdown1">
 						<div class="dropdown2 open-sub">
 							<a class="dropdown-items" href="goSchedule">일정 등록</a>
 							<a class="dropdown-items" href=goCarReserv>차량 신청</a>
@@ -205,27 +205,37 @@
                               placeholder="회사명" id="pInput" name="carNum"> <label
                               for="floatingInput">차량 검색</label>
                             </div>
-                            
-                        </div>
-                    </div>
-                   
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                           
-                        <h6 class="mb-2">세부내용</h6>
+                            <h6 class="mb-2">세부내용</h6>
                      	<hr>
-                     	<div>
-                    	 <input type="hidden" name="compNum" value="<%=compNum%>">
-                    	<input type="hidden" name="name" value="<%=name%>">
+                            <div>
+	                    	 <input type="hidden" name="compNum" value="<%=compNum%>">
+	                    	<input type="hidden" name="name" value="<%=name%>">
                     
-                    </div>
+                    	</div>
        				 	
                                 
                         	<div class="form-floating">
                             	<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="reason_detail" style="height: 200px;"></textarea>
                             	<label for="floatingTextarea">Comments</label>
                         	</div>
+                            
+                            <div id="CheckCancelButton">
+                        <input type="submit" value="확인" class="btn btn-success rounded-pill m-2">
+                        <input type="reset" value="취소" class="btn btn-danger rounded-pill m-2">
+                    </div>
+                        </div>
+                    </div>
+                    
+                   
                         </form>	
+                   
+                   
+                   
+                   
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                           
+                
                         	<h6 class="mb-2 mt-4">차량 반납</h6>
                             <hr>
                             
@@ -240,47 +250,17 @@
                            
                                 <input type="submit" value="반납" id="car_return" class="btn btn-success rounded-pill m-2">
                             </form>
-                        	
-                                
-                        </div>
-                        
-                    </div>
-                    <div id="CheckCancelButton">
-                        <input type="submit" value="확인" class="btn btn-success rounded-pill m-2">
-                        <input type="reset" value="취소" class="btn btn-danger rounded-pill m-2">
-                    </div>
+                       </div>
+                   </div>       
+              
                     
+                     </div>
+                    </div>
 
                     
                     
-                </div>
-                
-            </div>
-            <!-- Form End -->
-            
-
-            <!-- Footer Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-light rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer End -->
-        </div>
-        <!-- Content End -->
-
-
-        <!-- Back to Top -->
       
-    </div>
+    
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
