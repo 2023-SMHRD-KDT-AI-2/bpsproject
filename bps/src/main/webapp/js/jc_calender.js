@@ -135,11 +135,6 @@ weekRows.forEach((tr) => {
     mainTable.appendChild(tr.dom);
 });
 
-// ========================================================
-// ========================================================
-// ========================================================
-// ========================================================
-// ========================================================
 function clickDate(year, month, day) {
     //TODO : do something
     presentDate.year = year;
@@ -163,11 +158,11 @@ function clickDate(year, month, day) {
     		$("#schedule-table-body").append($(`
         		<tr class="detail_infomation">
             		<td>
-                		<span>`+item.id+`</span>
-               		 	<span> | </span>
+                		<span id="view_out">`+item.id+`</span>
+               		 	<span id="View_out"> | </span>
                		 	<span>`+item.title+`</span>
                 		<div class="del_btn_location">
-                    		<button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                    		<button class="btn btn-sm schedule-delete-btn"><i class="fa fa-times"></i></button>
                 		</div>
             		</td>
         		</tr>
@@ -175,13 +170,20 @@ function clickDate(year, month, day) {
 				window.location.href = "goScheduleDetail?num="+e.target.children[0].textContent;
 			}));
 		})
+		const schedule_delete_btn = document.getElementsByClassName('schedule-delete-btn')
+		Array.from(schedule_delete_btn).forEach((item, i) => {
+			item.addEventListener('click', async (e) => {
+				const confirmResult = confirm("정말로 삭제하시겠습니까?");
+				
+				if(confirmResult === true) {
+					const response = await fetch("/bps/api/schedule/delete?id="+detail_infomation.item(i).children[0].children[0].textContent);
+					clickDate(presentDate.year ,presentDate.month ,presentDate.day);
+					alert("일정을 삭제하였습니다.");
+				}
+			})
+		});
 	})
 }
-// ========================================================
-// ========================================================
-// ========================================================
-// ========================================================
-// ========================================================
 
 
 
