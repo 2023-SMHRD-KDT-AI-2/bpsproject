@@ -299,14 +299,21 @@
 	</select>
 
 	<insert id="attend_in" parameterType="com.moon.model.attend">
-		insert into attend values(
-		attend_id.NEXTVAL,
+		insert into attend (ATTEND_NUM, ID, ATTEND_INFO, ATTEND_TIME) values(
+		attend_idx.NEXTVAL,
 		#{id},
 		#{attend_info},
 		sysdate
 		)
 
 	</insert>
+	
+	<select id="attend_sel" parameterType="com.moon.model.attend"
+		resultType="com.moon.model.attend">
+		select * from attend where id = #{id}
+		order by ATTEND_TIME asc
+	</select>
+	
 
 	<update id="attend_up" parameterType="com.moon.model.attend">
 		update attend set
@@ -556,10 +563,10 @@
 
 	<insert id="noticeInsert"
 		parameterType="com.moon.model.NoticeBoard">
-		insert into NOTICEBOARD (board_Title, userID
-		,board_Date,board_content,company_num)
+		insert into NOTICEBOARD (BOARD_ID, BOARD_TITLE, USERID
+		,BOARD_DATE,BOARD_CONTENT,COMPANY_NUM)
 		values(
-
+		board_idx.nextval,
 		#{board_title},
 		#{userid},
 		sysdate,

@@ -11,4 +11,6 @@ import lombok.NoArgsConstructor;
 public class attend {
 	private String id;
 	private String attend_info;
+	private String attend_num;
+	private String attend_time;
 }

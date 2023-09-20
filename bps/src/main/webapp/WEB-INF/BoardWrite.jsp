@@ -253,11 +253,7 @@
 	<!-- Template Javascript -->
 	<script src="js/main.js"></script>
 	
-    <script>
-        document.getElementById('goMainBoard').addEventListener('click', function(){
-            location.href="/goNoticeBoard.jsp"
-        })
-    </script>
+
 
 </body>
 </html>

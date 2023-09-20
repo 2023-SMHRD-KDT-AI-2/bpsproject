@@ -28,13 +28,16 @@ public class checkPro extends HttpServlet {
 		String id = request.getParameter("id");
 		String attend = request.getParameter("attend");
 		
-//		System.out.println(id);
-//		System.out.println(attend);
+		String idx = id.split("@")[0];
+		
+		System.out.println(id);
+		System.out.println(attend);
 		
 		attendDAO dao = new attendDAO();
 		
 		attend info = new attend();
-		info.setId(id);
+		
+		info.setId(idx);
 		info.setAttend_info(attend);
 		
 		int cnt = dao.attend_in(info);
@@ -42,11 +45,11 @@ public class checkPro extends HttpServlet {
 		String url ="";
 		
 		if(cnt>0) {
-			url="WEB-INF/Main.jsp";
+			url="goMain";
 			
 			
 		}else {
-			url="WEB-INF/Main.jsp";
+			url="goMain";
 		}
 		
 				

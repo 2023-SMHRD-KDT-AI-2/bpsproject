@@ -53,7 +53,7 @@ public class noticeWrite extends HttpServlet {
 		
 		
 		if (result > 0) {
-			url="WEB-INF/BoardWrite.jsp";
+			url="goNoticeBoard";
 		} else {
 			url="WEB-INF/BoardWrite.jsp";
 		}

@@ -1,7 +1,9 @@
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="oracle.ons.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="com.moon.model.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +59,17 @@
 <!--Adding datatable cdn-->
 <script
 	src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
+<style type="text/css">
+    .date{
+    font-size: 30px; 
+    color: black; 
+}
+.time{
+    font-size: 50px;
+    font-weight: bold;
+    color: #213573; 
+}
+    </style>
 </head>
 
 <body>
@@ -200,7 +212,22 @@
 			<!-- 근태현황 시작점 -->
 			<div class="container-fluid pt-4 px-4">
 				<div class="row g-4">
-					<div class="col-sm-12 col-xl-12">
+				
+				<div class="col-sm-5 col-xl-4">
+					
+                            <div draggable="true" id="close-msg" class="msg">
+                                <div class="h-100 bg-light rounded p-4">
+                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                        <h5 class="mb-0">현재시간</h5>
+                                    </div>
+                                        <hr>
+        			<div id="date" class="date"></div>
+                    <div id="time" class="time"></div>
+        			
+        			</div></div></div>
+				
+				
+					<div class="col-sm-5 col-xl-4">
 						<div class="bg-light rounded h-100 p-4">
 							<div>
 								<h5 class="mb-2 w-50">근태현황</h5>
@@ -211,119 +238,63 @@
 								<h1 class="clock"></h1>
 							</div>
 							<div>
-								<h6>출근시간 : 00:00</h6>
-								<h6>퇴근시간 : 00:00</h6>
+							
+							<%
+							
+							
+							String idx =  email.split("@")[0];
+							
+							attend att = new attend();
+							attendDAO aDAO = new attendDAO();
+							ArrayList<attend> list = new ArrayList<>();
+							
+							att.setId(idx);
+							
+							list = aDAO.attend_sele(att);
+							String go = "";
+							String leave = "";
+							if (list.isEmpty()) {
+							} else {
+								for (int i = 0; i < list.size(); i++) {
+									if (list.get(i).getAttend_info().equals("출근")){
+										go = list.get(i).getAttend_time();
+									} else {
+										leave = list.get(i).getAttend_time();
+									}
+								}
+							}
+							
+							
+							
+							
+							
+							
+							%>
+							
+								<h6>출근시간 : <%=go %></h6>
+								<h6>퇴근시간 : <%=leave %></h6>
 							</div>
 							<div class="btn-commuting">
+							<form method="post" name="form" onsubmit="check_function" >
+							
 									<input 
 										type="submit" id="btn-go-work" name="attend"
 										class="btn btn-primary me-2" value="출근"
+										onclick="javascript: form.action='checkPro?id=<%=email%>'"
+										
 									> 
 									<input
 										type="submit" id="btn-go-home" name="attend"
 										class="btn btn-primary me-2" value="퇴근"
+										onclick="javascript: form.action='checkPro?id=<%=email%>'"
 									>
+									</form>
 							</div>
 						</div>
 					</div>
 					<!-- 근태현황 끝 지점 -->
 
 
-					<!-- 근무시간 시작지점 -->
-					<div class="col-sm-12 col-xl-12">
-						<div class="bg-light rounded h-100 p-4">
-							
-							<div class = "col-md-4">
-								<h5 class="mb-4">주간</h5>
-							</div>
-							<hr>
-
-
-							<div class="row text-center mb-2">
-								<div class="col-md-3">주 근로시간</div>
-								<div class="col-md-3">누적 근로시간</div>
-								<div class="col-md-3">잔여 근로시간</div>
-								<div class="col-md-3">연장 근로시간</div>
-								<div class="col-md-3">
-									<h5>00h 00m</h5>
-								</div>
-								<div class="col-md-3">
-									<h5>00h 00m</h5>
-								</div>
-								<div class="col-md-3">
-									<h5>00h 00m</h5>
-								</div>
-								<div class="col-md-3">
-									<h5>00h 00m</h5>
-								</div>
-							</div>
-
-							<div class="progress mt-3">
-								<div
-									class="progress-bar progress-bar-striped progress-bar-animated"
-									role="progressbar" aria-valuenow="75" aria-valuemin="0"
-									aria-valuemax="100" style="width: 75%"></div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-12 col-xl-12">
-						<div class="bg-light rounded h-100 p-4">
-							<h6 class="mb-4"></h6>
-							<div class="table-responsive">
-								<table class="table">
-									<thead>
-										<tr>
-											<th scope="col">일자(요일)</th>
-											<th scope="col">09/10(월)</th>
-											<th scope="col">09/11(화)</th>
-											<th scope="col">09/12(수)</th>
-											<th scope="col">09/13(목)</th>
-											<th scope="col">09/14(금)</th>
-											<th scope="col">09/15(토)</th>
-											<th scope="col">09/16(일)</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th scope="row">근무시간</th>
-											<td>09:00</td>
-											<td>09:00</td>
-											<td>09:00</td>
-											<td>09:00</td>
-											<td>09:00</td>
-											<td>09:00</td>
-											<td>09:00</td>
-										</tr>
-										<tr>
-											<th scope="row">연장근무시간</th>
-											<td>02:00</td>
-											<td>02:00</td>
-											<td>02:00</td>
-											<td>02:00</td>
-											<td>02:00</td>
-											<td>02:00</td>
-										</tr>
-										<tr>
-											<th scope="row">총 근무시간</th>
-											<td>11:00</td>
-											<td>11:00</td>
-											<td>11:00</td>
-											<td>11:00</td>
-											<td>11:00</td>
-											<td>11:00</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-
-
-
-					
-				</div>
-			</div>
 
 
 		
@@ -345,27 +316,59 @@
 		<script src="js/main.js"></script>
 
 		<!-- 출,퇴근 확인 창 -->
+		
+		
+		<script type="text/javascript">
+	
+		function setClock(){
+		    var dateInfo = new Date(); 
+		    var hour = modifyNumber(dateInfo.getHours());
+		    var min = modifyNumber(dateInfo.getMinutes());
+		    var sec = modifyNumber(dateInfo.getSeconds());
+		    var year = dateInfo.getFullYear();
+		    var month = dateInfo.getMonth()+1; //monthIndex를 반환해주기 때문에 1을 더해준다.
+		    var date = dateInfo.getDate();
+		    document.getElementById("time").innerHTML = hour + ":" + min  + ":" + sec;
+		    document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
+		}
+		function modifyNumber(time){
+		    if(parseInt(time)<10){
+		        return "0"+ time;
+		    }
+		    else
+		        return time;
+		}
+		window.onload = function(){
+		    setClock();
+		    setInterval(setClock,1000); //1초마다 setClock 함수 실행
+		}
+	
+		</script>
+		
 		<script>
 				
 				var username = '<%=session.getAttribute("email") %>';
 				console.log("checkPro?id=" + username + "&attend=출근");
 				
 				var goHome = document.getElementById('btn-go-home');
+				
 			    goHome.addEventListener('click',()=>{
 			
 			        alert("퇴근완료")
-			        fetch("checkPro?id=" + username + "&attend=퇴근", {
-    					method: "GET"
-			    	});
+			       function formChange(obj) {
+					obj.submit();
+				}
 			    });
+			    
 				var goWork = document.getElementById('btn-go-work')
 			    goWork.addEventListener('click',()=>{
 			
 			        alert("출근완료")
-			        fetch("checkPro?id=" + username + "&attend=출근", {
-    					method: "GET"
-			    	});
+			       function formChange(obj) {
+					obj.submit();
+				}
 			    });
+				
 		    </script>
 </body>
 </html>

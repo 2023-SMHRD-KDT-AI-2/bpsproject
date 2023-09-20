@@ -33,4 +33,20 @@ public class attendDAO {
 
 		return num;
 	}
+	
+	ArrayList<attend> list = new ArrayList<>();
+	
+	public ArrayList<attend> attend_sele(attend att) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		list = (ArrayList) sqlSession.selectList("attend_sel", att);
+
+		sqlSession.close();
+
+		return list;
+	}
+	
 }
+
+

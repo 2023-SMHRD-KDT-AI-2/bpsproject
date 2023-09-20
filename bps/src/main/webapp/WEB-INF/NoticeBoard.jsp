@@ -266,9 +266,9 @@
 											</tr>
 										</thead>
 										<tbody>
-										  <c:forEach var="notice" items="${noticelists}">
+										  <c:forEach var="notice" items="${noticelists}" varStatus="status">
 											<tr>
-												<td>${notice.board_id}</td>
+												<td>${status.index + 1 }</td>
 												<td>${notice.board_title}</td>
 												<td>${notice.userid}</td>
 												<td>${notice.company_num}</td>
