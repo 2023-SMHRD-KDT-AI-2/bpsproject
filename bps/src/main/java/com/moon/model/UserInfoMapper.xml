@@ -77,60 +77,62 @@
 	<select id="login" parameterType="com.moon.model.login"
 		resultType="com.moon.model.login">
 
-		select * from userinfo a, comp_info b where a.company = b.company_id
-		and email=#{email} 
+		select * from userinfo a, comp_info b where a.company =
+		b.company_id
+		and email=#{email}
 
 	</select>
-	
-	<select id ="user_id" parameterType = "com.moon.model.login"
-	 	resultType="com.moon.model.login">
-	 
-	 	select * from userinfo
-		 where id = #{id}
-	 </select>
-	 
-	 <select id ="user_id_pw" parameterType = "com.moon.model.login"
-	 	resultType="com.moon.model.login">
-	 	select * from userinfo where id = #{id}
-	 </select>
+
+	<select id="user_id" parameterType="com.moon.model.login"
+		resultType="com.moon.model.login">
+
+		select * from userinfo
+		where id = #{id}
+	</select>
+
+	<select id="user_id_pw" parameterType="com.moon.model.login"
+		resultType="com.moon.model.login">
+		select * from userinfo where id = #{id}
+	</select>
 
 
- <select id ="find_id" parameterType = "com.moon.model.login"
-	 	resultType="com.moon.model.login">
-	 	select * from userinfo where name = #{name} and phone=#{phone}
-	 </select>
-	 
-	 <select id ="find_pw" parameterType = "com.moon.model.login"
-	 	resultType="com.moon.model.login">
-	 	select * from userinfo where name = #{name} and phone=#{phone} and id=#{id}
-	 </select>
-	 
-	 
-	 <select id ="myPage" parameterType = "com.moon.model.login"
-	 	resultType="com.moon.model.login">
-	 	select * from userinfo a, comp_info b where a.company = b.company_id
-		and id = #{id}
-	 </select>
-	 
-	 <update id="profile" parameterType="com.moon.model.userInfo">
-		
+	<select id="find_id" parameterType="com.moon.model.login"
+		resultType="com.moon.model.login">
+		select * from userinfo where name = #{name} and phone=#{phone}
+	</select>
+
+	<select id="find_pw" parameterType="com.moon.model.login"
+		resultType="com.moon.model.login">
+		select * from userinfo where name = #{name} and phone=#{phone} and id=#{id}
+	</select>
+
+
+	<select id="myPage" parameterType="com.moon.model.login"
+		resultType="com.moon.model.login">
+		select * from userinfo a, comp_info b where a.company = b.company_id
+		and id =
+		#{id}
+	</select>
+
+	<update id="profile" parameterType="com.moon.model.userInfo">
+
 		update userinfo set name = #{name} where id =#{id}
-		
+
 	</update>
-	
+
 	<update id="p_profile" parameterType="com.moon.model.userInfo">
-		
+
 		update userinfo set phone = #{phone} where id =#{id}
-		
+
 	</update>
-	
+
 	<update id="pw_profile" parameterType="com.moon.model.userInfo">
-		
+
 		update userinfo set pw = #{pw} where id =#{id}
-		
+
 	</update>
-	 
-	 
+
+
 	<select id="date_null_list"
 		parameterType="com.moon.model.userInfo"
 		resultType="com.moon.model.userInfo">
@@ -167,46 +169,57 @@
 		#{ex})
 
 	</insert>
-	
-	<select id="positionInformation" parameterType="com.moon.model.position"
+
+	<select id="positionInformation"
+		parameterType="com.moon.model.position"
 		resultType="com.moon.model.position">
 		select * from position_info where
-		company_id = (SELECT COMPANY FROM userinfo where email = #{email}) and position_name =  #{position_name}
+		company_id = (SELECT
+		COMPANY FROM userinfo where email = #{email}) and position_name =
+		#{position_name}
 	</select>
 
 	<delete id="positionDel" parameterType="com.moon.model.position">
-	delete from position_info where company_id = (SELECT COMPANY FROM userinfo where
-		email = #{email}) and position_name = #{position_name} and ex = #{ex}
-	
+		delete from position_info where company_id = (SELECT COMPANY FROM userinfo
+		where
+		email = #{email}) and position_name = #{position_name} and ex =
+		#{ex}
+
 	</delete>
 
 	<update id="positionUp" parameterType="com.moon.model.position">
-	update position_info set position_name = #{position_name}, ex = #{ex}
-	where company_id = (SELECT COMPANY FROM userinfo where
-	email = #{email})
+		update position_info set position_name = #{position_name}, ex = #{ex}
+		where company_id = (SELECT COMPANY FROM userinfo where
+		email = #{email})
 	</update>
-	
-	<select id="positionCheck" parameterType="com.moon.model.position"
+
+	<select id="positionCheck"
+		parameterType="com.moon.model.position"
 		resultType="com.moon.model.position">
 		select * from position_info where
-		company_id = (SELECT COMPANY FROM userinfo where email = #{email}) and position_name =  #{position_name}
+		company_id = (SELECT
+		COMPANY FROM userinfo where email = #{email}) and position_name =
+		#{position_name}
 	</select>
-	
-	<select id="position_info_list" parameterType="com.moon.model.position"
+
+	<select id="position_info_list"
+		parameterType="com.moon.model.position"
 		resultType="com.moon.model.position">
 		select * from position_info where
-		company_id = (SELECT COMPANY FROM userinfo where email = #{email})
+		company_id = (SELECT
+		COMPANY FROM userinfo where email = #{email})
 	</select>
-	
-	
-	<select id="departinfo"	parameterType="com.moon.model.Depart"
+
+
+	<select id="departinfo" parameterType="com.moon.model.Depart"
 		resultType="com.moon.model.Depart">
 		select * from depart_info where company = #{company}
 	</select>
-	
+
 	<insert id="departinsert" parameterType="com.moon.model.Depart">
 
-		insert into depart_info values (
+		insert into depart_info
+		values (
 		(SELECT COMPANY FROM userinfo where email = #{email}),
 		#{depart},
 		#{depart_name},
@@ -214,106 +227,115 @@
 		#{ex})
 
 	</insert>
-	
+
 	<select id="departCheck" parameterType="com.moon.model.Depart"
 		resultType="com.moon.model.Depart">
 		select * from depart_info where
-		company = (SELECT COMPANY FROM userinfo where email = #{email}) and depart =  #{depart}
+		company = (SELECT COMPANY
+		FROM userinfo where email = #{email}) and depart = #{depart}
 	</select>
-	
-	<select id="departInformation" parameterType="com.moon.model.Depart"
+
+	<select id="departInformation"
+		parameterType="com.moon.model.Depart"
 		resultType="com.moon.model.Depart">
 		select * from depart_info where
-		company = (SELECT COMPANY FROM userinfo where email = #{email}) and depart =  #{depart}
+		company = (SELECT COMPANY
+		FROM userinfo where email = #{email}) and depart = #{depart}
 	</select>
-	
+
 	<delete id="departDel" parameterType="com.moon.model.Depart">
-	delete from depart_info where company = (SELECT COMPANY FROM userinfo where
-		email = #{email}) and depart = #{depart} and ex = #{ex} and depart_call = #{depart_call} and depart_name = #{depart_name}
-	
+		delete from depart_info where company = (SELECT COMPANY FROM userinfo where
+		email = #{email}) and depart = #{depart} and ex = #{ex} and
+		depart_call = #{depart_call} and depart_name = #{depart_name}
+
 	</delete>
-	
+
 	<update id="departUp" parameterType="com.moon.model.Depart">
-	update depart_info set depart = #{depart_Up}, ex = #{ex}, depart_call = #{depart_call}, depart_name = #{depart_name}
-	where company = (SELECT COMPANY FROM userinfo where	email = #{email}) and depart = #{depart}
+		update depart_info set depart = #{depart_Up}, ex = #{ex}, depart_call =
+		#{depart_call}, depart_name = #{depart_name}
+		where company = (SELECT COMPANY FROM userinfo where email = #{email}) and
+		depart = #{depart}
 	</update>
-	
-	<select id="depart_info_list" parameterType="com.moon.model.Depart"
+
+	<select id="depart_info_list"
+		parameterType="com.moon.model.Depart"
 		resultType="com.moon.model.Depart">
 		select * from depart_info where
-		company = (SELECT COMPANY FROM userinfo where email = #{email})
+		company = (SELECT COMPANY
+		FROM userinfo where email = #{email})
 	</select>
 
 	<update id="app_info" parameterType="com.moon.model.userInfo">
-	update userinfo set sign_date = sysdate,
-	depart = #{depart}, POSITION = #{position} WHERE
-	company = #{comNum} and email = #{email}
+		update userinfo set sign_date = sysdate,
+		depart = #{depart}, POSITION = #{position} WHERE
+		company = #{comNum} and email = #{email}
 	</update>
-	
-	
+
+
 	<delete id="app_del" parameterType="com.moon.model.userInfo">
-	delete from userinfo where company = #{comNum} and email = #{email}
+		delete from userinfo where company = #{comNum} and email = #{email}
 	</delete>
-	
+
 	<update id="app_Up" parameterType="com.moon.model.userInfo">
-	update userinfo set 
-	depart = #{depart}, POSITION = #{position},
-	PHONE = #{phone} WHERE
-	company = #{comNum} and email = #{email}
+		update userinfo set
+		depart = #{depart}, POSITION = #{position},
+		PHONE = #{phone} WHERE
+		company = #{comNum} and email = #{email}
 	</update>
-	
+
 	<select id="carList" parameterType="com.moon.model.carInfo"
-   resultType="com.moon.model.carInfo">
-      select * from carslist
-   </select>
-   
-   <select id="carsearch" parameterType="string"
-   resultType="com.moon.model.carInfo">
-      select * from carslist where LOWER(carname) like '%'||LOWER(#{carname})||'%' 
-   </select>
-   
-   <select id="manusearch" parameterType="string"
-   resultType="com.moon.model.carInfo">
-      select * from carslist where LOWER(manufac) like '%'||LOWER(#{manufac})||'%' 
-   </select>
-	
-	 <insert id="attend_in" parameterType = "com.moon.model.attend">
-		 insert into attend values(
+		resultType="com.moon.model.carInfo">
+		select * from carslist
+	</select>
+
+	<select id="carsearch" parameterType="string"
+		resultType="com.moon.model.carInfo">
+		select * from carslist where LOWER(carname) like '%'||LOWER(#{carname})||'%'
+	</select>
+
+	<select id="manusearch" parameterType="string"
+		resultType="com.moon.model.carInfo">
+		select * from carslist where LOWER(manufac) like '%'||LOWER(#{manufac})||'%'
+	</select>
+
+	<insert id="attend_in" parameterType="com.moon.model.attend">
+		insert into attend values(
 		attend_id.NEXTVAL,
 		#{id},
 		#{attend_info},
 		sysdate
 		)
-	 
-	 </insert>
-	 
-	 <update id="attend_up" parameterType = "com.moon.model.attend">
-			 update attend set
-		    attend_info = #{attend_info},
-		    attend_time = sysdate,
+
+	</insert>
+
+	<update id="attend_up" parameterType="com.moon.model.attend">
+		update attend set
+		attend_info = #{attend_info},
+		attend_time = sysdate,
 		where id = #{id};
 	</update>
-	
-	<insert id ="carSign" parameterType = "com.moon.model.carInfo">
-	 	
-	 	insert into comp_car(company_id, comp_name,carNum,manufac,carname,admin_name, admin_depart,sign_date)
+
+	<insert id="carSign" parameterType="com.moon.model.carInfo">
+
+		insert into comp_car(company_id,
+		comp_name,carNum,manufac,carname,admin_name, admin_depart,sign_date)
 		values (
-			#{compNum},
-			#{company},
-			#{carNum},
-			#{manufac},
-			#{carName},
-			#{name},
-			#{depart},
-			sysdate
-			
-			
+		#{compNum},
+		#{company},
+		#{carNum},
+		#{manufac},
+		#{carName},
+		#{name},
+		#{depart},
+		sysdate
+
+
 		)
-	 
-	 
-	 </insert>
-	 
-	 <insert id="sendmsg" parameterType="com.moon.model.message">
+
+
+	</insert>
+
+	<insert id="sendmsg" parameterType="com.moon.model.message">
 
 		insert into message(
 		chatnum,
@@ -332,32 +354,35 @@
 
 
 	</insert>
-	
-		<select id ="msglist" resultType="com.moon.model.message">
-		select * from message 
-		
+
+	<select id="msglist" resultType="com.moon.model.message">
+		select * from message
+
 		where sender = #{name} or receiver = #{name};
-		</select>
-	
-	
-	<!-- 메시지 하나만 읽어오는 sql 문장 -->
-	<select id="msgdetail" parameterType="string" resultType="com.moon.model.message">
-	SELECT * FROM message
-	WHERE NUM=#{NUM}
 	</select>
 
-	
-	
-	
 
-	<select id="fileList" parameterType = "string" resultType="com.moon.model.fileDrive">
-      select * from filedrive where company =  #{company}
-      order by file_date asc
-   </select>
-   
-   <insert id="fileInsert" parameterType="com.moon.model.fileDrive">
+	<!-- 메시지 하나만 읽어오는 sql 문장 -->
+	<select id="msgdetail" parameterType="string"
+		resultType="com.moon.model.message">
+		SELECT * FROM message
+		WHERE NUM=#{NUM}
+	</select>
 
-		insert into filedrive values (
+
+
+
+
+	<select id="fileList" parameterType="string"
+		resultType="com.moon.model.fileDrive">
+		select * from filedrive where company = #{company}
+		order by file_date asc
+	</select>
+
+	<insert id="fileInsert" parameterType="com.moon.model.fileDrive">
+
+		insert into filedrive
+		values (
 		#{company},
 		filedrive_idx.NEXTVAL,
 		#{file_name},
@@ -365,23 +390,26 @@
 		sysdate )
 
 	</insert>
-	
+
 	<delete id="fileDel" parameterType="com.moon.model.fileDrive">
-	delete from filedrive where company = #{company} 
-	and file_name =#{file_name} 
-	and file_add = #{file_add}
+		delete from filedrive where company = #{company}
+		and file_name =#{file_name}
+		and file_add = #{file_add}
 	</delete>
-	
-	<select id="scheduleSelect" parameterType = "string" resultType="com.moon.model.schedule">
-      select * from schedule where add_date = #{addDate}
-      order by id asc
-   </select>
-   
-   <select id="scheduleSelectById" parameterType = "string" resultType="com.moon.model.schedule">
-      select * from schedule where id = #{id}
-   </select>
-	
-	<insert id="scheduleInsert" parameterType="com.moon.model.schedule">
+
+	<select id="scheduleSelect" parameterType="string"
+		resultType="com.moon.model.schedule">
+		select * from schedule where add_date = #{addDate}
+		order by id asc
+	</select>
+
+	<select id="scheduleSelectById" parameterType="string"
+		resultType="com.moon.model.schedule">
+		select * from schedule where id = #{id}
+	</select>
+
+	<insert id="scheduleInsert"
+		parameterType="com.moon.model.schedule">
 		insert into schedule values (
 		schedule_id.NEXTVAL,
 		#{department},
@@ -391,57 +419,64 @@
 		#{detail},
 		#{add_date})
 	</insert>
-	
+
 	<delete id="scheduleDelete" parameterType="string">
-		delete from schedule where id = #{id}
+		delete from schedule
+		where id = #{id}
 	</delete>
-	
-	
-	
+
+
+
 	<select id="CompcarList" parameterType="com.moon.model.carInfo"
-   resultType="com.moon.model.carInfo">
-      select * from comp_car where company_id=#{compNum} and using is null
-   </select>
-   
-    <select id="comp_carsearch" parameterType="com.moon.model.carInfo"
-   resultType="com.moon.model.carInfo">
-      select * from comp_car where LOWER(carName) like '%'||LOWER(#{carName})||'%'  and company_id=#{compNum}
-   </select>
-   
-	 <update id="compCarUpdate" parameterType="com.moon.model.carInfo">
-		    UPDATE comp_car
-			SET using = 'Y',
-		    user_use = #{name},
-		    start_date =#{startTime},
-		    end_date = #{returnTime},
-		    car_reason = #{usingreason},
-		    reason_detail =	#{reasonDetail}
-			WHERE company_id = #{compNum} and carnum = #{carNum}
-   </update>
-	
-	 	<select id="UsingCarList" parameterType="com.moon.model.carInfo"
-   resultType="com.moon.model.carInfo">
-      select * from comp_car where company_id=#{compNum} and user_use =#{name}
-   </select>
-   
-    <update id="returnCompCar" parameterType="com.moon.model.carInfo">
-		    UPDATE comp_car
-			SET using = null,
-		    user_use = null,
-		    start_date = null,
-		    end_date =  null,
-		    car_reason = null,
-		    reason_detail = null,
-		    last_use = #{name}
-			WHERE company_id = #{compNum} and carnum = #{carNum}
-   </update>
-     <select id="show_Allcar" parameterType="com.moon.model.carInfo"
-   resultType="com.moon.model.carInfo">
-      select carnum, manufac, carname, last_use from comp_car where company_id=#{compNum}
-   </select>
-	
-		<!-- chatting 쿼리문 -->
-	<insert id="chat_room_in" parameterType="com.moon.model.ChattingDTO">
+		resultType="com.moon.model.carInfo">
+		select * from comp_car where company_id=#{compNum} and using is null
+	</select>
+
+	<select id="comp_carsearch"
+		parameterType="com.moon.model.carInfo"
+		resultType="com.moon.model.carInfo">
+		select * from comp_car where LOWER(carName) like '%'||LOWER(#{carName})||'%'
+		and company_id=#{compNum}
+	</select>
+
+	<update id="compCarUpdate"
+		parameterType="com.moon.model.carInfo">
+		UPDATE comp_car
+		SET using = 'Y',
+		user_use = #{name},
+		start_date =#{startTime},
+		end_date = #{returnTime},
+		car_reason = #{usingreason},
+		reason_detail = #{reasonDetail}
+		WHERE company_id = #{compNum} and carnum = #{carNum}
+	</update>
+
+	<select id="UsingCarList" parameterType="com.moon.model.carInfo"
+		resultType="com.moon.model.carInfo">
+		select * from comp_car where company_id=#{compNum} and user_use =#{name}
+	</select>
+
+	<update id="returnCompCar"
+		parameterType="com.moon.model.carInfo">
+		UPDATE comp_car
+		SET using = null,
+		user_use = null,
+		start_date = null,
+		end_date = null,
+		car_reason = null,
+		reason_detail = null,
+		last_use = #{name}
+		WHERE company_id = #{compNum} and carnum = #{carNum}
+	</update>
+	<select id="show_Allcar" parameterType="com.moon.model.carInfo"
+		resultType="com.moon.model.carInfo">
+		select carnum, manufac, carname, last_use from comp_car where
+		company_id=#{compNum}
+	</select>
+
+	<!-- chatting 쿼리문 -->
+	<insert id="chat_room_in"
+		parameterType="com.moon.model.ChattingDTO">
 		insert
 		into chat_room(
 		chat_id,
@@ -449,19 +484,20 @@
 		guest_email
 		)
 		values (
-		caht_room_idx.NEXTVAL,
+		chat_room_idx.NEXTVAL,
 		#{host_email},
-		#{guest_email} 
+		#{guest_email}
 		)
-		
+
 
 	</insert>
-	
-	<insert id="chat_mes_in" parameterType="com.moon.model.ChattingDTO">
+
+	<insert id="chat_mes_in"
+		parameterType="com.moon.model.ChattingDTO">
 
 		insert into chat_mes
 		(
-        chat_mes_id
+		chat_mes_id
 		,company
 		,chat_id
 		,host_email
@@ -470,61 +506,70 @@
 		,sendtime
 		)
 		values (
-        caht_mes_idx.NEXTVAL
-		,(select company_id from comp_info where company_id = #{company})
-		,(select chat_id from chat_room where host_email = #{host_email_sub} and guest_email = #{guest_email_sub})
+		chat_mes_idx.NEXTVAL
+		,(select company_id from comp_info where
+		company_id = #{company})
+		,(select chat_id from chat_room where
+		host_email = #{host_email_sub} and guest_email = #{guest_email_sub})
 		,#{host_email}
 		,#{host_name}
 		,#{send_mes}
 		,sysdate
 		)
-		
+
 
 	</insert>
-	
+
 	<select id="show_mes" parameterType="com.moon.model.ChattingDTO"
-   resultType="com.moon.model.ChattingDTO">
-      select * from chat_mes 
-      where company = (select company_id from comp_info where company_id = #{company})
-      and chat_id = (select chat_id from chat_room where host_email = #{host_email_sub} and guest_email = #{guest_email_sub})
-      order by sendtime asc 
-   </select>
-   
-   
-   <select id="show_room" parameterType="com.moon.model.ChattingDTO"
-   resultType="com.moon.model.ChattingDTO">
-      select * from chat_room 
-      where chat_id = (select chat_id from chat_room where host_email = #{host_email_sub} and guest_email = #{guest_email_sub})
-      and host_email = #{host_email}
-      and guest_email = #{guest_email}
-   </select>
-   
-   <select id="select_host_room" parameterType="com.moon.model.ChattingDTO"
-   resultType="com.moon.model.ChattingDTO">
-      SELECT CHAT_ID FROM chat_room WHERE HOST_EMAIL = #{host_email} or guest_email = #{host_email_sub}
-   </select>
-   
-   <select id="select_host_mes" 
-   resultType="com.moon.model.ChattingDTO">
-      select * from chat_mes where chat_id = #{chat_id}
-	order by sendtime asc
-   </select>
-	
+		resultType="com.moon.model.ChattingDTO">
+		select * from chat_mes
+		where company = (select company_id from comp_info where company_id =
+		#{company})
+		and chat_id = (select chat_id from chat_room where host_email =
+		#{host_email_sub} and guest_email = #{guest_email_sub})
+		order by sendtime asc
+	</select>
+
+
+	<select id="show_room"
+		parameterType="com.moon.model.ChattingDTO"
+		resultType="com.moon.model.ChattingDTO">
+		select * from chat_room
+		where chat_id = (select chat_id from chat_room where host_email =
+		#{host_email_sub} and guest_email = #{guest_email_sub})
+		and host_email = #{host_email}
+		and guest_email = #{guest_email}
+	</select>
+
+	<select id="select_host_room"
+		parameterType="com.moon.model.ChattingDTO"
+		resultType="com.moon.model.ChattingDTO">
+		SELECT * FROM chat_room WHERE HOST_EMAIL = #{host_email} or
+		guest_email = #{host_email_sub}
+	</select>
+
+	<select id="select_host_mes"
+		resultType="com.moon.model.ChattingDTO">
+		select * from chat_mes where chat_id = #{chat_id}
+		order by sendtime asc
+	</select>
+
 	<insert id="noticeInsert"
 		parameterType="com.moon.model.NoticeBoard">
-		insert into NOTICEBOARD (board_Title, userID ,board_Date,board_content,company_num) 
-			values(
-			
-			#{board_title},
-			#{userid},
-			sysdate,
-			#{board_content},
-			#{company_num}
-			)
+		insert into NOTICEBOARD (board_Title, userID
+		,board_Date,board_content,company_num)
+		values(
+
+		#{board_title},
+		#{userid},
+		sysdate,
+		#{board_content},
+		#{company_num}
+		)
 	</insert>
 
-	<select id="noticeSelect"
-		parameterType="String" resultType="com.moon.model.NoticeBoard">
+	<select id="noticeSelect" parameterType="String"
+		resultType="com.moon.model.NoticeBoard">
 		select * from noticeboard where company_num = #{compNum}
 	</select>
 
@@ -535,7 +580,8 @@
 	</delete>
 
 	<select id="noticeList" resultType="com.moon.model.NoticeBoard">
-		select *from noticeboard where userid =${userid}
+		select *from noticeboard
+		where userid =${userid}
 	</select>
 
 	<select id="noticeDetail" parameterType="String"
@@ -543,8 +589,8 @@
 		select *from noticeboard
 		where num =#{num}
 	</select>
-	
-	
+
+
 </mapper>
 
 
