@@ -205,6 +205,9 @@
                                           	
                                           	ArrayList<String> room_num = new ArrayList<String>();
                                           	
+                                          	String guestEmail = null;
+                                          	String guestName = null;
+                                          	
                                           	for (int i = 0; i < chatroom.size(); i++) {
                                           		room_num.add(chatroom.get(i).getChat_id());
                                           		
@@ -213,7 +216,13 @@
                                           	for (int j = 0; j < room_num.size(); j++){
                                           		chatlist = chatDAO.select_host_mes(room_num.get(j));		
                                           	
-                                          	
+                                          		for (int l = 0; l < chatlist.size(); l++) {
+                                          			if (!chatlist.get(l).getHost_email().equals(email)){
+                                          				guestEmail = chatlist.get(l).getHost_email();
+                                          				guestName = chatlist.get(l).getHost_name();
+                                          			}
+                                          			
+                                          		}
                                           
                                           	
                                           
@@ -227,9 +236,9 @@
                                             <div class="d-flex w-100 justify-content-between">
                                           
                                           
-                                                <h6 class="mb-0"><%=chatlist.get(k).getHost_name() %></h6>            
+                                                <h6 class="mb-0"><%=guestName %></h6>            
                                             </div>
-                                            <a href="Chatting?select_room=<%=chatlist.get(k).getHost_email()%>">
+                                            <a href="Chatting?select_room=<%=guestEmail%>">
                                             <p style="text-align: right; margin: 0%"><%=chatlist.get(k).getSend_mes()%></p>
                                             </a>
                                         </div>
