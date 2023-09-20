@@ -88,10 +88,11 @@
 		<!--작은창-->
 		<div class="sidebar pe-4 pb-3">
 			<nav class="navbar bg-light navbar-light">
-				<a href="goMain" class="navbar-brand mx-4 mb-3"> </a>
-				<h1 class="text-primary"><%=compName%></h1>
+				 <a href="goMain" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><%=compName %></h3>
+                </a>
 				<div class="d-flex align-items-center ms-4 mb-4">
-
+ 				
 					<%
 					if (admin != null) {
 					%>
@@ -127,17 +128,14 @@
 					%>
 				</div>
 				<div class="navbar-nav w-100">
-					
-
-					<a href="goMain" class="nav-item nav-link active"><i
-                            class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="goAttendStatus" class="nav-item nav-link"><i
-                            class="fa fa-tachometer-alt me-2"></i>근태 관리</a>
-                    <a href="goFileDrive" class="nav-item nav-link "><i
+					<a href="goMain" class="nav-item nav-link "><i
+						class="fa fa-tachometer-alt me-2"></i>Dashboard</a> <a
+						href="goAttendStatus" class="nav-item nav-link "><i
+						class="fa fa-tachometer-alt me-2"></i>근태 관리</a>
+<a href="goFileDrive" class="nav-item nav-link "><i
                             class="fa fa-tachometer-alt me-2"></i>FILE-DRIVE</a>
                     <a href="goCarReserv" class="nav-item nav-link"><i
-                            class="fa fa-tachometer-alt me-2"></i>차량신청</a>    
-
+                            class="fa fa-tachometer-alt me-2"></i>차량신청</a>            
 					<%
 					if (admin != null) {
 					%>

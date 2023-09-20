@@ -41,18 +41,22 @@ public class scheduleDAO {
 
 		return num;
 	}
-
 	
-	public int scheduleDelete(String scheduleId) {
+	public int scheduleTestInsert() {
+		schedule test = new schedule();
+		test.setDepartment("a");
+		test.setName("b");
+		test.setEmployee_id("c");
+		test.setTitle("d");
+		test.setDetail("e");
+		test.setAdd_date("2023-4-18");
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		
-		int result = sqlSession.delete("scheduleDelete", scheduleId);
-		
+
+		int num = sqlSession.insert("scheduleInsert", test);
+
 		sqlSession.close();
 		
-		return result;
+		return num;
 	}
-	
-
 }

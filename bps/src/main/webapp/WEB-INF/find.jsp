@@ -24,6 +24,37 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap"
+	rel="stylesheet">
+
+<!-- Icon Font Stylesheet -->
+
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+	rel="stylesheet">
+
+ 
+<!-- Libraries Stylesheet -->
+
+<link href="lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+	rel="stylesheet" />
+
+
+
+
+<link href="css/style.css" rel="stylesheet">
+
+
 <style>
 table {
 	margin-left: auto;
@@ -93,12 +124,12 @@ table {
 
 
 								<hr>
-								<br>
+								<div id = "title" style ="font-size: 15px; text-align: center; color: #213573 ">아이디 찾기</div>
 
 								<form>
 									<div>
 
-										<table id="find_id">
+										<table id="find_id" style ="width: 70%">
 											<tr>
 												<th>이름</th>
 												<td><input type="text" id="name"></td>
@@ -114,7 +145,7 @@ table {
 
 										</table>
 
-										<table id="find_pw" style="display: none;">
+										<table id="find_pw" style="display: none; width: 70%">
 											<tr id="find_id">
 												<th>이름</th>
 												<td><input id="pw_name" type="text" id="name"></td>
@@ -135,15 +166,16 @@ table {
 
 										</table>
 										<hr>
-										<div id="id_div" style="text-align:center; justify-content: center;"></div>
+										<div id="id_div" style="text-align:center; justify-content: center; font-size: 30px"></div>
 										<br>
 										<div style="display: flex; justify-content: center; text-align: center" id ="c_id">
 											<button type="button"
 												class="n-btn w100 btn-sm btn-default cert-hidden"
 												onclick="find()" id="confirm">확인</button>
+												<div style = "width: 15px; height: auto; display: inline-block;"></div>
 												<button type="button"
-												class="n-btn w100 btn-sm btn-default cert-hidden"
-												onclick="location.href='goLogin';" >돌아가기</button>
+													class="n-btn w100 btn-sm btn-default cert-hidden"
+													onclick="location.href =  'goLogin';" id="">돌아가기</button>
 										</div>
 
 
@@ -151,6 +183,10 @@ table {
 											<button type="button"
 												class="n-btn w100 btn-sm btn-default cert-hidden"
 												onclick="P_find()" id="confirm">확인</button>
+												<div style = "width: 15px; height: auto; display: inline-block;"></div>
+												<button type="button"
+													class="n-btn w100 btn-sm btn-default cert-hidden"
+													onclick="location.href =  'goLogin';" id="">돌아가기</button>
 										</div>
 
 
@@ -263,6 +299,8 @@ table {
 			find_id.style.display = "";
 			c_pw.style.display="none"
 			c_id.style.display=""
+			$('#id_div').html('')
+			$('#title').html('아이디 찾기')
 
 		}
 
@@ -275,7 +313,8 @@ table {
 			find_pw.style.display = "";
 			c_id.style.display="none"
 			c_pw.style.display=""
-
+				$('#id_div').html('')
+				$('#title').html('비밀번호 찾기')
 		}
 	</script>
 

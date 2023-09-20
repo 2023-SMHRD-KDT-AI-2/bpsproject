@@ -37,7 +37,7 @@ public class find extends HttpServlet {
 		//out.print(id);
 	System.out.println(id);
 	System.out.println(name);
-		
+		System.out.println(phone);
 		if(id == null) {
 		user.setPhone(phone);
 		user.setName(name);
@@ -53,6 +53,8 @@ public class find extends HttpServlet {
 		JSONObject jobj = new JSONObject();
 		//System.out.println(check.get(0).getId());
 		
+		System.out.println(check.get(0).getPhone());
+	
 		int idCheck = 0;
 
 		

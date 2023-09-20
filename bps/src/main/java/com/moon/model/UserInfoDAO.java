@@ -10,7 +10,9 @@ import org.apache.ibatis.session.ExecutorType;
 
 import org.apache.ibatis.session.TransactionIsolationLevel;
 
+
 import com.moon.db.SqlSessionManager;
+
 
 public class UserInfoDAO {
 
@@ -38,8 +40,9 @@ public class UserInfoDAO {
 		return cnt;
 
 	}
+	
 
-	public login info_data(login info) {
+	public login info_data (login info) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
@@ -49,8 +52,8 @@ public class UserInfoDAO {
 
 		return info;
 	}
-
-	public login user_id(login info) {
+	
+	public login user_id (login info) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
@@ -60,10 +63,10 @@ public class UserInfoDAO {
 
 		return info;
 	}
-
+	
 	ArrayList<login> lists = new ArrayList<>();
-
-	public ArrayList<login> user_id_pw(login info) {
+	
+	public ArrayList<login> user_id_pw (login info) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
@@ -73,7 +76,10 @@ public class UserInfoDAO {
 
 		return lists;
 	}
-
+	
+	
+	
+	
 	public ArrayList<login> user_id2(String id) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -98,74 +104,7 @@ public class UserInfoDAO {
 		return lists;
 	}
 
-	ArrayList<userInfo> list = new ArrayList<>();
-
-	public ArrayList<userInfo> dateList(String compNum) {
-
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-
-		list = (ArrayList) sqlSession.selectList("date_null_list", compNum);
-
-		sqlSession.close();
-
-		return list;
-	}
-
-	public ArrayList<userInfo> datenotList(String compNum) {
-
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-
-		list = (ArrayList) sqlSession.selectList("date_not_null_list", compNum);
-
-		sqlSession.close();
-
-		return list;
-	}
-
-	public ArrayList<userInfo> detailed(String email) {
-
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-
-		list = (ArrayList) sqlSession.selectList("information", email);
-
-		sqlSession.close();
-
-		return list;
-	}
-
-	public int app_info_Up(userInfo info) {
-
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-
-		int list = sqlSession.update("app_info", info);
-
-		sqlSession.close();
-
-		return list;
-	}
-
-	public int app_del(userInfo info) {
-
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-
-		int list = sqlSession.delete("app_del", info);
-
-		sqlSession.close();
-
-		return list;
-	}
-
-	public int app_Up(userInfo info) {
-
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-
-		int list = sqlSession.update("app_Up", info);
-
-		sqlSession.close();
-
-		return list;
-	}
-
+	
 	public int profile(userInfo info) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
@@ -195,7 +134,74 @@ public class UserInfoDAO {
 
 		return list;
 	}
+	
+	ArrayList<userInfo> list = new ArrayList<>();
+	public ArrayList<userInfo> dateList(String compNum) {
 
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		list = (ArrayList) sqlSession.selectList("date_null_list", compNum);
+
+		sqlSession.close();
+
+		return list;
+	}
+	
+	public ArrayList<userInfo> datenotList(String compNum) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		list = (ArrayList) sqlSession.selectList("date_not_null_list", compNum);
+
+		sqlSession.close();
+
+		return list;
+	}
+	
+	public ArrayList<userInfo> detailed(String email) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		list = (ArrayList) sqlSession.selectList("information", email);
+
+		sqlSession.close();
+
+		return list;
+	}
+
+	public int app_info_Up(userInfo info) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		int list = sqlSession.update("app_info", info);
+
+		sqlSession.close();
+
+		return list;
+	}
+	
+	public int app_del(userInfo info) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		int list = sqlSession.delete("app_del", info);
+
+		sqlSession.close();
+
+		return list;
+	}
+
+	
+	public int app_Up(userInfo info) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		int list = sqlSession.update("app_Up", info);
+
+		sqlSession.close();
+
+		return list;
+	}
 //	public String login(userInfo user) {
 //
 //		SqlSession sqlSession = sqlSessionFactory.openSession(true);

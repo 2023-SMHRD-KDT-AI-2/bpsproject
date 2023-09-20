@@ -138,7 +138,8 @@
                             class="fa fa-tachometer-alt me-2"></i>근태 관리</a>
                     <a href="goFileDrive" class="nav-item nav-link "><i
                             class="fa fa-tachometer-alt me-2"></i>FILE-DRIVE</a>       
-                            
+                      <a href="goCarReserv" class="nav-item nav-link"><i
+                            class="fa fa-tachometer-alt me-2"></i>차량신청</a>                   
                     <%
                     if (admin != null) {
 					%>

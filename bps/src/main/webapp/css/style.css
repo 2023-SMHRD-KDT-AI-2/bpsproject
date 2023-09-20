@@ -5,6 +5,74 @@
     --dark: #191C24;
 }
 
+/*마이페이지*/
+.tit {
+    display: inline-block;
+    font-size: 20px;
+    font-family: "Musinsa", sans-serif !important;
+    color : #213573;
+}
+
+.n-section-title {
+    border-bottom: 3px solid #213573;
+    padding-bottom: 14px;
+    margin-top: 48px;
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+    position: relative;
+}
+
+
+.n-table {
+    width: 100%;
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.n-btn.w100 {
+    min-width: 100px;
+}
+
+.n-btn.btn-default {
+    border: 1px solid #213573;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+.n-table.table-row th, .n-table.table-row td {
+    height: auto;
+    padding: 15px 0;
+    box-sizing: border-box;
+    border-top: 1px solid #f1f1f1;
+    border-bottom: none;
+    font-size: 14px;
+    text-align: left;
+}
+
+.n-table.table-row th {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: top;
+}
+
+.n-table.table-row + .n-info-txt {
+    border-top: 1px solid #f1f1f1;
+}
+.n-info-txt {
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+    padding-top: 20px;
+}
+
+
+/*-----------------------*/
+
 .back-to-top {
     position: fixed;
     display: none;
@@ -215,6 +283,9 @@
         margin-left: 15px;
     }
 }
+
+
+
 
 
 /*** Date Picker ***/

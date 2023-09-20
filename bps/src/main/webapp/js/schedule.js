@@ -39,39 +39,26 @@ fetch("/bps/api/schedule/read"+[
     	scheduleTableBody.append($(`
         	<tr class="detail_infomation">
             	<td>
-                	<span id="view_out">`+item.id+`</span>
-                	<span id="View_out"> | </span>
+                	<span>`+item.id+`</span>
+                	<span> | </span>
                 	<span>`+item.title+`</span>
                 	<div class="del_btn_location">
-                    	<button class="btn btn-sm schedule-del-btn"><i class="fa fa-times"></i></button>
+                    	<button class="btn btn-sm"><i class="fa fa-times"></i></button>
                 	</div>
             	</td>
         	</tr>
     	`));
-    	
-    	Array.from(detail_infomation).forEach((item)=>{
-			item.addEventListener('click', (e) => {
-				window.location.href = "goScheduleDetail?num="+e.target.children[0].textContent;
-			})
-		})
-		Array.from(schedule_delete_btn).forEach((item, i) => {
-			item.addEventListener('click', async (e) => {
-				const confirmResult = confirm("정말로 삭제하시겠습니까?");
-				
-				if(confirmResult === true) {
-					const response = await fetch("/bps/api/schedule/delete?id="+detail_infomation.item(i).children[0].children[0].textContent);
-					clickDate(presentDate.year ,presentDate.month ,presentDate.day);
-					alert("일정을 삭제하였습니다.");
-				}
-			})
-		})
-})})
+	})
+})
 
-const detail_infomation = document.getElementsByClassName('detail_infomation');
-const schedule_delete_btn = document.getElementsByClassName('schedule-del-btn');
+const detail_infomation = document.getElementsByClassName('detail_infomation')
 
 
-
+Array.from(detail_infomation).forEach((item)=>{
+	item.addEventListener('click', (e) => {
+		window.location.href = "goScheduleDetail?num="+e.target.children[0].textContent;
+	})
+})
       
 const addScheduleBtn = document.getElementById('schedule_plus_btn');
 addScheduleBtn.onclick = ()=>{

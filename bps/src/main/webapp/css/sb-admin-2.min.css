@@ -1798,7 +1798,13 @@ pre code {
 .table {
     width: 100%;
     margin-bottom: 1rem;
-    color: #858796
+    color: #858796;
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+    border-collapse: collapse;
+    table-layout: fixed;
+   
 }
 
 .table td,
