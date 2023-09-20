@@ -231,10 +231,7 @@
                         </div>
                         
                     </div>
-                    <div id="CheckCancelButton">
-                        <input type="submit" value="확인" class="btn btn-success rounded-pill m-2">
-                        <a href="일정관리.html" class="btn btn-danger rounded-pill m-2">취소</a>
-                    </div>
+
                     
                 </div>
 

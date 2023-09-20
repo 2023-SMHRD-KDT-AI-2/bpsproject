@@ -51,7 +51,10 @@ fetch("/bps/api/schedule/read"+[
     	
     	Array.from(detail_infomation).forEach((item)=>{
 			item.addEventListener('click', (e) => {
-				window.location.href = "goScheduleDetail?num="+e.target.children[0].textContent;
+				console.log(e.target.children[0].textContent)
+				if(e.target.children[0].textContent !== "") {
+					window.location.href = "goScheduleDetail?num="+e.target.children[0].textContent;
+				}
 			})
 		})
 		Array.from(schedule_delete_btn).forEach((item, i) => {

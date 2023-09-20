@@ -167,7 +167,9 @@ function clickDate(year, month, day) {
             		</td>
         		</tr>
     		`).click((e) => {
-				window.location.href = "goScheduleDetail?num="+e.target.children[0].textContent;
+				if(e.target.children[0].textContent !== ""){
+					window.location.href = "goScheduleDetail?num="+e.target.children[0].textContent;
+				}
 			}));
 		})
 		const schedule_delete_btn = document.getElementsByClassName('schedule-delete-btn')
