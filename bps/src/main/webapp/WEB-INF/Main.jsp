@@ -35,6 +35,18 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    
+        <style type="text/css">
+    .date{
+    font-size: 30px; 
+    color: black; 
+}
+.time{
+    font-size: 50px;
+    font-weight: bold;
+    color: #213573; 
+}
+    </style>
 </head>
 
 <body>
@@ -107,18 +119,33 @@
                 	<%} %>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="goMain" class="nav-item nav-link active">메인화면</a>
-                    <a href="goAttendStatus" class="nav-item nav-link">근태 관리</a>
-                    <a href="goSchedule" class="nav-item nav-link">일정 관리</a>
-                    <a href="goChatting" class="nav-item nav-link">메시지</a>        
-                    <a href="goFileDrive" class="nav-item nav-link ">파일-드라이브</a>
+                    <a href="goMain" class="nav-item nav-link active">
+                    <i class="fa fa-home" aria-hidden="true"></i>메인화면
+                    </a>
+                    <a href="goAttendStatus" class="nav-item nav-link">
+                    <i class="fa fa-list-alt" aria-hidden="true"></i>근태 관리
+                    </a>
+                    <a href="goSchedule" class="nav-item nav-link">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>일정 관리
+                    </a>
+                    <a href="goChatting" class="nav-item nav-link">
+                    <i class="fa fa-comments" aria-hidden="true"></i>메시지
+                    </a>        
+                    <a href="goFileDrive" class="nav-item nav-link ">
+                    <i class="fa fa-file" aria-hidden="true"></i>파일-드라이브
+                    </a>
+                     <a href="goNoticeBoard" class="nav-item nav-link">
+                     <i class="fa fa-table" aria-hidden="true"></i>공지게시판
+                     </a>
                             
                     <%
                     if (admin != null) {
 					%>
-                    <a href="goAdmin" class="nav-item nav-link">관리자 페이지</a>
+                    <a href="goAdmin" class="nav-item nav-link">
+                    <i class="fa fa-lock" aria-hidden="true"></i>관리자 페이지
+                    </a>
                     <%}%>
-                    <a href="goNoticeBoard" class="nav-item nav-link">공지게시판</a>
+                   
                     
                 </div>
             </nav>
@@ -168,13 +195,13 @@
 
                     <div id="menuarea2" class="top-left-radius container-view row1">
                        
-                        <div class="row p-4 rowmove" id="cal">
+                        <div class="row p-10 rowmove" id="cal">
                             <div draggable="true"  class="calenderya">
                                 <div class="h-100 bg-light rounded p-4">
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <h6 class="mb-0">Calender</h6>
-                                       
                                     </div>
+                                       <hr>
                                     <div id="calender"></div>
                                 </div>
                             </div>
@@ -183,13 +210,13 @@
 
 
                     <div class="top-right-radius container-view row1">
-                        <div class="row p-4 rowmove">
+                        <div class="row p-10 rowmove">
                             <div draggable="true" id="close-msg" class="msg">
                                 <div class="h-100 bg-light rounded p-4">
                                     <div class="d-flex align-items-center justify-content-between mb-2">
                                         <h6 class="mb-0">Messages</h6>
-                                        
                                     </div>
+                                        <hr>
                                     
                                           <%
                                           
@@ -249,7 +276,20 @@
                         </div>
                     </div>
                     
-
+					
+					
+					 <div class="top-right-radius container-view row1">
+                        <div class="row p-6 rowmove">
+                            <div draggable="true" id="close-msg" class="msg">
+                                <div class="h-100 bg-light rounded p-4">
+                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                        <h6 class="mb-0">Clock</h6>
+                                    </div>
+                                        <hr>
+        			<div id="date" class="date"></div>
+                    <div id="time" class="time"></div>
+        			</div></div>
+        			</div></div>
 
 
 
@@ -257,6 +297,35 @@
                 
 
         </div>
+
+
+		
+		<script type="text/javascript">
+		function setClock(){
+		    var dateInfo = new Date(); 
+		    var hour = modifyNumber(dateInfo.getHours());
+		    var min = modifyNumber(dateInfo.getMinutes());
+		    var sec = modifyNumber(dateInfo.getSeconds());
+		    var year = dateInfo.getFullYear();
+		    var month = dateInfo.getMonth()+1; //monthIndex를 반환해주기 때문에 1을 더해준다.
+		    var date = dateInfo.getDate();
+		    document.getElementById("time").innerHTML = hour + ":" + min  + ":" + sec;
+		    document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
+		}
+		function modifyNumber(time){
+		    if(parseInt(time)<10){
+		        return "0"+ time;
+		    }
+		    else
+		        return time;
+		}
+		window.onload = function(){
+		    setClock();
+		    setInterval(setClock,1000); //1초마다 setClock 함수 실행
+		}
+		</script>
+		
+
 
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

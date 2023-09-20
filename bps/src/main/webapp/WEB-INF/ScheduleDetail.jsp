@@ -108,19 +108,33 @@
                 	<%} %>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="goMain" class="nav-item nav-link ">메인화면</a>
-                    <a href="goAttendStatus" class="nav-item nav-link">근태 관리</a>
-
-                    <a href="goSchedule" class="nav-item nav-link active">일정 관리</a>
-                    <a href="goChatting" class="nav-item nav-link">메시지</a>        
-                    <a href="goFileDrive" class="nav-item nav-link ">파일-드라이브</a>
+                    <a href="goMain" class="nav-item nav-link ">
+                    <i class="fa fa-home" aria-hidden="true"></i>메인화면
+                    </a>
+                    <a href="goAttendStatus" class="nav-item nav-link">
+                    <i class="fa fa-list-alt" aria-hidden="true"></i>근태 관리
+                    </a>
+                    <a href="goSchedule" class="nav-item nav-link active">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>일정 관리
+                    </a>
+                    <a href="goChatting" class="nav-item nav-link">
+                    <i class="fa fa-comments" aria-hidden="true"></i>메시지
+                    </a>        
+                    <a href="goFileDrive" class="nav-item nav-link ">
+                    <i class="fa fa-file" aria-hidden="true"></i>파일-드라이브
+                    </a>
+                     <a href="goNoticeBoard" class="nav-item nav-link">
+                     <i class="fa fa-table" aria-hidden="true"></i>공지게시판
+                     </a>
                             
                     <%
                     if (admin != null) {
 					%>
-                    <a href="goAdmin" class="nav-item nav-link">관리자 페이지</a>
+                    <a href="goAdmin" class="nav-item nav-link">
+                    <i class="fa fa-lock" aria-hidden="true"></i>관리자 페이지
+                    </a>
                     <%}%>
-                    
+                   
                     
                 </div>
             </nav>
