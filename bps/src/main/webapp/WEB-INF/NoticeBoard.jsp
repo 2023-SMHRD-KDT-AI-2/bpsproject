@@ -269,7 +269,7 @@
 										  <c:forEach var="notice" items="${noticelists}" varStatus="status">
 											<tr>
 												<td>${status.index + 1 }</td>
-												<td>${notice.board_title}</td>
+												<td><a a href="boardDetail?num=${notice.board_id }">${notice.board_title}</a></td>
 												<td>${notice.userid}</td>
 												<td>${notice.company_num}</td>
 												<td>${notice.board_date}</td>
@@ -277,8 +277,8 @@
 											</c:forEach>
 										</tbody>
 									</table>
-									<a href="goBoardWrite" class="btn btn-primary pull-right">글쓰기</a>
 								</div>
+									<a href="goBoardWrite" class="btn btn-primary pull-right">글쓰기</a>
 							</div>
 							<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 							<script src="js/bootstrap.js"></script>

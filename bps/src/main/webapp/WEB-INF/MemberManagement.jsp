@@ -132,7 +132,7 @@
                     <a href="goFileDrive" class="nav-item nav-link ">
                     <i class="fa fa-file" aria-hidden="true"></i>파일-드라이브
                     </a>
-                     <a href="goNoticeBoard" class="nav-item nav-link active">
+                     <a href="goNoticeBoard" class="nav-item nav-link">
                      <i class="fa fa-table" aria-hidden="true"></i>공지게시판
                      </a>
                             

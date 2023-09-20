@@ -60,6 +60,16 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getsqlSession();
 		return list;
 	}
 		
+	public NoticeBoard detail(int num) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		NoticeBoard list = sqlSession.selectOne("selectDetail", num);
+
+		sqlSession.close();
+
+		return list;
+	}
 		
 		
 		

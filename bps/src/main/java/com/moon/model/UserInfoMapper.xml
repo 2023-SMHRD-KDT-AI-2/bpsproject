@@ -580,6 +580,11 @@
 		select * from noticeboard where company_num = #{compNum}
 	</select>
 
+	<select id="selectDetail" parameterType="string"
+	 resultType="com.moon.model.NoticeBoard">
+	 	SELECT * FROM noticeboard WHERE board_id = ${board_id}
+	 </select>
+
 
 	<delete id="noticeDel"
 		parameterType="com.moon.model.NoticeBoard">

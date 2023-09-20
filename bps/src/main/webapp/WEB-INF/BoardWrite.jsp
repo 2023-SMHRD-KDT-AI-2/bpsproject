@@ -217,6 +217,7 @@
 								
 								</div>	
 								<input type="submit" id="goMainBoard" class="btn btn-primary pull-right" value="작성">
+								<a href="goNoticeBoard" class="btn btn-primary pull-right">뒤로가기</a>
 									
 							</form>
 						</div>
