@@ -47,7 +47,8 @@ public class kakaoIdCheck extends HttpServlet {
 		
 	
 		if(jobj.isNull(id)) {
-			System.out.println("yes");
+			System.out.println("3");
+			
 		}else {
 			System.out.println("false");
 		}
@@ -74,13 +75,19 @@ public class kakaoIdCheck extends HttpServlet {
 			jobj.put("pw", check.get(0).getPw());
 			
 			out.print(jobj);
-		}
-		
-		else if (jobj.isNull(id)) {
+		}else if (jobj.isNull(id)==true) {
 			System.out.println("3");
 			idCheck = 1;
 			out.print(idCheck);
+			
+			
 		}
+		
+//		else if (jobj.isNull(id)==true) {
+//			System.out.println("3");
+//			idCheck = 1;
+//			out.print(idCheck);
+//		}
 
 }
 

@@ -43,9 +43,10 @@ window.addEventListener('load', function() {
 				type: "get",
 				data: { userId: emailadress1 },
 				dataType: "json",
+				
 				//dataType --> success 했을 때 받아올 결과값의 자료형을 의미
 				success: function(result) {
-
+						console.log(result)
 
 					if (result == 0) {
 						location.href = 'http://localhost:8090/bps/goLogin'
@@ -53,9 +54,9 @@ window.addEventListener('load', function() {
 
 						
 					} else if (result == 1) {
-						location.href = 'http://localhost:8090/bps/goLogin'
+						location.href = 'http://localhost:8090/bps/goEmpSingIn'
 						alert('존재하지않는아이디입니다.');
-						return false;
+						return;
 					} else {
 
 						let Email = emailadress1 + "@" + emailadress2
@@ -74,8 +75,9 @@ window.addEventListener('load', function() {
 
 				},
 				error: function() {
-					location.href = 'http://localhost:8090/bps/goLogin'
-						alert('존재하지않는아이디입니다.');
+					alert('존재하지않는아이디입니다!.');
+					//location.href = 'http://localhost:8090/bps/goEmpSingIn'
+					return;
 				}
 			})
 
