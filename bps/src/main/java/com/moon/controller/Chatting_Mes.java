@@ -84,7 +84,6 @@ public class Chatting_Mes extends HttpServlet {
 				chatDTO.setCompany(host_comp);
 				chatDTO.setHost_email_sub(host);
 				chatDTO.setGuest_email_sub(guest);
-				chatDTO.setHost_email(host);
 
 				chatDTO.setHost_email(host);
 				chatDTO.setHost_name(host_name);
@@ -102,7 +101,6 @@ public class Chatting_Mes extends HttpServlet {
 				chatDTO.setCompany(host_comp);
 				chatDTO.setHost_email_sub(guest);
 				chatDTO.setGuest_email_sub(host);
-				chatDTO.setHost_email(host);
 
 				chatDTO.setHost_email(host);
 				chatDTO.setHost_name(host_name);
@@ -120,7 +118,6 @@ public class Chatting_Mes extends HttpServlet {
 			chatDTO.setCompany(host_comp);
 			chatDTO.setHost_email_sub(host);
 			chatDTO.setGuest_email_sub(guest);
-			chatDTO.setHost_email(host);
 
 			chatDTO.setHost_email(host);
 			chatDTO.setHost_name(host_name);
