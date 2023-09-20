@@ -118,7 +118,7 @@
 					%>
                     <a href="goAdmin" class="nav-item nav-link">관리자 페이지</a>
                     <%}%>
-                    
+                    <a href="goNoticeBoard" class="nav-item nav-link">공지게시판</a>
                     
                 </div>
             </nav>

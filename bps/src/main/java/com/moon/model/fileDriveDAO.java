@@ -12,6 +12,7 @@ public class fileDriveDAO {
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getsqlSession();
 	
 	ArrayList<fileDrive> list = new ArrayList<>();
+	
 	public ArrayList<fileDrive> fileList(String comp) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 

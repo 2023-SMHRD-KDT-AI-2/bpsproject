@@ -279,11 +279,11 @@
 	
 	 <insert id="attend_in" parameterType = "com.moon.model.attend">
 		 insert into attend values(
-	    attend_id.NEXTVAL,
-	    (select id from userinfo where id = #{id}),
-	    #{attend_info},
-	    sysdate
-	    )
+		attend_id.NEXTVAL,
+		#{id},
+		#{attend_info},
+		sysdate
+		)
 	 
 	 </insert>
 	 
@@ -510,6 +510,39 @@
 	order by sendtime asc
    </select>
 	
+	<insert id="noticeInsert"
+		parameterType="com.moon.model.NoticeBoard">
+		insert into NOTICEBOARD (board_Title, userID ,board_Date,board_content,company_num) 
+			values(
+			
+			#{board_title},
+			#{userid},
+			sysdate,
+			#{board_content},
+			#{company_num}
+			)
+	</insert>
+
+	<select id="noticeSelect"
+		parameterType="String" resultType="com.moon.model.NoticeBoard">
+		select * from noticeboard where company_num = #{compNum}
+	</select>
+
+
+	<delete id="noticeDel"
+		parameterType="com.moon.model.NoticeBoard">
+		delete from noticeboard where board_id = #{board_id}
+	</delete>
+
+	<select id="noticeList" resultType="com.moon.model.NoticeBoard">
+		select *from noticeboard where userid =${userid}
+	</select>
+
+	<select id="noticeDetail" parameterType="String"
+		resultType="com.moon.model.NoticeBoard">
+		select *from noticeboard
+		where num =#{num}
+	</select>
 	
 	
 </mapper>
