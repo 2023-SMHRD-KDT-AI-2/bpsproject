@@ -77,7 +77,7 @@ public class kakaoIdCheck extends HttpServlet {
 		}
 		
 		else if (jobj.isNull(id)) {
-System.out.println("3");
+			System.out.println("3");
 			idCheck = 1;
 			out.print(idCheck);
 		}

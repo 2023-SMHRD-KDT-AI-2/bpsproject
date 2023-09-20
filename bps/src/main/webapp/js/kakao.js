@@ -100,7 +100,8 @@ function getInfo() {
 
 				},
 				error: function() {
-					alert("서버요청실패");
+					alert('존재하지않는아이디입니다.');
+						window.location.href = 'http://localhost:8090/bps/goEmpSingIn'
 				}
 			})
 

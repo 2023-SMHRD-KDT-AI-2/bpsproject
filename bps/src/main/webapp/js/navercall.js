@@ -74,7 +74,8 @@ window.addEventListener('load', function() {
 
 				},
 				error: function() {
-					alert("서버요청실패");
+					location.href = 'http://localhost:8090/bps/goLogin'
+						alert('존재하지않는아이디입니다.');
 				}
 			})
 
