@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="com.moon.model.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +49,8 @@
         <!-- Spinner End -->
 
 
-       <%	
+        <!-- Sidebar Start -->
+		<%	
 
        
 		String name = (String) session.getAttribute("name");
@@ -102,20 +107,16 @@
                 	<%} %>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="goMain" class="nav-item nav-link active"><i
-                            class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="goAttendStatus" class="nav-item nav-link"><i
-                            class="fa fa-tachometer-alt me-2"></i>근태 관리</a>
-                    <a href="goFileDrive" class="nav-item nav-link "><i
-                            class="fa fa-tachometer-alt me-2"></i>FILE-DRIVE</a>
-                    <a href="goCarReserv" class="nav-item nav-link"><i
-                            class="fa fa-tachometer-alt me-2"></i>차량신청</a>            
+                    <a href="goMain" class="nav-item nav-link active">메인화면</a>
+                    <a href="goAttendStatus" class="nav-item nav-link">근태 관리</a>
+                    <a href="goSchedule" class="nav-item nav-link">일정 관리</a>
+                    <a href="goChatting" class="nav-item nav-link">메시지</a>        
+                    <a href="goFileDrive" class="nav-item nav-link ">파일-드라이브</a>
                             
                     <%
                     if (admin != null) {
 					%>
-                    <a href="goAdmin" class="nav-item nav-link"><i
-                            class="fa fa-tachometer-alt me-2"></i>관리자 페이지</a>
+                    <a href="goAdmin" class="nav-item nav-link">관리자 페이지</a>
                     <%}%>
                     
                     
@@ -130,81 +131,15 @@
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                    <h2 class="text-primary mb-0"><%=compName %></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
+                
                 <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div>
+                   
+                 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="file/<%=logo %>" alt=""
@@ -213,8 +148,8 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="goMyPage" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+             
+                            <a href="Logout" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -227,16 +162,8 @@
                 <div id="menuarea" class="row g-4">
 
                     <div class="nav-item dropdown1">
-                        <a href="#" class="submenu" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                        </a>
-                        <div class="dropdown2 close-sub">
-                            <a class="dropdown-items gong" href="#">공지사항</a>
-                            <a class="dropdown-items nal" href="#">날씨</a>
-                            <a class="dropdown-items upmu" href="#">업무리스트</a>
-                            <a class="dropdown-items dal" href="#">달력</a>
-                            <a class="dropdown-items mes" href="#">메세지</a>
-                        </div>
+                       
+
                     </div>
 
                     <div id="menuarea2" class="top-left-radius container-view row1">
@@ -246,9 +173,7 @@
                                 <div class="h-100 bg-light rounded p-4">
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <h6 class="mb-0">Calender</h6>
-                                        <a href="#" class="close-cal close-menu">
-                                            <i class="fa fa-times"></i>
-                                        </a>
+                                       
                                     </div>
                                     <div id="calender"></div>
                                 </div>
@@ -256,72 +181,6 @@
                         </div>
                     </div>
 
-                    <div class="container-view row1">
-                        <div class="row p-4 rowmove">
-                        <div draggable="true" id="toDo" class="to_Do">
-                            <div class="h-100 bg-light rounded p-4">
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h6 class="mb-0">To Do List</h6>
-                                    <a href="#" class="close-toDo close-menu">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
-                                <div class="d-flex mb-2">
-                                    <input class="form-control bg-transparent" type="text" placeholder="Enter task">
-                                    <button type="button" class="btn btn-primary ms-2">Add</button>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox" checked>
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span><del>Short task goes here...</del></span>
-                                            <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center pt-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                        </div>
-
-
-
-                    </div>
 
                     <div class="top-right-radius container-view row1">
                         <div class="row p-4 rowmove">
@@ -329,21 +188,53 @@
                                 <div class="h-100 bg-light rounded p-4">
                                     <div class="d-flex align-items-center justify-content-between mb-2">
                                         <h6 class="mb-0">Messages</h6>
-                                        <a href="#" class="close-message close-menu">
-                                            <i class="closemessages fa fa-times"></i>
-                                        </a>
+                                        
                                     </div>
-                                    <div class="d-flex align-items-center border-bottom py-3">
-                                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt=""
-                                            style="width: 40px; height: 40px;">
+                                    
+                                          <%
+                                          
+                                          ArrayList<ChattingDTO> chatroom = new ArrayList<>();
+                                          ArrayList<ChattingDTO> chatlist = new ArrayList<>();
+                                          	ChattingDTO chatDTO = new ChattingDTO();
+                                          	ChattingDAO chatDAO = new ChattingDAO();
+                                          	
+                                          	chatDTO.setHost_email(email);
+                                          	chatDTO.setHost_email_sub(email);
+                                          	
+                                          	chatroom = chatDAO.select_host_room(chatDTO);
+                                          	
+                                          	ArrayList<String> room_num = new ArrayList<String>();
+                                          	
+                                          	for (int i = 0; i < chatroom.size(); i++) {
+                                          		room_num.add(chatroom.get(i).getChat_id());
+                                          		
+                                          	}
+                                          	
+                                          	for (int j = 0; j < room_num.size(); j++){
+                                          		chatlist = chatDAO.select_host_mes(room_num.get(j));		
+                                          	
+                                          	
+                                          
+                                          	
+                                          
+                                          	for (int k = chatlist.size()-1; k < chatlist.size(); k++) {
+                                          
+                                          	
+                                          %>
+                                          <div class="d-flex align-items-center border-bottom py-3">
+                                       
                                         <div class="w-100 ms-3">
                                             <div class="d-flex w-100 justify-content-between">
-                                                <h6 class="mb-0">Jhon Doe</h6>
-                                                <small>15 minutes ago</small>
+                                          
+                                          
+                                                <h6 class="mb-0"><%=chatlist.get(k).getHost_name() %></h6>            
                                             </div>
-                                            <span>Short message goes here...</span>
+                                            <a href="Chatting?select_room=<%=chatlist.get(k).getHost_email()%>">
+                                            <p style="text-align: right; margin: 0%"><%=chatlist.get(k).getSend_mes()%></p>
+                                            </a>
                                         </div>
                                     </div>
+                                    <%	}	} %>
                                 </div>
                             </div>
                         </div>
@@ -355,33 +246,7 @@
 
                 </div>
                 
-                
-            <!-- Widgets End -->
 
-
-            <!-- Footer Start -->
-            <!-- <div class="container-fluid pt-4 px-4">
-                <div class="bg-light rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            /*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        </br>
-                        Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            Footer End
-        </div> -->
-            <!-- Content End -->
-
-
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
 
         <!-- JavaScript Libraries -->

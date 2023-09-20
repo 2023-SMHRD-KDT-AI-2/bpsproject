@@ -11,7 +11,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>차량 관리</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -50,167 +50,126 @@
             </div>
         </div>
         <!-- Spinner End -->
-		 <%   
+ <!-- Sidebar Start -->
+		<%	
 
        
-      String name = (String) session.getAttribute("name");
-      String admin = (String) session.getAttribute("admin");
-      String logo = (String) session.getAttribute("logo");
-      String compName = (String) session.getAttribute("compName");
-      String email = (String) session.getAttribute("email");
-      String phone = (String) session.getAttribute("phone");
-      String date = (String) session.getAttribute("date");
-      String pass = (String) session.getAttribute("pass");
-      String compNum = (String) session.getAttribute("compNum");
-      String depart = (String) session.getAttribute("depart");
-      String position = (String) session.getAttribute("position");
-      
-      
-      
-      %>
+		String name = (String) session.getAttribute("name");
+		String admin = (String) session.getAttribute("admin");
+		String logo = (String) session.getAttribute("logo");
+		String compName = (String) session.getAttribute("compName");
+		String email = (String) session.getAttribute("email");
+		String phone = (String) session.getAttribute("phone");
+		String date = (String) session.getAttribute("date");
+		String pass = (String) session.getAttribute("pass");
+		String compNum = (String) session.getAttribute("compNum");
+		String depart = (String) session.getAttribute("depart");
+		String position = (String) session.getAttribute("position");
 
-        <!-- Sidebar Start -->
+		
+		
+		
+		%>
+        <!--작은창-->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                <a href="goMain" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><%=compName %></h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
+                    
+                    <%
+                    if (admin != null) {
+						%>
+						
+						
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                        <img class="rounded-circle" src="file/<%=logo %>" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
-                        <span>Admin</span>
+                        <h6 class="mb-0"><%=name %></h6>
+                        <span>admin</span>
                     </div>
+                	<%} else { %>
+                	                    <div class="position-relative">
+                        <img class="rounded-circle" src="file/<%=logo %>" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                	<div class="ms-3">
+                        <h6 class="mb-0"><%=name %></h6>
+                        <span><%=depart %></span>
+                        <span><%=position %></span>
+                    </div>
+                	<%} %>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Buttons</a>
-                            <a href="typography.html" class="dropdown-item">Typography</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a>
-                        </div>
-                    </div>
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
-                    <a href="form.html" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Forms</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
-                        </div>
-                    </div>
+                    <a href="goMain" class="nav-item nav-link ">메인화면</a>
+                    <a href="goAttendStatus" class="nav-item nav-link">근태 관리</a>
+                    <a href="goSchedule" class="nav-item nav-link active">일정 관리</a>
+                    <a href="goChatting" class="nav-item nav-link">메시지</a>        
+                    <a href="goFileDrive" class="nav-item nav-link ">파일-드라이브</a>
+                            
+                    <%
+                    if (admin != null) {
+					%>
+                    <a href="goAdmin" class="nav-item nav-link ">관리자 페이지</a>
+                    <%}%>
+                    
+                    
                 </div>
             </nav>
         </div>
         <!-- Sidebar End -->
-        
+
 
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                    <h2 class="text-primary mb-0"><%=compName %></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
+                
                 <div class="navbar-nav align-items-center ms-auto">
+                   
+                 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
+                            <img class="rounded-circle me-lg-2" src="file/<%=logo %>" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex"><%=name %></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="goMyPage" class="dropdown-item">My Profile</a>
+             
+                            <a href="Logout" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
             </nav>
             <!-- Navbar End -->
+
             
 
             <!-- Form Start -->
             <form action="compcarUpdate" accept-charset="UTF-8" method="post">
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
+
+<div class="nav-item dropdown1">
+						<div class="dropdown2 open-sub">
+							<a class="dropdown-items" href="goSchedule">일정 등록</a>
+							<a class="dropdown-items" href=goCarReserv>차량 신청</a>
+						</div>
+					</div>    
 
                     <!-- form 지정-->
                     <!-- 차량 용도 선택하는 부분-->
@@ -320,7 +279,7 @@
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+      
     </div>
 
     <!-- JavaScript Libraries -->

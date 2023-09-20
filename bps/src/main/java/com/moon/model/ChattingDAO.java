@@ -60,4 +60,25 @@ public class ChattingDAO {
 		return list;
 	}
 	
+	public ArrayList<ChattingDTO> select_host_room (ChattingDTO show) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		list = (ArrayList) sqlSession.selectList("select_host_room", show);
+
+		sqlSession.close();
+
+		return list;
+	}
+	
+	public ArrayList<ChattingDTO> select_host_mes (String show) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		list = (ArrayList) sqlSession.selectList("select_host_mes", show);
+
+		sqlSession.close();
+
+		return list;
+	}
 }

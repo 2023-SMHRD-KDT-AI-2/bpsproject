@@ -440,7 +440,75 @@
       select carnum, manufac, carname, last_use from comp_car where company_id=#{compNum}
    </select>
 	
+		<!-- chatting 쿼리문 -->
+	<insert id="chat_room_in" parameterType="com.moon.model.ChattingDTO">
+		insert
+		into chat_room(
+		chat_id,
+		host_email,
+		guest_email
+		)
+		values (
+		caht_room_idx.NEXTVAL,
+		#{host_email},
+		#{guest_email} 
+		)
+		
+
+	</insert>
 	
+	<insert id="chat_mes_in" parameterType="com.moon.model.ChattingDTO">
+
+		insert into chat_mes
+		(
+        chat_mes_id
+		,company
+		,chat_id
+		,host_email
+		,host_name
+		,send_mes
+		,sendtime
+		)
+		values (
+        caht_mes_idx.NEXTVAL
+		,(select company_id from comp_info where company_id = #{company})
+		,(select chat_id from chat_room where host_email = #{host_email_sub} and guest_email = #{guest_email_sub})
+		,#{host_email}
+		,#{host_name}
+		,#{send_mes}
+		,sysdate
+		)
+		
+
+	</insert>
+	
+	<select id="show_mes" parameterType="com.moon.model.ChattingDTO"
+   resultType="com.moon.model.ChattingDTO">
+      select * from chat_mes 
+      where company = (select company_id from comp_info where company_id = #{company})
+      and chat_id = (select chat_id from chat_room where host_email = #{host_email_sub} and guest_email = #{guest_email_sub})
+      order by sendtime asc 
+   </select>
+   
+   
+   <select id="show_room" parameterType="com.moon.model.ChattingDTO"
+   resultType="com.moon.model.ChattingDTO">
+      select * from chat_room 
+      where chat_id = (select chat_id from chat_room where host_email = #{host_email_sub} and guest_email = #{guest_email_sub})
+      and host_email = #{host_email}
+      and guest_email = #{guest_email}
+   </select>
+   
+   <select id="select_host_room" parameterType="com.moon.model.ChattingDTO"
+   resultType="com.moon.model.ChattingDTO">
+      SELECT CHAT_ID FROM chat_room WHERE HOST_EMAIL = #{host_email} or guest_email = #{host_email_sub}
+   </select>
+   
+   <select id="select_host_mes" 
+   resultType="com.moon.model.ChattingDTO">
+      select * from chat_mes where chat_id = #{chat_id}
+	order by sendtime asc
+   </select>
 	
 	
 	
