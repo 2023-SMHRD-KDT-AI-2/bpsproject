@@ -137,35 +137,47 @@
 ![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/61c2757d-232f-45b2-8d39-f3af8d4d1578)
 
 - ### 메인페이지 <br>
-![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/d527da9f-6aa3-4785-be56-06d7dd1c67aa)
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/521c5f52-b65f-481d-a197-5526c6c663da)
+
 
 - ### 근태관리 <br>
-![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/63e4a8c8-7ef7-4172-bff6-9bad474c099b)
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/236b7fbb-407c-4530-8960-0c06479b6fa6)
+
 
 
 - ### 일정관리 <br>
-![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/af2b7297-bf09-4268-ad8a-207db1e7b11f)
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/603ae863-964d-4593-a5a7-d320e6c65762)
+
 
 - ### 차량신청 <br>
-![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/adb81663-48c1-442e-a77a-3b7738fccac0)
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/c4732fa8-15e8-4e01-a0da-e2f3d9d8ca40)
+
+
 
 - ### 메시지 <br>
-![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/f51fa2b9-1263-4d07-9dae-10962268a089)
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/fb3ec7cc-5190-49f6-9057-cc2f410635f3)
+
 
 - ### 파일 드라이브 <br>
-![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/7bb373ac-5fd4-4ee5-be29-3dad24957ca8)
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/b7e274e3-de29-4861-9a5b-1b73df93d31b)
+
 
 - ### 게시판 <br>
-![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/4bcfbb05-d4d7-450a-a7ef-2692c6380779)
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/ba0f6082-1fda-430b-b1b9-636a3e0c87ba)
+
 
 - ### 관리자 페이지(회원관리)
-- ![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/0ab0c1e4-2e13-4e52-8430-b918baa11ea9)
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/2ec6f8f4-3655-48db-86c2-f4b9c96028d8)
+
 - ### 관리자 페이지(부서관리)
-![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/cd597c11-2b9e-45bd-b06e-d1922995195e)
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/0b54d9e0-3493-45c5-896d-052a3e4b0e61)
+
 - ### 관리자 페이지(직급관리)
-![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/3562febe-b800-45d6-a999-5c84af60a3c6)
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/3e312269-562f-4d94-a420-8030474f52b2)
+
 - ### 관리자 페이지(차량관리)
-![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/051d8fd8-d516-48fd-95e5-0c0f178b807a)
+![image](https://github.com/2023-SMHRD-KDT-AI-2/bpsproject/assets/143462444/0dea22d0-3a1f-4b79-ae35-66de1c127435)
+
 
 
 
