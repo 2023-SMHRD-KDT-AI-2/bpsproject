@@ -256,17 +256,8 @@
 							list = aDAO.attend_sele(att);
 							String go = "";
 							String leave = "";
-							if (list.isEmpty()) {
-							} else {
-								for (int i = 0; i < list.size(); i++) {
-									if (list.get(i).getAttend_info().equals("출근")){
-										go = list.get(i).getAttend_time();
-									} else {
-										leave = list.get(i).getAttend_time();
-									}
-								}
-							}
-							
+							String sub_leave1 = "";
+							String sub_leave2 = "";
 							
 							SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
 							Date da = new Date(System.currentTimeMillis());
@@ -274,19 +265,55 @@
 							System.out.println(formatter.format(da));
 							
 							System.currentTimeMillis();
+							if (list.isEmpty()) {
+						 %>   
+								 <h6>출근시간 : </h6>
+								 <h6>퇴근시간 : </h6>
+						 <%
 							
-							String sub_leave = leave.substring(0, 10);
-							System.out.println(sub_leave);
+							} else {
+								for (int i = 0; i < list.size(); i++) {
+									if (list.get(i).getAttend_info().equals("출근")){
+										go = list.get(i).getAttend_time();
+										
+										
+									
+										 sub_leave1 = go.substring(0, 10);
+									} else {
+										leave = list.get(i).getAttend_time();
+										
+										
+				
+										 sub_leave2 = leave.substring(0, 10);
+									}
+								}
+							
+							
+							
+							
+							
+							
+							
 							%>
-							
-								<% if (sub_leave.equals(formatter.format(da))){ %>
+								
+		
+								<% 
+								
+								if (sub_leave1.equals(formatter.format(da))){ %>
 								<h6>출근시간 : <%=go %></h6>
-								<h6>퇴근시간 : <%=leave %></h6>
 								<%} else { %>
 								<h6>출근시간 : </h6>
+								<%} 
+								
+								if (sub_leave2.equals(formatter.format(da))) {%>
+								
+								<h6>퇴근시간 : <%=leave %></h6>
+								<% } else { %>
 								<h6>퇴근시간 : </h6>
-								<%} %>
-							</div>
+								<%} }%>
+								
+								
+								</div>
 							<div class="btn-commuting">
 							<form method="post" name="form" onsubmit="check_function" >
 							
