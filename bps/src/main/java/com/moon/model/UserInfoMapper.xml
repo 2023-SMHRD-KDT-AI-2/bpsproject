@@ -451,8 +451,8 @@
 		UPDATE comp_car
 		SET using = 'Y',
 		user_use = #{name},
-		start_date =#{startTime},
-		end_date = #{returnTime},
+		start_date =#{start_Date},
+		end_date = #{end_date},
 		car_reason = #{usingreason},
 		reason_detail = #{reasonDetail}
 		WHERE company_id = #{compNum} and carnum = #{carNum}
@@ -477,7 +477,7 @@
 	</update>
 	<select id="show_Allcar" parameterType="com.moon.model.carInfo"
 		resultType="com.moon.model.carInfo">
-		select carnum, manufac, carname, last_use from comp_car where
+		select carnum, manufac, carname,using,user_use, start_date, end_date, last_use from comp_car where
 		company_id=#{compNum}
 	</select>
 

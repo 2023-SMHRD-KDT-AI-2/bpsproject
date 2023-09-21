@@ -36,8 +36,8 @@ import com.moon.model.carInfoDAO;
 		carInfo carinfo = new carInfo();
 		
 		carinfo.setCarNum(carNum);
-		carinfo.setStartTime(startTime);
-		carinfo.setReturnTime(returnTime);
+		carinfo.setStart_Date(startTime);
+		carinfo.setEnd_date(returnTime);
 		carinfo.setName(name);
 		carinfo.setCompNum(compNum);
 		carinfo.setReasonDetail(detail);

@@ -17,11 +17,12 @@ public class carInfo {
 	private String company;
 	private String depart;
 	private String using;
-	private String startTime;
-	private String returnTime;
+	private String start_Date;
+	private String end_date;
 	private String usingreason;
 	private String reasonDetail;
 	private String last_use;
+	private String user_use;
 	
 	
 	

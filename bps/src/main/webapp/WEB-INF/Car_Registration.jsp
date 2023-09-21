@@ -299,6 +299,10 @@
                                         <th scope="col" class="text_space">차량 번호</th>
                                         <th scope="col" class="text_space">제조사</th>
                                         <th scope="col" class="text_space">차량</th>
+                                        <th scope="col" class="text_space">사용여부</th>
+                                        <th scope="col" class="text_space">현재사용자</th>
+                                        <th scope="col" class="text_space">대여일시</th>
+                                        <th scope="col" class="text_space">반납예정시간</th>
                                         <th scope="col" class="text_space">최근사용자</th>
                                     </tr>
                                 </thead>
@@ -309,7 +313,11 @@
                                     <tr>
                                         <td class="text_space">${list.carNum}</td>
                                         <td class="text_space">${list.manufac}</td>
-                                        <td class="text_space">${list.carName}</td>     
+                                        <td class="text_space">${list.carName}</td>
+                                        <td class="text_space">${list.using}</td>
+                                        <td class="text_space">${list.user_use}</td>  
+                                        <td class="text_space">${list.start_Date}</td>
+                                        <td class="text_space">${list.end_date}</td>
                                         <td class="text_space">${list.last_use}</td>
                                         
                                     </tr>       
