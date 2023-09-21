@@ -222,8 +222,10 @@
                                           
                                           ArrayList<ChattingDTO> chatroom = new ArrayList<>();
                                           ArrayList<ChattingDTO> chatlist = new ArrayList<>();
+                                          ArrayList<userInfo> ulist = new ArrayList<>();
                                           	ChattingDTO chatDTO = new ChattingDTO();
                                           	ChattingDAO chatDAO = new ChattingDAO();
+                                          	UserInfoDAO uDAO = new UserInfoDAO();
                                           	
                                           	chatDTO.setHost_email(email);
                                           	chatDTO.setHost_email_sub(email);
@@ -241,8 +243,11 @@
                                           	}
                                           	
                                           	for (int j = 0; j < room_num.size(); j++){
-                                          		chatlist = chatDAO.select_host_mes(room_num.get(j));		
-                                          	
+                                          		chatlist = chatDAO.select_host_mes(room_num.get(j));
+                                          		guestEmail = chatroom.get(j).getGuest_email();
+                                          		ulist = uDAO.detailed(guestEmail);
+                                          		guestName = ulist.get(0).getName();
+                                          		
                                           		for (int l = 0; l < chatlist.size(); l++) {
                                           			if (!chatlist.get(l).getHost_email().equals(email)){
                                           				guestEmail = chatlist.get(l).getHost_email();
