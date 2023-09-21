@@ -4,6 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.lang.System"%>
+<%@ page import="java.util.*" %>
+<%@ page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -265,14 +268,24 @@
 							}
 							
 							
+							SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+							Date da = new Date(System.currentTimeMillis());
+
+							System.out.println(formatter.format(da));
 							
+							System.currentTimeMillis();
 							
-							
-							
+							String sub_leave = leave.substring(0, 10);
+							System.out.println(sub_leave);
 							%>
 							
+								<% if (sub_leave.equals(formatter.format(da))){ %>
 								<h6>출근시간 : <%=go %></h6>
 								<h6>퇴근시간 : <%=leave %></h6>
+								<%} else { %>
+								<h6>출근시간 : </h6>
+								<h6>퇴근시간 : </h6>
+								<%} %>
 							</div>
 							<div class="btn-commuting">
 							<form method="post" name="form" onsubmit="check_function" >
@@ -353,7 +366,6 @@
 				var goHome = document.getElementById('btn-go-home');
 				
 			    goHome.addEventListener('click',()=>{
-			
 			        alert("퇴근완료")
 			       function formChange(obj) {
 					obj.submit();
