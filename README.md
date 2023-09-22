@@ -25,17 +25,17 @@
     <td align="center"><strong>남현웅</strong></td>
   </tr>
   <tr>
-    <td align="center"><b></b></td>
-    <td align="center"><b></b></td>
-    <td align="center"><b></b></td>
-    <td align="center"><b></b></td>
-    <td align="center"><b>풀ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ스택</b></td>
-    <td align="center"><b>Backend</b></td>
+    <td align="center"><b>BackEnd </b> <br> 기획서 <br> 전반적인 서류작업<br>메세지프로그램 구축</td>
+    <td align="center"><b>FrontEnd</b><br>근태관리 페이지<br>게시판 페이지<br>크롤링</td>
+    <td align="center"><b>FrontEnd</b><br>일정관리 페이지<br>차량관리 페이지<br>차량등록 페이지<br>크롤링</td>
+    <td align="center"><b>BackEnd</b><br>DB설계 및 구축<br>차량관리 페이지</td>
+    <td align="center"><b>PM</b><br>DB설계 및 구축<br>페이지 레이아웃 설계 및 전체 기능 구현</td>
+    <td align="center"><b>Backend</b><br>마이페이지<br>아이디 비밀번호 찾기<br>카카오,네이버 api로그인</td>
   </tr>
   <tr>
+    <td align="center"><a href="https://github.com/zznnan0512" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/Hilo9" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/Jo-Moon-Gyu" target='_blank'>github</a></td>
      <td align="center"><a href="https://github.com/Nam-Hyun-Woong" target='_blank'>github</a></td>
