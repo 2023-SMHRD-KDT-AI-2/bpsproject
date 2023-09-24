@@ -34,9 +34,9 @@
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/zznnan0512" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/Hilo9" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/RedBullJisu" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/Hillo9" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/ejuseop" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/Jo-Moon-Gyu" target='_blank'>github</a></td>
      <td align="center"><a href="https://github.com/Nam-Hyun-Woong" target='_blank'>github</a></td>
   </tr>
